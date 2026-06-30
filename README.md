@@ -8,3 +8,5 @@ todo:
 does this mean i have to comment my code now :(
 
 yes
+
+Space invader thing but we shoot enemy doges in ufos w
