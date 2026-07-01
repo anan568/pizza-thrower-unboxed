@@ -10,6 +10,7 @@ does this mean i have to comment my code now :(
 yes
 
 bob: figure out how to write a pixel shader
+option1 : vertex shader hijack: utilise "uwidth" and "uheight" uniform variables and quantise vertices to nearest nice integer. before passing to rasterisation stage. this will probably not work, but will be very funny to see the result of.
 
 Space invader thing but we shoot enemy doges in ufos w
 
