@@ -29,6 +29,4 @@ cd godot-cpp
 scons platform=windows custom_api_file=<PATH_TO_FILE>
 cd ..
 ```
-
-
-
+they also say that we might maybe need to add `bits=64` to the command on Windows or Linux. no idea what that means.
