@@ -26,3 +26,4 @@ precision platformer where you have a surf attack and you have to time your surf
 - air dash action in the air to reverse horizontal velocity (this is your only way to change direction in the game)
 - make gauntlet a chargeable attack with like 3 levels of power indicating how high he will jump (tap for shortest jump)
 - sidescroller course with a moving paint wave
+- camera zooms out the faster u go
