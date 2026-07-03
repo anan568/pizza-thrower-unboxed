@@ -3,6 +3,6 @@
 /android/
 *.import
 
-bin/*.dll
-bin/*.so
-cpp/godot-cpp/
+# bin/*.dll
+# bin/*.so
+# cpp/godot-cpp/
