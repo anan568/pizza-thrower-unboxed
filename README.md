@@ -21,6 +21,8 @@ game... make pizza... ingredients.... absurdity in steps needed to acquire ingre
 pizza delivery
 
 precision platformer where you have a surf attack and you have to time your surfs mid air to surf into enemies for movement boost paint paint paint. gauntlet attack launches you upward when you hit an enemy. make the game really hard in later levels with chaining surfs and gauntlets
-- levels start out with pj on foot then he jumps on a surfboard and never gets off unless he dies
+- levels start out with pj on foot then he jumps on a surfboard
+- jump to dismount surfboard (but the board will keep going and can be remounted when hopped into -> allows for levels with multiple surfboards)
+- air dash action in the air to reverse horizontal velocity (this is your only way to change direction in the game)
 - make gauntlet a chargeable attack with like 3 levels of power indicating how high he will jump (tap for shortest jump)
 - sidescroller course with a moving paint wave
