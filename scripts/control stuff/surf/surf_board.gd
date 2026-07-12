@@ -10,6 +10,14 @@ var boost = 10
 var pj
 var retach_cooldown = 0.3
 
+var facing_right: bool
+
+func _ready() -> void:
+	if scale.x == 1:
+		facing_right = true
+	else:
+		facing_right = false
+
 func _physics_process(delta: float) -> void:
 	move_and_slide()
 
@@ -26,6 +34,7 @@ func _on_snap_region_body_entered(body: Node2D) -> void:
 			body.queue_free()
 			CreatePJ()
 		else:
+			if body.mounted: return
 			body.get_parent().remove_child(body)
 			call_deferred("add_child", body)
 			body.position = Vector2.ZERO
@@ -39,10 +48,11 @@ func CreatePJ():
 	call_deferred("add_child", instance)
 	instance.mounted = true
 	pj = instance
+	pj.facing_right = facing_right
 
 func _on_hitbox_area_entered(area: Area2D) -> void:
 	if area.is_in_group("enemy"):
-		velocity.x += boost
+		velocity.x += boost * scale.x
 		area.queue_free()
 		
 func Detach():

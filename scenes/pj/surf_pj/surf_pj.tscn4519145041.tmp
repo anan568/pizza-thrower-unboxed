@@ -184,8 +184,7 @@ autoplay = "idle"
 shape = SubResource("CapsuleShape2D_d0u6y")
 
 [node name="lunge_hitbox" type="Area2D" parent="." unique_id=2134671569]
-collision_layer = 0
-collision_mask = 4
+visible = false
 monitoring = false
 monitorable = false
 script = ExtResource("7_bvk6b")
@@ -209,10 +208,8 @@ debug_color = Color(1, 0.010117998, 0.061540082, 0.41960785)
 zoom = Vector2(2.5, 2.5)
 
 [node name="lunge_time" type="Timer" parent="." unique_id=575622820]
-one_shot = true
 
 [node name="lunge_cd" type="Timer" parent="." unique_id=1917071780]
-one_shot = true
 
 [connection signal="area_entered" from="lunge_hitbox" to="lunge_hitbox" method="_on_area_entered"]
 [connection signal="timeout" from="lunge_time" to="." method="_on_lunge_time_timeout"]
