@@ -1,0 +1,91 @@
+[gd_scene format=3 uid="uid://h5bxtv75pnfv"]
+
+[ext_resource type="Script" uid="uid://bxucej52l1hmw" path="res://scripts/control stuff/surf/surf_board.gd" id="1_lypok"]
+[ext_resource type="Texture2D" uid="uid://b0387ef1mkuup" path="res://art/surf/characters/pj/surfboard.png" id="2_jtpb2"]
+
+[sub_resource type="AtlasTexture" id="AtlasTexture_envbj"]
+atlas = ExtResource("2_jtpb2")
+region = Rect2(0, 0, 32, 32)
+
+[sub_resource type="AtlasTexture" id="AtlasTexture_qohdl"]
+atlas = ExtResource("2_jtpb2")
+region = Rect2(32, 0, 32, 32)
+
+[sub_resource type="AtlasTexture" id="AtlasTexture_qwmea"]
+atlas = ExtResource("2_jtpb2")
+region = Rect2(64, 0, 32, 32)
+
+[sub_resource type="AtlasTexture" id="AtlasTexture_6nc61"]
+atlas = ExtResource("2_jtpb2")
+region = Rect2(96, 0, 32, 32)
+
+[sub_resource type="SpriteFrames" id="SpriteFrames_yf5fn"]
+animations = [{
+"frames": [{
+"duration": 1.0,
+"texture": SubResource("AtlasTexture_envbj")
+}, {
+"duration": 1.0,
+"texture": SubResource("AtlasTexture_qohdl")
+}, {
+"duration": 1.0,
+"texture": SubResource("AtlasTexture_qwmea")
+}, {
+"duration": 1.0,
+"texture": SubResource("AtlasTexture_6nc61")
+}],
+"loop": 1,
+"name": &"default",
+"speed": 10.0
+}]
+
+[sub_resource type="RectangleShape2D" id="RectangleShape2D_ss72u"]
+size = Vector2(18, 12)
+
+[sub_resource type="CapsuleShape2D" id="CapsuleShape2D_3gngh"]
+radius = 7.0468025
+height = 32.180206
+
+[sub_resource type="RectangleShape2D" id="RectangleShape2D_lypok"]
+size = Vector2(8, 20)
+
+[node name="surf_board" type="CharacterBody2D" unique_id=477629956 groups=["surfboard"]]
+z_index = 1
+collision_layer = 0
+collision_mask = 0
+motion_mode = 1
+script = ExtResource("1_lypok")
+
+[node name="AnimatedSprite2D" type="AnimatedSprite2D" parent="." unique_id=346406300]
+sprite_frames = SubResource("SpriteFrames_yf5fn")
+frame_progress = 0.37245834
+
+[node name="hurtbox" type="CollisionShape2D" parent="." unique_id=1106891476]
+visible = false
+position = Vector2(1, 6)
+shape = SubResource("RectangleShape2D_ss72u")
+
+[node name="snap_region" type="Area2D" parent="." unique_id=334546686]
+collision_layer = 0
+collision_mask = 2
+monitorable = false
+
+[node name="CollisionShape2D" type="CollisionShape2D" parent="snap_region" unique_id=1042104905]
+position = Vector2(1, 6)
+rotation = 1.5117694
+shape = SubResource("CapsuleShape2D_3gngh")
+debug_color = Color(1.9974261e-06, 0.64841115, 0.19150987, 0.41960785)
+
+[node name="hitbox" type="Area2D" parent="." unique_id=333662537]
+collision_layer = 0
+collision_mask = 4
+monitoring = false
+monitorable = false
+
+[node name="CollisionShape2D" type="CollisionShape2D" parent="hitbox" unique_id=1739088165]
+position = Vector2(8, 0)
+shape = SubResource("RectangleShape2D_lypok")
+debug_color = Color(2.117753e-06, 0.644563, 0.28455842, 0.41960785)
+
+[connection signal="body_entered" from="snap_region" to="." method="_on_snap_region_body_entered"]
+[connection signal="area_entered" from="hitbox" to="." method="_on_hitbox_area_entered"]

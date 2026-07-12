@@ -7,8 +7,9 @@ then run `compile_cpp_bindings.bat` (so my cpp files can be compiled and communi
 is this like our todo list?
 
 todo:
-- art meeting
 - come up with arcade games (fun fun)
+- need a falling animation for pj surf
+- polish (AS IN POLAND) animations (fix the cap)
 
 
 does this mean i have to comment my code now :(

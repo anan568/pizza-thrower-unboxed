@@ -1,0 +1,27 @@
+[gd_scene format=3 uid="uid://bg4dj7gfty522"]
+
+[ext_resource type="Texture2D" uid="uid://4qjhcv7vs6jy" path="res://art/surf/characters/placeholder enemy/ball.png" id="1_f5ru0"]
+
+[sub_resource type="SpriteFrames" id="SpriteFrames_d0u6y"]
+animations = [{
+"frames": [{
+"duration": 1.0,
+"texture": ExtResource("1_f5ru0")
+}],
+"loop": 1,
+"name": &"default",
+"speed": 5.0
+}]
+
+[sub_resource type="CircleShape2D" id="CircleShape2D_yf5fn"]
+radius = 7.0
+
+[node name="enemy_ball" type="Area2D" unique_id=1928972227 groups=["enemy"]]
+collision_layer = 4
+collision_mask = 2
+
+[node name="AnimatedSprite2D" type="AnimatedSprite2D" parent="." unique_id=77882365]
+sprite_frames = SubResource("SpriteFrames_d0u6y")
+
+[node name="CollisionShape2D" type="CollisionShape2D" parent="." unique_id=1343868090]
+shape = SubResource("CircleShape2D_yf5fn")
