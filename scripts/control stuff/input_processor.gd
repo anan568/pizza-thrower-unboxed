@@ -9,7 +9,7 @@ var max_buffered_moves = 2
 var buffer_time = 100
 
 var moves: Array[BufferedMove] #this is the array for buffer stack
-var whitelisted_moves = ["light", "special", "jump"] #only these moves are processed by the input bufferer
+var whitelisted_moves = ["lunge", "dash", "jump", "punch"] #only these moves are processed by the input bufferer
 var actionable = true #make sure its turned off when acting
 var action_just_pressed
 signal acted(move, direction)
