@@ -2,7 +2,8 @@
 .godot/
 /android/
 *.import
-
-# bin/*.dll
-# bin/*.so
-# cpp/godot-cpp/
+bin/*
+!bin/*.gdextension
+*.obj
+/.vscode
+.sconsign.dblite

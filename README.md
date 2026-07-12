@@ -1,3 +1,9 @@
+# Important Prerequisite info!!
+After pulling this repository, install MSVC!! (google it!!! you may already have it installed!!!)
+then run `compile_cpp_bindings.bat` (so my cpp files can be compiled and communicate with godot)!!!
+
+#todo create a developer manual before someone breaks this
+
 is this like our todo list?
 
 todo:
