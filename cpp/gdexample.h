@@ -11,6 +11,8 @@ class GDExample : public Sprite2D{
 
 private:
   double time_passed;
+  double amplitude;
+  double speed;
 protected:
   // whwat is this?
   // its a static funnction that Godot will call to find out which methods can be called and which properties it exposes.
@@ -20,8 +22,14 @@ public:
   GDExample();
   ~GDExample();
 
-  // whats this? apparently its "the same as the _process() function in GDScript"
+  // godot will pass delta_time into this function every frame...
   void _process(double delta) override;
+
+  void set_amplitude (const double p_amplitude);
+  double get_amplitude() const;
+
+  void set_speed(const double p_speed);
+	double get_speed() const;
 };
 }
 
