@@ -21,8 +21,12 @@ is this like our todo list?
 
 todo:
 - come up with arcade games (fun fun)
+
+surf:
 - need a falling animation for pj surf
 - polish (AS IN POLAND) animations (fix the cap)
+- add W particle effects
+- proper death
 
 
 does this mean i have to comment my code now :(
