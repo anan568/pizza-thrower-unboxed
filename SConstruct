@@ -18,7 +18,7 @@ sources = Glob("cpp/*.cpp")
 
 if env["platform"] == "macos":
     library = env.SharedLibrary(
-        "bin/libgdexample.{}.{}.framework/libgdexample.{}.{}".format(
+        "bin/libpizza.{}.{}.framework/libpizza.{}.{}".format(
             env["platform"], env["target"], env["platform"], env["target"]
         ),
         source=sources,
@@ -26,18 +26,18 @@ if env["platform"] == "macos":
 elif env["platform"] == "ios":
     if env["ios_simulator"]:
         library = env.StaticLibrary(
-            "bin/libgdexample.{}.{}.simulator.a".format(env["platform"], env["target"]),
+            "bin/libpizza.{}.{}.simulator.a".format(env["platform"], env["target"]),
             source=sources,
         )
     else:
         library = env.StaticLibrary(
-            "bin/libgdexample.{}.{}.a".format(env["platform"], env["target"]),
+            "bin/libpizza.{}.{}.a".format(env["platform"], env["target"]),
             source=sources,
         )
 else:
     # This covers Windows and Linux
     library = env.SharedLibrary(
-        "bin/libgdexample{}{}".format(env["suffix"], env["SHLIBSUFFIX"]),
+        "bin/libpizza{}{}".format(env["suffix"], env["SHLIBSUFFIX"]),
         source=sources,
     )
 
