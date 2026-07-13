@@ -1,4 +1,4 @@
-cd godot-cpp
+cd ../godot-cpp
 scons platform=windows target=template_debug api_version=4.7 custom_api_file="%~dp0extension_api.json"
-cd ..
+cd ../"convenience files"
 pause
