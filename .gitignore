@@ -2,3 +2,8 @@
 .godot/
 /android/
 *.import
+bin/*
+!bin/*.gdextension
+*.obj
+/.vscode
+.sconsign.dblite

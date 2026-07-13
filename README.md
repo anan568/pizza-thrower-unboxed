@@ -1,3 +1,22 @@
+# C++ Setup Guide
+## After cloning this repository, make sure you have the following installed:
+1. MSVC <- to compile c++ (for windows)
+(google it!!! you may already have it installed!!!)
+2. python <- to use scons
+(also google it)
+3. Scons <- to use the compiler scripts that godot uses...
+`pip install scons`
+
+## Then, go into the `convenience files` directory...
+and run `update_godot_cpp.bat`,
+- (this SHOULD update the `godot-cpp` folder),
+
+then `compile_godot_bindings_debug.bat`,
+- (this will compile .cpp files in the `godot-cpp` folder)
+
+then `build_cpp_debug.bat` <- run this file again if you make changes to any cpp files!!
+- (this will compile .cpp files in the `cpp` folder and place the output files in `/bin`.)
+
 is this like our todo list?
 
 todo:
