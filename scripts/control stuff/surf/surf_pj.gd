@@ -4,9 +4,11 @@ var jump_force = 400
 var dash_anim_time = 0.2 #lalala implement these
 
 var lunge_time = 0.2
-var lunge_force = 200
+var lunge_force = 50
+var min_lunge_force = 400
 var lunge_cooldown = 0.5
 var lungeable = true
+var dashing = false
 
 var facing_right = true
 var mounted
@@ -30,7 +32,7 @@ func _physics_process(delta: float) -> void:
 		if current_state != state.lunging:
 			velocity += get_gravity() * delta
 		
-	if current_state == state.idle:
+	if current_state == state.idle and not dashing:
 		if not mounted:
 			animator.play("jump")
 		else:
@@ -38,7 +40,7 @@ func _physics_process(delta: float) -> void:
 	move_and_slide()
 
 func Jump(): #rn u can only jump if mounted but that might change
-	if mounted:
+	if mounted and get_parent() != null:
 		mounted = false
 		get_parent().Detach()
 		velocity.y -= jump_force
@@ -46,8 +48,21 @@ func Jump(): #rn u can only jump if mounted but that might change
 func Act(move: String, direction: Vector2):
 	if move == "jump": Jump()
 	if move == "lunge" and not mounted and lungeable: Lunge()
+	if move == "dash" and not mounted and current_state == state.idle: Dash()
+	
+func Dash():
+	animator.play("dash")
+	dashing = true
+	velocity.x *= -1
+	Flip()
+	await get_tree().create_timer(dash_anim_time).timeout
+	Dash_Cancel()
+	
+func Dash_Cancel():
+	dashing = false
 	
 func Lunge():
+	Dash_Cancel()
 	lungeable = false
 	velocity.y = 0
 	input_processor.actionable = false
@@ -56,7 +71,7 @@ func Lunge():
 	
 	velocity.x += lunge_force * scale.x
 	
-	lunge_hitbox.set_deferred("monitoring", true)
+	lunge_hitbox.set_deferred("enabled", true)
 	lunge_time_timer.start()
 	
 func Flip():
@@ -73,5 +88,5 @@ func _on_lunge_cd_timeout() -> void:
 		lungeable = true #remember to reset lungeable to true when hit something
 		
 func Stop_Lunge():
-	lunge_hitbox.set_deferred("monitoring", false)
+	lunge_hitbox.set_deferred("enabled", false)
 	input_processor.actionable = true

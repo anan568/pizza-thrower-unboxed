@@ -21,6 +21,9 @@ func _input(event: InputEvent) -> void: #called whenever a button is pressed
 		Add_Buffer(action_just_pressed, direction)
 
 func _physics_process(delta: float) -> void:
+	if Input.is_action_just_pressed("reset"):
+		get_tree().reload_current_scene()
+	
 	if moves.is_empty(): return #if buffer stack is empty, disregard
 	if Time.get_ticks_msec() - moves[0].time > buffer_time: #if a move inside the stack is too old, remove it from stack
 		Remove_Buffer()

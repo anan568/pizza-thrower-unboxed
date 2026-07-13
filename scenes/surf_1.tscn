@@ -197,4 +197,4 @@ position = Vector2(416, -24)
 metadata/_scene_painted = true
 
 [node name="surf_board" parent="." unique_id=477629956 instance=ExtResource("5_qohdl")]
-position = Vector2(149, 5)
+position = Vector2(135, 5)

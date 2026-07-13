@@ -6,7 +6,6 @@ extends CharacterBody2D
 
 var mounted = false
 var initial_speed = 200
-var boost = 10
 var pj
 var retach_cooldown = 0.3
 
@@ -41,7 +40,10 @@ func _on_snap_region_body_entered(body: Node2D) -> void:
 			body.velocity = Vector2.ZERO
 			pj = body
 			body.mounted = true
-			
+			if body.facing_right != facing_right:
+				body.Flip()
+
+
 func CreatePJ():
 	var instance = surf_pj.instantiate()
 	instance.position = Vector2.ZERO
@@ -52,8 +54,7 @@ func CreatePJ():
 
 func _on_hitbox_area_entered(area: Area2D) -> void:
 	if area.is_in_group("enemy"):
-		velocity.x += boost * scale.x
-		area.queue_free()
+		area.Surfed(self)
 		
 func Detach():
 	pj.velocity.x = velocity.x
