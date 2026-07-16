@@ -24,6 +24,10 @@ InputProcessor="*uid://ctwcdico3d2d6"
 window/stretch/mode="canvas_items"
 window/stretch/aspect="expand"
 
+[editor_plugins]
+
+enabled=PackedStringArray("res://addons/extension_compiler/plugin.cfg")
+
 [global_group]
 
 player=""
