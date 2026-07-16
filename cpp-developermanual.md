@@ -145,7 +145,7 @@ extends Node2D
 
 func _ready():
   var my_node = BPClass.new()
-  my_node.speed_changed.connect(_on_speed_changed)
+  my_node.stat_changed.connect(_on_speed_changed)
   add_child(my_node)
 
 func _on_speed_changed(new_value: float):
