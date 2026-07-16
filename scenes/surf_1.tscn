@@ -1,7 +1,7 @@
 [gd_scene format=3 uid="uid://d2x2rnqta6txo"]
 
 [ext_resource type="Script" uid="uid://dyj54agx5654m" path="res://scripts/control stuff/surf/land_movement.gd" id="1_68hjd"]
-[ext_resource type="Texture2D" uid="uid://dwctqv0yvd8jw" path="res://art/surf/characters/pj/pj_base.png" id="1_qwmea"]
+[ext_resource type="Texture2D" uid="uid://bcc8dexk5wbcx" path="res://art/surf/characters/pj/pj_base.png" id="1_qwmea"]
 [ext_resource type="Texture2D" uid="uid://f37doe6d1x6i" path="res://art/surf/characters/pj/pj_run.png" id="1_vlh3y"]
 [ext_resource type="PackedScene" uid="uid://h5bxtv75pnfv" path="res://scenes/pj/surf_pj/surf_board.tscn" id="5_qohdl"]
 [ext_resource type="Texture2D" uid="uid://dtwhqw1fcj5aa" path="res://art/surf/characters/pj/surf_pj_jump.png" id="7_i1g6n"]
