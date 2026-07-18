@@ -3,6 +3,7 @@ extends CharacterBody2D
 @onready var surf_pj = preload("res://scenes/pj/surf_pj/surf_pj.tscn")
 @onready var hitbox = $hitbox
 @onready var snap_region = $snap_region
+@onready var sd_timer = $SD_timer
 
 var mounted = false
 var initial_speed = 200
@@ -11,6 +12,8 @@ var retach_cooldown = 0.3
 
 var facing_right: bool
 
+var gravity_on = false
+
 func _ready() -> void:
 	if scale.x == 1:
 		facing_right = true
@@ -18,6 +21,8 @@ func _ready() -> void:
 		facing_right = false
 
 func _physics_process(delta: float) -> void:
+	if gravity_on:
+		velocity += get_gravity() * delta
 	move_and_slide()
 
 func _on_snap_region_body_entered(body: Node2D) -> void:
@@ -54,13 +59,26 @@ func CreatePJ():
 
 func _on_hitbox_area_entered(area: Area2D) -> void:
 	if area.is_in_group("enemy"):
+		sd_timer.start()
 		area.Surfed(self)
 		
 func Detach():
+	mounted = false
+	gravity_on = false
 	pj.velocity.x = velocity.x
 	pj.position = position
+	pj.mounted = false
 	call_deferred("remove_child", pj)
 	get_tree().current_scene.call_deferred("add_child", pj)
 	await get_tree().create_timer(retach_cooldown).timeout
 	snap_region.call_deferred("set_monitoring", true)
 	
+
+
+func _on_sd_timer_timeout() -> void:
+	gravity_on = true
+	await get_tree().create_timer(1).timeout
+	if mounted:
+		Detach()
+	await get_tree().process_frame
+	queue_free()

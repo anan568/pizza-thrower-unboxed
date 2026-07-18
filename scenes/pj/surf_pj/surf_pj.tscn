@@ -1,12 +1,16 @@
 [gd_scene format=3 uid="uid://wwar4i2g8neo"]
 
-[ext_resource type="Texture2D" uid="uid://oicoweo5shbq" path="res://art/surf/characters/pj/pj_surf_punch_charge.png" id="1_cucva"]
+[ext_resource type="Texture2D" uid="uid://c1qysu02trfx2" path="res://art/surf/characters/pj/pj_surf_punch_charge.png" id="1_cucva"]
 [ext_resource type="Script" uid="uid://frfcmc31oc4i" path="res://scripts/control stuff/surf/surf_pj.gd" id="1_tbkbm"]
 [ext_resource type="Texture2D" uid="uid://cohcf0xsm5ybi" path="res://art/surf/characters/pj/surf_pj_air_dash.png" id="2_tbkbm"]
-[ext_resource type="Texture2D" uid="uid://b4gu7ddvve0qe" path="res://art/surf/characters/pj/pj_surf.png" id="3_bvk6b"]
+[ext_resource type="Texture2D" uid="uid://ba2r3jdcy5k1v" path="res://art/surf/characters/pj/pj_surf.png" id="3_bvk6b"]
 [ext_resource type="Texture2D" uid="uid://dtwhqw1fcj5aa" path="res://art/surf/characters/pj/surf_pj_jump.png" id="4_as7hu"]
 [ext_resource type="Texture2D" uid="uid://c3nvbb5ejfx4q" path="res://art/surf/characters/pj/surf_pj_lunge.png" id="5_76atq"]
 [ext_resource type="Script" uid="uid://dwkxgnowim60a" path="res://scripts/attacks/surf_lunge.gd" id="7_bvk6b"]
+[ext_resource type="Texture2D" uid="uid://dgfw1ajqm8x22" path="res://art/surf/ui/charge_meter_under.png" id="8_fri7d"]
+[ext_resource type="Script" uid="uid://6f3xjp4ct1qn" path="res://scripts/attacks/surf_punch.gd" id="8_pgf3x"]
+[ext_resource type="Texture2D" uid="uid://dg62rrt2bobmn" path="res://art/surf/ui/charge_meter_over.png" id="9_pgf3x"]
+[ext_resource type="Texture2D" uid="uid://dupnqau8fcc7g" path="res://art/surf/ui/charge_meter_progress.png" id="10_0e8rl"]
 
 [sub_resource type="AtlasTexture" id="AtlasTexture_h7xdw"]
 atlas = ExtResource("1_cucva")
@@ -167,8 +171,8 @@ height = 24.0
 [sub_resource type="RectangleShape2D" id="RectangleShape2D_g4v7s"]
 size = Vector2(8, 20)
 
-[sub_resource type="CircleShape2D" id="CircleShape2D_g4v7s"]
-radius = 7.0
+[sub_resource type="RectangleShape2D" id="RectangleShape2D_yf5fn"]
+size = Vector2(31, 13)
 
 [node name="surf_pj" type="CharacterBody2D" unique_id=2071708297 groups=["player"]]
 collision_layer = 2
@@ -177,7 +181,7 @@ script = ExtResource("1_tbkbm")
 
 [node name="AnimatedSprite2D" type="AnimatedSprite2D" parent="." unique_id=910720205]
 sprite_frames = SubResource("SpriteFrames_57qmd")
-animation = &"dash"
+animation = &"charge"
 autoplay = "idle"
 
 [node name="hurtbox" type="CollisionShape2D" parent="." unique_id=693108767]
@@ -194,17 +198,19 @@ collide_with_bodies = false
 script = ExtResource("7_bvk6b")
 
 [node name="punch_hitbox" type="Area2D" parent="." unique_id=709409470]
-visible = false
+collision_layer = 0
+collision_mask = 4
 monitoring = false
 monitorable = false
+script = ExtResource("8_pgf3x")
 
 [node name="CollisionShape2D" type="CollisionShape2D" parent="punch_hitbox" unique_id=592538643]
-position = Vector2(21, -1)
-shape = SubResource("CircleShape2D_g4v7s")
+position = Vector2(15.5, -1.5)
+shape = SubResource("RectangleShape2D_yf5fn")
 debug_color = Color(1, 0.010117998, 0.061540082, 0.41960785)
 
 [node name="Camera2D" type="Camera2D" parent="." unique_id=1044853951]
-zoom = Vector2(2.5, 2.5)
+zoom = Vector2(2, 2)
 
 [node name="lunge_time" type="Timer" parent="." unique_id=575622820]
 one_shot = true
@@ -212,5 +218,34 @@ one_shot = true
 [node name="lunge_cd" type="Timer" parent="." unique_id=1917071780]
 one_shot = true
 
+[node name="CanvasLayer" type="CanvasLayer" parent="." unique_id=1262853291]
+
+[node name="charge_bar" type="TextureProgressBar" parent="CanvasLayer" unique_id=878034912]
+visible = false
+anchors_preset = 8
+anchor_left = 0.5
+anchor_top = 0.5
+anchor_right = 0.5
+anchor_bottom = 0.5
+offset_left = -16.0
+offset_top = -62.655
+offset_right = 16.0
+offset_bottom = -52.654938
+grow_horizontal = 2
+grow_vertical = 2
+scale = Vector2(2, 2)
+pivot_offset = Vector2(16, 4.5)
+max_value = 3.0
+value = 2.0
+texture_under = ExtResource("8_fri7d")
+texture_over = ExtResource("9_pgf3x")
+texture_progress = ExtResource("10_0e8rl")
+
+[node name="punch_endlag_timer" type="Timer" parent="." unique_id=26521513]
+wait_time = 0.15
+one_shot = true
+
+[connection signal="area_entered" from="punch_hitbox" to="punch_hitbox" method="_on_area_entered"]
 [connection signal="timeout" from="lunge_time" to="." method="_on_lunge_time_timeout"]
 [connection signal="timeout" from="lunge_cd" to="." method="_on_lunge_cd_timeout"]
+[connection signal="timeout" from="punch_endlag_timer" to="." method="_on_punch_endlag_timer_timeout"]

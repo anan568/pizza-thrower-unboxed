@@ -1,111 +1,18 @@
 [gd_scene format=3 uid="uid://d2x2rnqta6txo"]
 
-[ext_resource type="Script" uid="uid://dyj54agx5654m" path="res://scripts/control stuff/surf/land_movement.gd" id="1_68hjd"]
-[ext_resource type="Texture2D" uid="uid://bcc8dexk5wbcx" path="res://art/surf/characters/pj/pj_base.png" id="1_qwmea"]
-[ext_resource type="Texture2D" uid="uid://f37doe6d1x6i" path="res://art/surf/characters/pj/pj_run.png" id="1_vlh3y"]
+[ext_resource type="PackedScene" uid="uid://bm3hkqpd81mir" path="res://scenes/pj/surf_pj/land_pj.tscn" id="1_c8bv6"]
 [ext_resource type="PackedScene" uid="uid://h5bxtv75pnfv" path="res://scenes/pj/surf_pj/surf_board.tscn" id="5_qohdl"]
-[ext_resource type="Texture2D" uid="uid://dtwhqw1fcj5aa" path="res://art/surf/characters/pj/surf_pj_jump.png" id="7_i1g6n"]
+[ext_resource type="PackedScene" uid="uid://druuktry0uu" path="res://scenes/objects/surf/jump_box.tscn" id="8_qwmea"]
 [ext_resource type="Texture2D" uid="uid://e2363wg4jstg" path="res://art/doges paintings/mrfeast_lesscancer_endorsement.png" id="9_rye0k"]
 [ext_resource type="PackedScene" uid="uid://bg4dj7gfty522" path="res://scenes/enemies/enemy_ball.tscn" id="11_i1g6n"]
-
-[sub_resource type="CapsuleShape2D" id="CapsuleShape2D_rye0k"]
-radius = 4.0
-height = 26.0
-
-[sub_resource type="AtlasTexture" id="AtlasTexture_q0jdl"]
-atlas = ExtResource("1_qwmea")
-region = Rect2(0, 0, 32, 32)
-
-[sub_resource type="AtlasTexture" id="AtlasTexture_68hjd"]
-atlas = ExtResource("7_i1g6n")
-region = Rect2(0, 0, 32, 32)
-
-[sub_resource type="AtlasTexture" id="AtlasTexture_i1g6n"]
-atlas = ExtResource("7_i1g6n")
-region = Rect2(32, 0, 32, 32)
-
-[sub_resource type="AtlasTexture" id="AtlasTexture_7ifvq"]
-atlas = ExtResource("7_i1g6n")
-region = Rect2(64, 0, 32, 32)
-
-[sub_resource type="AtlasTexture" id="AtlasTexture_ss72u"]
-atlas = ExtResource("1_vlh3y")
-region = Rect2(0, 0, 32, 32)
-
-[sub_resource type="AtlasTexture" id="AtlasTexture_ov750"]
-atlas = ExtResource("1_vlh3y")
-region = Rect2(32, 0, 32, 32)
-
-[sub_resource type="AtlasTexture" id="AtlasTexture_odns6"]
-atlas = ExtResource("1_vlh3y")
-region = Rect2(64, 0, 32, 32)
-
-[sub_resource type="AtlasTexture" id="AtlasTexture_c8bv6"]
-atlas = ExtResource("1_vlh3y")
-region = Rect2(96, 0, 32, 32)
-
-[sub_resource type="SpriteFrames" id="SpriteFrames_g4v7s"]
-animations = [{
-"frames": [{
-"duration": 1.0,
-"texture": SubResource("AtlasTexture_q0jdl")
-}],
-"loop": 1,
-"name": &"base",
-"speed": 5.0
-}, {
-"frames": [{
-"duration": 1.0,
-"texture": SubResource("AtlasTexture_68hjd")
-}, {
-"duration": 1.0,
-"texture": SubResource("AtlasTexture_i1g6n")
-}, {
-"duration": 1.0,
-"texture": SubResource("AtlasTexture_7ifvq")
-}],
-"loop": 1,
-"name": &"jump",
-"speed": 10.0
-}, {
-"frames": [{
-"duration": 1.0,
-"texture": SubResource("AtlasTexture_ss72u")
-}, {
-"duration": 1.0,
-"texture": SubResource("AtlasTexture_ov750")
-}, {
-"duration": 1.0,
-"texture": SubResource("AtlasTexture_odns6")
-}, {
-"duration": 1.0,
-"texture": SubResource("AtlasTexture_c8bv6")
-}],
-"loop": 1,
-"name": &"run",
-"speed": 10.0
-}]
 
 [sub_resource type="RectangleShape2D" id="RectangleShape2D_g4v7s"]
 size = Vector2(193, 60)
 
 [node name="surf1" type="Node2D" unique_id=1567334292]
 
-[node name="land_pj" type="CharacterBody2D" parent="." unique_id=204765109 groups=["player"]]
+[node name="land_pj" parent="." unique_id=2102394691 instance=ExtResource("1_c8bv6")]
 position = Vector2(-24, -1)
-collision_layer = 2
-script = ExtResource("1_68hjd")
-
-[node name="CollisionShape2D" type="CollisionShape2D" parent="land_pj" unique_id=537227020]
-shape = SubResource("CapsuleShape2D_rye0k")
-
-[node name="AnimatedSprite2D" type="AnimatedSprite2D" parent="land_pj" unique_id=1838783092]
-sprite_frames = SubResource("SpriteFrames_g4v7s")
-animation = &"jump"
-autoplay = "base"
-
-[node name="Camera2D" type="Camera2D" parent="land_pj" unique_id=1661057876]
-zoom = Vector2(2.5, 2.5)
 
 [node name="StaticBody2D" type="StaticBody2D" parent="." unique_id=949457414]
 collision_mask = 255
@@ -140,61 +47,423 @@ metadata/_scene_painted = true
 position = Vector2(240, 16)
 metadata/_scene_painted = true
 
-[node name="enemy_ball6" parent="ENEMIES" unique_id=125183454 instance=ExtResource("11_i1g6n")]
-position = Vector2(256, 16)
-metadata/_scene_painted = true
-
-[node name="enemy_ball7" parent="ENEMIES" unique_id=125453826 instance=ExtResource("11_i1g6n")]
-position = Vector2(272, 16)
-metadata/_scene_painted = true
-
-[node name="enemy_ball8" parent="ENEMIES" unique_id=1615948219 instance=ExtResource("11_i1g6n")]
-position = Vector2(288, 16)
-metadata/_scene_painted = true
-
-[node name="enemy_ball9" parent="ENEMIES" unique_id=725373437 instance=ExtResource("11_i1g6n")]
-position = Vector2(304, 16)
-metadata/_scene_painted = true
-
 [node name="enemy_ball10" parent="ENEMIES" unique_id=1678754754 instance=ExtResource("11_i1g6n")]
 position = Vector2(160, 16)
 metadata/_scene_painted = true
 
-[node name="enemy_ball11" parent="ENEMIES" unique_id=2042375839 instance=ExtResource("11_i1g6n")]
-position = Vector2(320, 16)
+[node name="enemy_ball6" parent="ENEMIES" unique_id=641835925 instance=ExtResource("11_i1g6n")]
+position = Vector2(752, -136)
 metadata/_scene_painted = true
 
-[node name="enemy_ball12" parent="ENEMIES" unique_id=914678968 instance=ExtResource("11_i1g6n")]
-position = Vector2(336, 16)
+[node name="enemy_ball7" parent="ENEMIES" unique_id=854230612 instance=ExtResource("11_i1g6n")]
+position = Vector2(768, -136)
 metadata/_scene_painted = true
 
-[node name="enemy_ball13" parent="ENEMIES" unique_id=1769211815 instance=ExtResource("11_i1g6n")]
-position = Vector2(320, -24)
+[node name="enemy_ball8" parent="ENEMIES" unique_id=34057160 instance=ExtResource("11_i1g6n")]
+position = Vector2(784, -136)
 metadata/_scene_painted = true
 
-[node name="enemy_ball14" parent="ENEMIES" unique_id=1986749531 instance=ExtResource("11_i1g6n")]
-position = Vector2(336, -24)
+[node name="enemy_ball9" parent="ENEMIES" unique_id=1384778289 instance=ExtResource("11_i1g6n")]
+position = Vector2(800, -136)
 metadata/_scene_painted = true
 
-[node name="enemy_ball15" parent="ENEMIES" unique_id=2021475313 instance=ExtResource("11_i1g6n")]
-position = Vector2(352, -24)
+[node name="enemy_ball11" parent="ENEMIES" unique_id=611712317 instance=ExtResource("11_i1g6n")]
+position = Vector2(816, -136)
 metadata/_scene_painted = true
 
-[node name="enemy_ball16" parent="ENEMIES" unique_id=363977357 instance=ExtResource("11_i1g6n")]
-position = Vector2(368, -24)
+[node name="enemy_ball12" parent="ENEMIES" unique_id=1648769209 instance=ExtResource("11_i1g6n")]
+position = Vector2(832, -136)
 metadata/_scene_painted = true
 
-[node name="enemy_ball17" parent="ENEMIES" unique_id=1940947488 instance=ExtResource("11_i1g6n")]
-position = Vector2(384, -24)
+[node name="enemy_ball13" parent="ENEMIES" unique_id=561195599 instance=ExtResource("11_i1g6n")]
+position = Vector2(848, -136)
 metadata/_scene_painted = true
 
-[node name="enemy_ball18" parent="ENEMIES" unique_id=1764423308 instance=ExtResource("11_i1g6n")]
-position = Vector2(400, -24)
+[node name="enemy_ball14" parent="ENEMIES" unique_id=865913993 instance=ExtResource("11_i1g6n")]
+position = Vector2(864, -136)
 metadata/_scene_painted = true
 
-[node name="enemy_ball19" parent="ENEMIES" unique_id=176509964 instance=ExtResource("11_i1g6n")]
-position = Vector2(416, -24)
+[node name="enemy_ball15" parent="ENEMIES" unique_id=19314250 instance=ExtResource("11_i1g6n")]
+position = Vector2(880, -136)
+metadata/_scene_painted = true
+
+[node name="enemy_ball16" parent="ENEMIES" unique_id=714208414 instance=ExtResource("11_i1g6n")]
+position = Vector2(896, -136)
+metadata/_scene_painted = true
+
+[node name="enemy_ball17" parent="ENEMIES" unique_id=1798106857 instance=ExtResource("11_i1g6n")]
+position = Vector2(912, -136)
+metadata/_scene_painted = true
+
+[node name="enemy_ball18" parent="ENEMIES" unique_id=123297807 instance=ExtResource("11_i1g6n")]
+position = Vector2(928, -136)
+metadata/_scene_painted = true
+
+[node name="enemy_ball19" parent="ENEMIES" unique_id=1821570588 instance=ExtResource("11_i1g6n")]
+position = Vector2(944, -136)
+metadata/_scene_painted = true
+
+[node name="enemy_ball20" parent="ENEMIES" unique_id=376899344 instance=ExtResource("11_i1g6n")]
+position = Vector2(960, -136)
+metadata/_scene_painted = true
+
+[node name="enemy_ball21" parent="ENEMIES" unique_id=1044448916 instance=ExtResource("11_i1g6n")]
+position = Vector2(976, -136)
+metadata/_scene_painted = true
+
+[node name="enemy_ball22" parent="ENEMIES" unique_id=2339520 instance=ExtResource("11_i1g6n")]
+position = Vector2(992, -136)
+metadata/_scene_painted = true
+
+[node name="enemy_ball23" parent="ENEMIES" unique_id=747770806 instance=ExtResource("11_i1g6n")]
+position = Vector2(1120, -152)
+metadata/_scene_painted = true
+
+[node name="enemy_ball24" parent="ENEMIES" unique_id=1624543134 instance=ExtResource("11_i1g6n")]
+position = Vector2(1120, -144)
+metadata/_scene_painted = true
+
+[node name="enemy_ball25" parent="ENEMIES" unique_id=1243894818 instance=ExtResource("11_i1g6n")]
+position = Vector2(1120, -136)
+metadata/_scene_painted = true
+
+[node name="enemy_ball26" parent="ENEMIES" unique_id=1544423190 instance=ExtResource("11_i1g6n")]
+position = Vector2(1136, -136)
+metadata/_scene_painted = true
+
+[node name="enemy_ball27" parent="ENEMIES" unique_id=1616809593 instance=ExtResource("11_i1g6n")]
+position = Vector2(1136, -128)
+metadata/_scene_painted = true
+
+[node name="enemy_ball28" parent="ENEMIES" unique_id=1991063565 instance=ExtResource("11_i1g6n")]
+position = Vector2(1136, -120)
+metadata/_scene_painted = true
+
+[node name="enemy_ball29" parent="ENEMIES" unique_id=128570465 instance=ExtResource("11_i1g6n")]
+position = Vector2(1152, -120)
+metadata/_scene_painted = true
+
+[node name="enemy_ball30" parent="ENEMIES" unique_id=724641353 instance=ExtResource("11_i1g6n")]
+position = Vector2(1152, -112)
+metadata/_scene_painted = true
+
+[node name="enemy_ball31" parent="ENEMIES" unique_id=345375510 instance=ExtResource("11_i1g6n")]
+position = Vector2(1168, -112)
+metadata/_scene_painted = true
+
+[node name="enemy_ball32" parent="ENEMIES" unique_id=1260707775 instance=ExtResource("11_i1g6n")]
+position = Vector2(1168, -104)
+metadata/_scene_painted = true
+
+[node name="enemy_ball33" parent="ENEMIES" unique_id=1682383875 instance=ExtResource("11_i1g6n")]
+position = Vector2(1168, -96)
+metadata/_scene_painted = true
+
+[node name="enemy_ball34" parent="ENEMIES" unique_id=297043561 instance=ExtResource("11_i1g6n")]
+position = Vector2(1184, -96)
+metadata/_scene_painted = true
+
+[node name="enemy_ball35" parent="ENEMIES" unique_id=2031480431 instance=ExtResource("11_i1g6n")]
+position = Vector2(1184, -88)
+metadata/_scene_painted = true
+
+[node name="enemy_ball36" parent="ENEMIES" unique_id=419028900 instance=ExtResource("11_i1g6n")]
+position = Vector2(1184, -80)
+metadata/_scene_painted = true
+
+[node name="enemy_ball37" parent="ENEMIES" unique_id=813796832 instance=ExtResource("11_i1g6n")]
+position = Vector2(1200, -80)
+metadata/_scene_painted = true
+
+[node name="enemy_ball38" parent="ENEMIES" unique_id=2026190666 instance=ExtResource("11_i1g6n")]
+position = Vector2(1664, -136)
+metadata/_scene_painted = true
+
+[node name="enemy_ball39" parent="ENEMIES" unique_id=1139727790 instance=ExtResource("11_i1g6n")]
+position = Vector2(1664, -128)
+metadata/_scene_painted = true
+
+[node name="enemy_ball40" parent="ENEMIES" unique_id=65660468 instance=ExtResource("11_i1g6n")]
+position = Vector2(1648, -128)
+metadata/_scene_painted = true
+
+[node name="enemy_ball41" parent="ENEMIES" unique_id=1113771475 instance=ExtResource("11_i1g6n")]
+position = Vector2(1648, -120)
+metadata/_scene_painted = true
+
+[node name="enemy_ball42" parent="ENEMIES" unique_id=1667075214 instance=ExtResource("11_i1g6n")]
+position = Vector2(1632, -120)
+metadata/_scene_painted = true
+
+[node name="enemy_ball43" parent="ENEMIES" unique_id=70759433 instance=ExtResource("11_i1g6n")]
+position = Vector2(1632, -112)
+metadata/_scene_painted = true
+
+[node name="enemy_ball44" parent="ENEMIES" unique_id=790905578 instance=ExtResource("11_i1g6n")]
+position = Vector2(1616, -112)
+metadata/_scene_painted = true
+
+[node name="enemy_ball45" parent="ENEMIES" unique_id=1950301264 instance=ExtResource("11_i1g6n")]
+position = Vector2(1616, -104)
+metadata/_scene_painted = true
+
+[node name="enemy_ball46" parent="ENEMIES" unique_id=875877083 instance=ExtResource("11_i1g6n")]
+position = Vector2(1600, -104)
+metadata/_scene_painted = true
+
+[node name="enemy_ball47" parent="ENEMIES" unique_id=1582699683 instance=ExtResource("11_i1g6n")]
+position = Vector2(1600, -96)
+metadata/_scene_painted = true
+
+[node name="enemy_ball48" parent="ENEMIES" unique_id=359424296 instance=ExtResource("11_i1g6n")]
+position = Vector2(1584, -96)
+metadata/_scene_painted = true
+
+[node name="enemy_ball49" parent="ENEMIES" unique_id=1871984555 instance=ExtResource("11_i1g6n")]
+position = Vector2(1584, -88)
+metadata/_scene_painted = true
+
+[node name="enemy_ball50" parent="ENEMIES" unique_id=1128773393 instance=ExtResource("11_i1g6n")]
+position = Vector2(1568, -88)
+metadata/_scene_painted = true
+
+[node name="enemy_ball51" parent="ENEMIES" unique_id=1061361643 instance=ExtResource("11_i1g6n")]
+position = Vector2(1568, -80)
+metadata/_scene_painted = true
+
+[node name="enemy_ball52" parent="ENEMIES" unique_id=1692721473 instance=ExtResource("11_i1g6n")]
+position = Vector2(1552, -80)
+metadata/_scene_painted = true
+
+[node name="enemy_ball53" parent="ENEMIES" unique_id=1193573072 instance=ExtResource("11_i1g6n")]
+position = Vector2(1552, -72)
+metadata/_scene_painted = true
+
+[node name="enemy_ball54" parent="ENEMIES" unique_id=1406645672 instance=ExtResource("11_i1g6n")]
+position = Vector2(1536, -72)
+metadata/_scene_painted = true
+
+[node name="enemy_ball55" parent="ENEMIES" unique_id=1351817098 instance=ExtResource("11_i1g6n")]
+position = Vector2(1536, -64)
+metadata/_scene_painted = true
+
+[node name="enemy_ball56" parent="ENEMIES" unique_id=1210219805 instance=ExtResource("11_i1g6n")]
+position = Vector2(1520, -64)
+metadata/_scene_painted = true
+
+[node name="enemy_ball57" parent="ENEMIES" unique_id=1844694737 instance=ExtResource("11_i1g6n")]
+position = Vector2(1520, -56)
+metadata/_scene_painted = true
+
+[node name="enemy_ball58" parent="ENEMIES" unique_id=1254884941 instance=ExtResource("11_i1g6n")]
+position = Vector2(1504, -56)
+metadata/_scene_painted = true
+
+[node name="enemy_ball59" parent="ENEMIES" unique_id=1487303293 instance=ExtResource("11_i1g6n")]
+position = Vector2(1216, -64)
+metadata/_scene_painted = true
+
+[node name="enemy_ball60" parent="ENEMIES" unique_id=702926116 instance=ExtResource("11_i1g6n")]
+position = Vector2(1216, -56)
+metadata/_scene_painted = true
+
+[node name="enemy_ball61" parent="ENEMIES" unique_id=1885536630 instance=ExtResource("11_i1g6n")]
+position = Vector2(1216, -48)
+metadata/_scene_painted = true
+
+[node name="enemy_ball62" parent="ENEMIES" unique_id=1665889712 instance=ExtResource("11_i1g6n")]
+position = Vector2(1216, -40)
+metadata/_scene_painted = true
+
+[node name="enemy_ball63" parent="ENEMIES" unique_id=1069320332 instance=ExtResource("11_i1g6n")]
+position = Vector2(1216, -32)
+metadata/_scene_painted = true
+
+[node name="enemy_ball64" parent="ENEMIES" unique_id=826129381 instance=ExtResource("11_i1g6n")]
+position = Vector2(1216, -24)
+metadata/_scene_painted = true
+
+[node name="enemy_ball65" parent="ENEMIES" unique_id=403243118 instance=ExtResource("11_i1g6n")]
+position = Vector2(1216, -16)
+metadata/_scene_painted = true
+
+[node name="enemy_ball66" parent="ENEMIES" unique_id=272062215 instance=ExtResource("11_i1g6n")]
+position = Vector2(1216, -8)
+metadata/_scene_painted = true
+
+[node name="enemy_ball67" parent="ENEMIES" unique_id=1725029065 instance=ExtResource("11_i1g6n")]
+position = Vector2(1216, 0)
+metadata/_scene_painted = true
+
+[node name="enemy_ball68" parent="ENEMIES" unique_id=691826378 instance=ExtResource("11_i1g6n")]
+position = Vector2(1216, 8)
+metadata/_scene_painted = true
+
+[node name="enemy_ball69" parent="ENEMIES" unique_id=436525102 instance=ExtResource("11_i1g6n")]
+position = Vector2(1216, 16)
+metadata/_scene_painted = true
+
+[node name="enemy_ball70" parent="ENEMIES" unique_id=677516684 instance=ExtResource("11_i1g6n")]
+position = Vector2(1216, 24)
+metadata/_scene_painted = true
+
+[node name="enemy_ball71" parent="ENEMIES" unique_id=1008965382 instance=ExtResource("11_i1g6n")]
+position = Vector2(1216, 32)
+metadata/_scene_painted = true
+
+[node name="enemy_ball72" parent="ENEMIES" unique_id=1560217071 instance=ExtResource("11_i1g6n")]
+position = Vector2(1216, 40)
+metadata/_scene_painted = true
+
+[node name="enemy_ball73" parent="ENEMIES" unique_id=639302942 instance=ExtResource("11_i1g6n")]
+position = Vector2(1216, 48)
+metadata/_scene_painted = true
+
+[node name="enemy_ball74" parent="ENEMIES" unique_id=1724259843 instance=ExtResource("11_i1g6n")]
+position = Vector2(1216, 56)
+metadata/_scene_painted = true
+
+[node name="enemy_ball75" parent="ENEMIES" unique_id=997053263 instance=ExtResource("11_i1g6n")]
+position = Vector2(1216, 64)
+metadata/_scene_painted = true
+
+[node name="enemy_ball76" parent="ENEMIES" unique_id=648918508 instance=ExtResource("11_i1g6n")]
+position = Vector2(1216, 72)
+metadata/_scene_painted = true
+
+[node name="enemy_ball77" parent="ENEMIES" unique_id=1928975705 instance=ExtResource("11_i1g6n")]
+position = Vector2(1216, 80)
+metadata/_scene_painted = true
+
+[node name="enemy_ball78" parent="ENEMIES" unique_id=1501987803 instance=ExtResource("11_i1g6n")]
+position = Vector2(1216, 88)
+metadata/_scene_painted = true
+
+[node name="enemy_ball79" parent="ENEMIES" unique_id=914606138 instance=ExtResource("11_i1g6n")]
+position = Vector2(1216, 96)
+metadata/_scene_painted = true
+
+[node name="enemy_ball80" parent="ENEMIES" unique_id=1891441579 instance=ExtResource("11_i1g6n")]
+position = Vector2(1216, 104)
+metadata/_scene_painted = true
+
+[node name="enemy_ball81" parent="ENEMIES" unique_id=474475537 instance=ExtResource("11_i1g6n")]
+position = Vector2(1216, 112)
+metadata/_scene_painted = true
+
+[node name="enemy_ball82" parent="ENEMIES" unique_id=1543681080 instance=ExtResource("11_i1g6n")]
+position = Vector2(1216, 120)
+metadata/_scene_painted = true
+
+[node name="enemy_ball83" parent="ENEMIES" unique_id=1759974037 instance=ExtResource("11_i1g6n")]
+position = Vector2(1216, 128)
+metadata/_scene_painted = true
+
+[node name="enemy_ball84" parent="ENEMIES" unique_id=1657864173 instance=ExtResource("11_i1g6n")]
+position = Vector2(1216, 168)
+metadata/_scene_painted = true
+
+[node name="enemy_ball85" parent="ENEMIES" unique_id=1946371517 instance=ExtResource("11_i1g6n")]
+position = Vector2(1216, 208)
+metadata/_scene_painted = true
+
+[node name="enemy_ball86" parent="ENEMIES" unique_id=1125046173 instance=ExtResource("11_i1g6n")]
+position = Vector2(1216, 144)
+metadata/_scene_painted = true
+
+[node name="enemy_ball87" parent="ENEMIES" unique_id=1301707389 instance=ExtResource("11_i1g6n")]
+position = Vector2(1216, 248)
+metadata/_scene_painted = true
+
+[node name="enemy_ball88" parent="ENEMIES" unique_id=348378416 instance=ExtResource("11_i1g6n")]
+position = Vector2(1504, -48)
+metadata/_scene_painted = true
+
+[node name="enemy_ball89" parent="ENEMIES" unique_id=11560149 instance=ExtResource("11_i1g6n")]
+position = Vector2(1504, -40)
+metadata/_scene_painted = true
+
+[node name="enemy_ball90" parent="ENEMIES" unique_id=224538865 instance=ExtResource("11_i1g6n")]
+position = Vector2(1504, -32)
+metadata/_scene_painted = true
+
+[node name="enemy_ball91" parent="ENEMIES" unique_id=1141285810 instance=ExtResource("11_i1g6n")]
+position = Vector2(1504, -24)
+metadata/_scene_painted = true
+
+[node name="enemy_ball92" parent="ENEMIES" unique_id=1708581166 instance=ExtResource("11_i1g6n")]
+position = Vector2(1504, -16)
+metadata/_scene_painted = true
+
+[node name="enemy_ball93" parent="ENEMIES" unique_id=1415329079 instance=ExtResource("11_i1g6n")]
+position = Vector2(1504, -8)
+metadata/_scene_painted = true
+
+[node name="enemy_ball94" parent="ENEMIES" unique_id=1541673393 instance=ExtResource("11_i1g6n")]
+position = Vector2(1504, 0)
+metadata/_scene_painted = true
+
+[node name="enemy_ball95" parent="ENEMIES" unique_id=1448913027 instance=ExtResource("11_i1g6n")]
+position = Vector2(1504, 8)
+metadata/_scene_painted = true
+
+[node name="enemy_ball96" parent="ENEMIES" unique_id=634859483 instance=ExtResource("11_i1g6n")]
+position = Vector2(1504, 16)
+metadata/_scene_painted = true
+
+[node name="enemy_ball97" parent="ENEMIES" unique_id=720210019 instance=ExtResource("11_i1g6n")]
+position = Vector2(1504, 24)
+metadata/_scene_painted = true
+
+[node name="enemy_ball98" parent="ENEMIES" unique_id=1364218276 instance=ExtResource("11_i1g6n")]
+position = Vector2(1504, 32)
+metadata/_scene_painted = true
+
+[node name="enemy_ball99" parent="ENEMIES" unique_id=604428693 instance=ExtResource("11_i1g6n")]
+position = Vector2(1504, 40)
+metadata/_scene_painted = true
+
+[node name="enemy_ball100" parent="ENEMIES" unique_id=1090791815 instance=ExtResource("11_i1g6n")]
+position = Vector2(1504, 48)
+metadata/_scene_painted = true
+
+[node name="enemy_ball101" parent="ENEMIES" unique_id=363583074 instance=ExtResource("11_i1g6n")]
+position = Vector2(1504, 56)
+metadata/_scene_painted = true
+
+[node name="enemy_ball102" parent="ENEMIES" unique_id=1885775198 instance=ExtResource("11_i1g6n")]
+position = Vector2(1520, 208)
+metadata/_scene_painted = true
+
+[node name="enemy_ball103" parent="ENEMIES" unique_id=1054872251 instance=ExtResource("11_i1g6n")]
+position = Vector2(1536, 208)
+metadata/_scene_painted = true
+
+[node name="enemy_ball104" parent="ENEMIES" unique_id=1139107634 instance=ExtResource("11_i1g6n")]
+position = Vector2(1552, 208)
+metadata/_scene_painted = true
+
+[node name="enemy_ball105" parent="ENEMIES" unique_id=1555190109 instance=ExtResource("11_i1g6n")]
+position = Vector2(1568, 208)
+metadata/_scene_painted = true
+
+[node name="enemy_ball106" parent="ENEMIES" unique_id=341017637 instance=ExtResource("11_i1g6n")]
+position = Vector2(1584, 208)
 metadata/_scene_painted = true
 
 [node name="surf_board" parent="." unique_id=477629956 instance=ExtResource("5_qohdl")]
 position = Vector2(135, 5)
+
+[node name="BOXES" type="Node2D" parent="." unique_id=291033099]
+
+[node name="jump_box" parent="BOXES" unique_id=690004544 instance=ExtResource("8_qwmea")]
+position = Vector2(256, 8)
+metadata/_scene_painted = true
+
+[node name="jump_box2" parent="BOXES" unique_id=1669278287 instance=ExtResource("8_qwmea")]
+position = Vector2(432, 0)
+metadata/_scene_painted = true
+
+[node name="jump_box4" parent="BOXES" unique_id=137101337 instance=ExtResource("8_qwmea")]
+position = Vector2(1008, -144)
+metadata/_scene_painted = true

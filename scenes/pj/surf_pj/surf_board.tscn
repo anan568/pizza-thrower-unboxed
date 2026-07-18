@@ -58,6 +58,7 @@ script = ExtResource("1_lypok")
 
 [node name="AnimatedSprite2D" type="AnimatedSprite2D" parent="." unique_id=346406300]
 sprite_frames = SubResource("SpriteFrames_yf5fn")
+autoplay = "default"
 frame_progress = 0.37245834
 
 [node name="hurtbox" type="CollisionShape2D" parent="." unique_id=1106891476]
@@ -87,5 +88,10 @@ position = Vector2(8, 0)
 shape = SubResource("RectangleShape2D_lypok")
 debug_color = Color(2.117753e-06, 0.644563, 0.28455842, 0.41960785)
 
+[node name="SD_timer" type="Timer" parent="." unique_id=1124183753]
+wait_time = 0.3
+one_shot = true
+
 [connection signal="body_entered" from="snap_region" to="." method="_on_snap_region_body_entered"]
 [connection signal="area_entered" from="hitbox" to="." method="_on_hitbox_area_entered"]
+[connection signal="timeout" from="SD_timer" to="." method="_on_sd_timer_timeout"]

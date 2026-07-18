@@ -17,10 +17,12 @@ animations = [{
 [sub_resource type="CircleShape2D" id="CircleShape2D_yf5fn"]
 radius = 7.0
 
-[node name="enemy_ball" type="Area2D" unique_id=1928972227 groups=["enemy"]]
+[node name="BallEnemy" type="Area2D" unique_id=641835925 groups=["enemy"]]
 collision_layer = 4
 collision_mask = 2
 script = ExtResource("1_uwjqo")
+speed_bonus = 6
+metadata/_custom_type_script = "uid://dqolog8waa3rw"
 
 [node name="AnimatedSprite2D" type="AnimatedSprite2D" parent="." unique_id=77882365]
 sprite_frames = SubResource("SpriteFrames_d0u6y")

@@ -4,7 +4,7 @@ extends CharacterBody2D
 @onready var animator = $"AnimatedSprite2D"
 
 const speed = 150.0
-const jump_force = 300.0
+const jump_force = 200.0
 const friction = 30
 
 var facing_right = true
