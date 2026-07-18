@@ -1,7 +1,7 @@
 extends CharacterBody2D
 
 var jump_force = 300
-var dash_anim_time = 0.2
+var dash_anim_time = 0.2 #how long the dashing animation will last before automatically cancelled
 
 var lunge_time = 0.2
 var lunge_force = 50
@@ -24,12 +24,13 @@ enum state {idle, lunging, punching}
 @onready var charge_bar = $CanvasLayer/charge_bar
 @onready var punch_endlag_timer = $punch_endlag_timer
 @onready var punch_hitbox = $punch_hitbox
-var min_charge_time = 0.1
-var current_charge_time = 0
-var punch_released = true #game will check for punch charge time as soon as this is turned to false
-var charge_rate = 1
+var min_charge_time = 0.1 #minimum charge time before it can be released
+var current_charge_time = 0 #timer to see how much time is charged (dont change it)
 
-var gravity = 250
+var punch_released = true #game will check for punch charge time as soon as this is turned to false
+var charge_rate = 1 #how many seconds to fully charge punch
+
+var gravity = 250 #max falling velocity
 var fall_speed = 15
 
 func _ready() -> void:
@@ -128,9 +129,9 @@ func Charge_Punch():
 	
 func Punch_Release():
 	match int(charge_bar.value):
-		1: punch_hitbox.force = 1
-		2: punch_hitbox.force = 1.3
-		3: punch_hitbox.force = 1.6
+		1: punch_hitbox.force = 1 #green boost force multiplier
+		2: punch_hitbox.force = 1.3 #gold boost force multiplier
+		3: punch_hitbox.force = 1.6 #red boost force multiplier
 	charge_bar.visible = false
 	punch_released = true
 	animator.play("punch")
