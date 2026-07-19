@@ -1,0 +1,286 @@
+[gd_scene format=3 uid="uid://d2x2rnqta6txo"]
+
+[ext_resource type="PackedScene" uid="uid://bm3hkqpd81mir" path="res://scenes/pj/surf_pj/land_pj.tscn" id="1_o0oqi"]
+[ext_resource type="Texture2D" uid="uid://e2363wg4jstg" path="res://art/doges paintings/mrfeast_lesscancer_endorsement.png" id="2_ohf56"]
+[ext_resource type="PackedScene" uid="uid://bg4dj7gfty522" path="res://scenes/enemies/enemy_ball.tscn" id="3_eercg"]
+[ext_resource type="PackedScene" uid="uid://bep8mcu788lwc" path="res://scenes/enemies/green.tscn" id="4_v7tdd"]
+[ext_resource type="PackedScene" uid="uid://cstl5bgm42327" path="res://scenes/objects/surf/green_box.tscn" id="5_6vaf6"]
+[ext_resource type="PackedScene" uid="uid://boo7uo3hbju5t" path="res://scenes/objects/surf/yellow_box.tscn" id="6_inqdu"]
+[ext_resource type="PackedScene" uid="uid://b282juv32x3na" path="res://scenes/objects/surf/red_box.tscn" id="7_tyd6d"]
+[ext_resource type="PackedScene" uid="uid://h5bxtv75pnfv" path="res://scenes/pj/surf_pj/surf_board.tscn" id="8_b0kma"]
+
+[sub_resource type="RectangleShape2D" id="RectangleShape2D_g4v7s"]
+size = Vector2(193, 60)
+
+[node name="surf_test" type="Node2D" unique_id=1567334292]
+
+[node name="land_pj" parent="." unique_id=2102394691 instance=ExtResource("1_o0oqi")]
+position = Vector2(-24, -1)
+
+[node name="StaticBody2D" type="StaticBody2D" parent="." unique_id=949457414]
+collision_mask = 255
+
+[node name="CollisionShape2D" type="CollisionShape2D" parent="StaticBody2D" unique_id=2029661347]
+position = Vector2(17.5, 47)
+shape = SubResource("RectangleShape2D_g4v7s")
+
+[node name="Sprite2D" type="Sprite2D" parent="StaticBody2D" unique_id=205975105]
+position = Vector2(17.499994, 47)
+scale = Vector2(3.0156252, 0.93749994)
+texture = ExtResource("2_ohf56")
+
+[node name="OBSTACLES" type="Node2D" parent="." unique_id=1998903448]
+
+[node name="enemy_ball" parent="OBSTACLES" unique_id=1928972227 instance=ExtResource("3_eercg")]
+position = Vector2(177, 16)
+
+[node name="enemy_ball2" parent="OBSTACLES" unique_id=1130066029 instance=ExtResource("3_eercg")]
+position = Vector2(192, 16)
+metadata/_scene_painted = true
+
+[node name="enemy_ball3" parent="OBSTACLES" unique_id=1923140274 instance=ExtResource("3_eercg")]
+position = Vector2(208, 16)
+metadata/_scene_painted = true
+
+[node name="enemy_ball4" parent="OBSTACLES" unique_id=45596940 instance=ExtResource("3_eercg")]
+position = Vector2(224, 16)
+metadata/_scene_painted = true
+
+[node name="enemy_ball5" parent="OBSTACLES" unique_id=504805685 instance=ExtResource("3_eercg")]
+position = Vector2(240, 16)
+metadata/_scene_painted = true
+
+[node name="enemy_ball10" parent="OBSTACLES" unique_id=1678754754 instance=ExtResource("3_eercg")]
+position = Vector2(160, 16)
+metadata/_scene_painted = true
+
+[node name="enemy_ball26" parent="OBSTACLES" unique_id=1746047344 instance=ExtResource("3_eercg")]
+position = Vector2(256, 16)
+metadata/_scene_painted = true
+
+[node name="enemy_ball27" parent="OBSTACLES" unique_id=1077150818 instance=ExtResource("3_eercg")]
+position = Vector2(272, 16)
+metadata/_scene_painted = true
+
+[node name="Green" parent="OBSTACLES" unique_id=759043803 instance=ExtResource("4_v7tdd")]
+position = Vector2(560, -144)
+metadata/_scene_painted = true
+
+[node name="Green2" parent="OBSTACLES" unique_id=1448450035 instance=ExtResource("4_v7tdd")]
+position = Vector2(576, -144)
+metadata/_scene_painted = true
+
+[node name="Green3" parent="OBSTACLES" unique_id=1265562756 instance=ExtResource("4_v7tdd")]
+position = Vector2(592, -144)
+metadata/_scene_painted = true
+
+[node name="Green4" parent="OBSTACLES" unique_id=1739863226 instance=ExtResource("4_v7tdd")]
+position = Vector2(608, -144)
+metadata/_scene_painted = true
+
+[node name="Green5" parent="OBSTACLES" unique_id=221948231 instance=ExtResource("4_v7tdd")]
+position = Vector2(624, -144)
+metadata/_scene_painted = true
+
+[node name="Green6" parent="OBSTACLES" unique_id=1510403424 instance=ExtResource("4_v7tdd")]
+position = Vector2(640, -144)
+metadata/_scene_painted = true
+
+[node name="Green7" parent="OBSTACLES" unique_id=1116656003 instance=ExtResource("4_v7tdd")]
+position = Vector2(656, -144)
+metadata/_scene_painted = true
+
+[node name="Green8" parent="OBSTACLES" unique_id=1787570079 instance=ExtResource("4_v7tdd")]
+position = Vector2(672, -144)
+metadata/_scene_painted = true
+
+[node name="Green9" parent="OBSTACLES" unique_id=818124896 instance=ExtResource("4_v7tdd")]
+position = Vector2(688, -144)
+metadata/_scene_painted = true
+
+[node name="Green10" parent="OBSTACLES" unique_id=828084896 instance=ExtResource("4_v7tdd")]
+position = Vector2(704, -144)
+metadata/_scene_painted = true
+
+[node name="Green11" parent="OBSTACLES" unique_id=504423593 instance=ExtResource("4_v7tdd")]
+position = Vector2(720, -144)
+metadata/_scene_painted = true
+
+[node name="Green12" parent="OBSTACLES" unique_id=261955843 instance=ExtResource("4_v7tdd")]
+position = Vector2(736, -144)
+metadata/_scene_painted = true
+
+[node name="Green17" parent="OBSTACLES" unique_id=1477436974 instance=ExtResource("4_v7tdd")]
+position = Vector2(800, -144)
+metadata/_scene_painted = true
+
+[node name="Green18" parent="OBSTACLES" unique_id=429902127 instance=ExtResource("4_v7tdd")]
+position = Vector2(784, -144)
+metadata/_scene_painted = true
+
+[node name="Green19" parent="OBSTACLES" unique_id=22718793 instance=ExtResource("4_v7tdd")]
+position = Vector2(768, -144)
+metadata/_scene_painted = true
+
+[node name="Green13" parent="OBSTACLES" unique_id=926210869 instance=ExtResource("4_v7tdd")]
+position = Vector2(752, -144)
+metadata/_scene_painted = true
+
+[node name="Green14" parent="OBSTACLES" unique_id=347546385 instance=ExtResource("4_v7tdd")]
+position = Vector2(816, -144)
+metadata/_scene_painted = true
+
+[node name="Green15" parent="OBSTACLES" unique_id=1242372861 instance=ExtResource("4_v7tdd")]
+position = Vector2(832, -144)
+metadata/_scene_painted = true
+
+[node name="Green16" parent="OBSTACLES" unique_id=996778564 instance=ExtResource("4_v7tdd")]
+position = Vector2(848, -144)
+metadata/_scene_painted = true
+
+[node name="BallEnemy" parent="OBSTACLES" unique_id=641835925 instance=ExtResource("3_eercg")]
+position = Vector2(1856, -680)
+metadata/_scene_painted = true
+
+[node name="BallEnemy2" parent="OBSTACLES" unique_id=1237830587 instance=ExtResource("3_eercg")]
+position = Vector2(1872, -680)
+metadata/_scene_painted = true
+
+[node name="BallEnemy3" parent="OBSTACLES" unique_id=438064034 instance=ExtResource("3_eercg")]
+position = Vector2(1888, -680)
+metadata/_scene_painted = true
+
+[node name="BallEnemy4" parent="OBSTACLES" unique_id=1859608489 instance=ExtResource("3_eercg")]
+position = Vector2(1904, -680)
+metadata/_scene_painted = true
+
+[node name="BallEnemy5" parent="OBSTACLES" unique_id=1533799608 instance=ExtResource("3_eercg")]
+position = Vector2(1920, -680)
+metadata/_scene_painted = true
+
+[node name="BallEnemy6" parent="OBSTACLES" unique_id=1046130873 instance=ExtResource("3_eercg")]
+position = Vector2(1936, -680)
+metadata/_scene_painted = true
+
+[node name="BallEnemy7" parent="OBSTACLES" unique_id=1970260627 instance=ExtResource("3_eercg")]
+position = Vector2(1952, -680)
+metadata/_scene_painted = true
+
+[node name="BallEnemy8" parent="OBSTACLES" unique_id=1247092532 instance=ExtResource("3_eercg")]
+position = Vector2(1968, -680)
+metadata/_scene_painted = true
+
+[node name="BallEnemy9" parent="OBSTACLES" unique_id=1607378859 instance=ExtResource("3_eercg")]
+position = Vector2(1984, -680)
+metadata/_scene_painted = true
+
+[node name="BallEnemy10" parent="OBSTACLES" unique_id=216188806 instance=ExtResource("3_eercg")]
+position = Vector2(2000, -680)
+metadata/_scene_painted = true
+
+[node name="green_box" parent="OBSTACLES" unique_id=1417222214 instance=ExtResource("5_6vaf6")]
+position = Vector2(288, 8)
+metadata/_scene_painted = true
+
+[node name="green_box2" parent="OBSTACLES" unique_id=1762251954 instance=ExtResource("5_6vaf6")]
+position = Vector2(416, -80)
+metadata/_scene_painted = true
+
+[node name="green_box3" parent="OBSTACLES" unique_id=1426946861 instance=ExtResource("5_6vaf6")]
+position = Vector2(880, -152)
+metadata/_scene_painted = true
+
+[node name="green_box5" parent="OBSTACLES" unique_id=1545431908 instance=ExtResource("5_6vaf6")]
+position = Vector2(1008, -240)
+metadata/_scene_painted = true
+
+[node name="yellow_box" parent="OBSTACLES" unique_id=1793126271 instance=ExtResource("6_inqdu")]
+position = Vector2(1232, -288)
+metadata/_scene_painted = true
+
+[node name="green_box4" parent="OBSTACLES" unique_id=1130791717 instance=ExtResource("5_6vaf6")]
+position = Vector2(1392, -432)
+metadata/_scene_painted = true
+
+[node name="red_box" parent="OBSTACLES" unique_id=1852634485 instance=ExtResource("7_tyd6d")]
+position = Vector2(1632, -464)
+metadata/_scene_painted = true
+
+[node name="green_box7" parent="OBSTACLES" unique_id=186416423 instance=ExtResource("5_6vaf6")]
+position = Vector2(2032, -688)
+metadata/_scene_painted = true
+
+[node name="yellow_box2" parent="OBSTACLES" unique_id=1616096243 instance=ExtResource("6_inqdu")]
+position = Vector2(2240, -768)
+metadata/_scene_painted = true
+
+[node name="red_box2" parent="OBSTACLES" unique_id=1574146679 instance=ExtResource("7_tyd6d")]
+position = Vector2(2016, -912)
+metadata/_scene_painted = true
+
+[node name="BallEnemy34" parent="OBSTACLES" unique_id=1637610288 instance=ExtResource("3_eercg")]
+position = Vector2(1664, -1088)
+metadata/_scene_painted = true
+
+[node name="BallEnemy35" parent="OBSTACLES" unique_id=1246443152 instance=ExtResource("3_eercg")]
+position = Vector2(1664, -1096)
+metadata/_scene_painted = true
+
+[node name="BallEnemy36" parent="OBSTACLES" unique_id=226542260 instance=ExtResource("3_eercg")]
+position = Vector2(1664, -1104)
+metadata/_scene_painted = true
+
+[node name="BallEnemy11" parent="OBSTACLES" unique_id=492931931 instance=ExtResource("3_eercg")]
+position = Vector2(1664, -1112)
+metadata/_scene_painted = true
+
+[node name="BallEnemy12" parent="OBSTACLES" unique_id=656865019 instance=ExtResource("3_eercg")]
+position = Vector2(1664, -1120)
+metadata/_scene_painted = true
+
+[node name="BallEnemy13" parent="OBSTACLES" unique_id=2004625959 instance=ExtResource("3_eercg")]
+position = Vector2(1664, -1128)
+metadata/_scene_painted = true
+
+[node name="BallEnemy14" parent="OBSTACLES" unique_id=615658345 instance=ExtResource("3_eercg")]
+position = Vector2(1664, -1136)
+metadata/_scene_painted = true
+
+[node name="BallEnemy15" parent="OBSTACLES" unique_id=1207481836 instance=ExtResource("3_eercg")]
+position = Vector2(1664, -1144)
+metadata/_scene_painted = true
+
+[node name="BallEnemy16" parent="OBSTACLES" unique_id=1490351986 instance=ExtResource("3_eercg")]
+position = Vector2(1664, -1152)
+metadata/_scene_painted = true
+
+[node name="BallEnemy17" parent="OBSTACLES" unique_id=1548044842 instance=ExtResource("3_eercg")]
+position = Vector2(1680, -1152)
+metadata/_scene_painted = true
+
+[node name="BallEnemy18" parent="OBSTACLES" unique_id=1214733618 instance=ExtResource("3_eercg")]
+position = Vector2(1696, -1152)
+metadata/_scene_painted = true
+
+[node name="BallEnemy19" parent="OBSTACLES" unique_id=266849388 instance=ExtResource("3_eercg")]
+position = Vector2(1712, -1152)
+metadata/_scene_painted = true
+
+[node name="BallEnemy20" parent="OBSTACLES" unique_id=1680549072 instance=ExtResource("3_eercg")]
+position = Vector2(1664, -1080)
+metadata/_scene_painted = true
+
+[node name="BallEnemy21" parent="OBSTACLES" unique_id=1160636287 instance=ExtResource("3_eercg")]
+position = Vector2(1680, -1080)
+metadata/_scene_painted = true
+
+[node name="BallEnemy22" parent="OBSTACLES" unique_id=1242627563 instance=ExtResource("3_eercg")]
+position = Vector2(1696, -1080)
+metadata/_scene_painted = true
+
+[node name="BallEnemy23" parent="OBSTACLES" unique_id=635786647 instance=ExtResource("3_eercg")]
+position = Vector2(1712, -1080)
+metadata/_scene_painted = true
+
+[node name="surf_board" parent="." unique_id=477629956 instance=ExtResource("8_b0kma")]
+position = Vector2(135, 5)

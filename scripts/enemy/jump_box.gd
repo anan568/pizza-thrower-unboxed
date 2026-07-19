@@ -1,4 +1,6 @@
+@icon("res://icons/jump_box.svg")
 extends Area2D
+class_name JumpBox
 
 var boost_force = 400
 

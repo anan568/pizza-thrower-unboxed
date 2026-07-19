@@ -1,0 +1,19 @@
+[gd_scene format=3 uid="uid://boo7uo3hbju5t"]
+
+[ext_resource type="Script" uid="uid://bm4pk6h1bu218" path="res://scripts/enemy/jump_box.gd" id="1_vjway"]
+[ext_resource type="Texture2D" uid="uid://bt3rrooa615u7" path="res://art/surf/objects/box/yellow_box.png" id="2_2al0b"]
+
+[sub_resource type="RectangleShape2D" id="RectangleShape2D_g4v7s"]
+size = Vector2(16, 16)
+
+[node name="yellow_box" type="Area2D" unique_id=1417222214 groups=["box"]]
+collision_layer = 4
+collision_mask = 0
+script = ExtResource("1_vjway")
+metadata/_custom_type_script = "uid://bm4pk6h1bu218"
+
+[node name="Sprite2D" type="Sprite2D" parent="." unique_id=475822618]
+texture = ExtResource("2_2al0b")
+
+[node name="CollisionShape2D" type="CollisionShape2D" parent="." unique_id=1915724124]
+shape = SubResource("RectangleShape2D_g4v7s")

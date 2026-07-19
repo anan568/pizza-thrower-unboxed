@@ -28,7 +28,7 @@ var min_charge_time = 0.1 #minimum charge time before it can be released
 var current_charge_time = 0 #timer to see how much time is charged (dont change it)
 
 var punch_released = true #game will check for punch charge time as soon as this is turned to false
-var charge_rate = 1 #how many seconds to fully charge punch
+var charge_rate = 0.5 #how many seconds to fully charge punch (lower = faster)
 
 var gravity = 250 #max falling velocity
 var fall_speed = 15

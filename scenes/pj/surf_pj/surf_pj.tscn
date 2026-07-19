@@ -9,6 +9,7 @@
 [ext_resource type="Script" uid="uid://dwkxgnowim60a" path="res://scripts/attacks/surf_lunge.gd" id="7_bvk6b"]
 [ext_resource type="Texture2D" uid="uid://dgfw1ajqm8x22" path="res://art/surf/ui/charge_meter_under.png" id="8_fri7d"]
 [ext_resource type="Script" uid="uid://6f3xjp4ct1qn" path="res://scripts/attacks/surf_punch.gd" id="8_pgf3x"]
+[ext_resource type="Script" uid="uid://chkfsshowmc6t" path="res://scripts/control stuff/surf/smooth_cam_zoom.gd" id="9_0e8rl"]
 [ext_resource type="Texture2D" uid="uid://dg62rrt2bobmn" path="res://art/surf/ui/charge_meter_over.png" id="9_pgf3x"]
 [ext_resource type="Texture2D" uid="uid://dupnqau8fcc7g" path="res://art/surf/ui/charge_meter_progress.png" id="10_0e8rl"]
 
@@ -172,7 +173,7 @@ height = 24.0
 size = Vector2(8, 20)
 
 [sub_resource type="RectangleShape2D" id="RectangleShape2D_yf5fn"]
-size = Vector2(31, 13)
+size = Vector2(18, 13)
 
 [node name="surf_pj" type="CharacterBody2D" unique_id=2071708297 groups=["player"]]
 collision_layer = 2
@@ -181,7 +182,7 @@ script = ExtResource("1_tbkbm")
 
 [node name="AnimatedSprite2D" type="AnimatedSprite2D" parent="." unique_id=910720205]
 sprite_frames = SubResource("SpriteFrames_57qmd")
-animation = &"charge"
+animation = &"punch"
 autoplay = "idle"
 
 [node name="hurtbox" type="CollisionShape2D" parent="." unique_id=693108767]
@@ -205,12 +206,13 @@ monitorable = false
 script = ExtResource("8_pgf3x")
 
 [node name="CollisionShape2D" type="CollisionShape2D" parent="punch_hitbox" unique_id=592538643]
-position = Vector2(15.5, -1.5)
+position = Vector2(18, -1.5)
 shape = SubResource("RectangleShape2D_yf5fn")
 debug_color = Color(1, 0.010117998, 0.061540082, 0.41960785)
 
 [node name="Camera2D" type="Camera2D" parent="." unique_id=1044853951]
 zoom = Vector2(2, 2)
+script = ExtResource("9_0e8rl")
 
 [node name="lunge_time" type="Timer" parent="." unique_id=575622820]
 one_shot = true
