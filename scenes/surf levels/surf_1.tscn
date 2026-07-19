@@ -1,0 +1,38 @@
+[gd_scene format=4 uid="uid://c1epvt3a0rcch"]
+
+[ext_resource type="Texture2D" uid="uid://cmq5fgt4tqm31" path="res://art/surf/tilemap/surf_1.png" id="1_jp1jf"]
+[ext_resource type="PackedScene" uid="uid://bm3hkqpd81mir" path="res://scenes/pj/surf_pj/land_pj.tscn" id="2_5g51v"]
+
+[sub_resource type="TileSetAtlasSource" id="TileSetAtlasSource_kq1ya"]
+texture = ExtResource("1_jp1jf")
+8:4/0 = 0
+9:4/0 = 0
+8:5/0 = 0
+9:5/0 = 0
+7:6/0 = 0
+7:6/0/physics_layer_0/polygon_0/points = PackedVector2Array(-8, -8, 8, -8, 8, 8, -8, 8)
+8:6/0 = 0
+8:6/0/physics_layer_0/polygon_0/points = PackedVector2Array(-8, -8, 8, -8, 8, 8, -8, 8)
+9:6/0 = 0
+9:6/0/physics_layer_0/polygon_0/points = PackedVector2Array(-8, -8, 8, -8, 8, 8, -8, 8)
+5:7/0 = 0
+7:7/0 = 0
+7:7/0/physics_layer_0/polygon_0/points = PackedVector2Array(-8, -8, 8, -8, 8, 8, -8, 8)
+8:7/0 = 0
+8:7/0/physics_layer_0/polygon_0/points = PackedVector2Array(-8, -8, 8, -8, 8, 8, -8, 8)
+9:7/0 = 0
+9:7/0/physics_layer_0/polygon_0/points = PackedVector2Array(-8, -8, 8, -8, 8, 8, -8, 8)
+
+[sub_resource type="TileSet" id="TileSet_g4v7s"]
+physics_layer_0/collision_layer = 1
+physics_layer_0/collision_mask = 255
+sources/0 = SubResource("TileSetAtlasSource_kq1ya")
+
+[node name="surf_1" type="Node2D" unique_id=440977870]
+
+[node name="TileMapLayer" type="TileMapLayer" parent="." unique_id=1457051548]
+tile_map_data = PackedByteArray("AAD9/wIAAAAHAAYAAAD9/wMAAAAHAAcAAAD+/wIAAAAIAAYAAAD+/wMAAAAIAAcAAAD//wIAAAAIAAYAAAD//wMAAAAIAAcAAAAAAAIAAAAIAAYAAAAAAAMAAAAIAAcAAAABAAIAAAAIAAYAAAABAAMAAAAIAAcAAAACAAIAAAAIAAYAAAACAAMAAAAIAAcAAAADAAIAAAAIAAYAAAADAAMAAAAIAAcAAAAEAAIAAAAJAAYAAAAEAAMAAAAJAAcAAAA=")
+tile_set = SubResource("TileSet_g4v7s")
+
+[node name="land_pj" parent="." unique_id=2102394691 instance=ExtResource("2_5g51v")]
+position = Vector2(0, 8)
