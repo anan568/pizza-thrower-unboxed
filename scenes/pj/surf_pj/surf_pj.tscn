@@ -167,13 +167,13 @@ animations = [{
 
 [sub_resource type="CapsuleShape2D" id="CapsuleShape2D_d0u6y"]
 radius = 4.0
-height = 24.0
+height = 20.0
 
 [sub_resource type="RectangleShape2D" id="RectangleShape2D_g4v7s"]
-size = Vector2(8, 13.815)
+size = Vector2(8, 9.97)
 
 [sub_resource type="RectangleShape2D" id="RectangleShape2D_yf5fn"]
-size = Vector2(22, 17)
+size = Vector2(20, 16)
 
 [node name="surf_pj" type="CharacterBody2D" unique_id=2071708297 groups=["player"]]
 collision_layer = 2
@@ -206,7 +206,7 @@ monitorable = false
 script = ExtResource("8_pgf3x")
 
 [node name="CollisionShape2D" type="CollisionShape2D" parent="punch_hitbox" unique_id=592538643]
-position = Vector2(18, -0.5)
+position = Vector2(17, -1)
 shape = SubResource("RectangleShape2D_yf5fn")
 debug_color = Color(1, 0.010117998, 0.061540082, 0.41960785)
 

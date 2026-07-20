@@ -41,6 +41,10 @@ func _ready() -> void:
 	input_processor.connect("acted", Act)
 	
 func _physics_process(delta: float) -> void:
+	if current_state == state.punching and animator.animation == "charge": #without the animation check u can just spam the punch key and the punch will never end
+		if not Input.is_action_pressed("punch"):
+			punch_released = false
+	
 	if current_state == state.punching:
 		charge_bar.value = floor(current_charge_time * (charge_bar.max_value/charge_rate))+1
 		current_charge_time += delta #timer to check if minimum charge time is reached
@@ -57,11 +61,6 @@ func _physics_process(delta: float) -> void:
 		else:
 			animator.play("idle")
 	move_and_slide()
-	
-func _input(event: InputEvent) -> void:
-	if current_state == state.punching and animator.animation == "charge": #without the animation check u can just spam the punch key and the punch will never end
-		if event.is_action_released("punch"):
-			punch_released = false
 
 func Jump(): #rn u can only jump if mounted but that might change
 	if mounted and get_parent() != null:
