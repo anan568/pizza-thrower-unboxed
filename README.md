@@ -23,10 +23,10 @@ todo:
 - come up with arcade games (fun fun)
 
 surf:
-- need a falling animation for pj surf
-- polish (AS IN POLAND) animations (fix the cap)
+- polish (AS IN POLAND) animations
 - add W particle effects
 - proper death
+- hand crank reverse soulja boy go up
 
 
 does this mean i have to comment my code now :(
