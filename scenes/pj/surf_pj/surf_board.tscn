@@ -52,7 +52,6 @@ size = Vector2(8, 20)
 [node name="surf_board" type="CharacterBody2D" unique_id=477629956 groups=["surfboard"]]
 z_index = 1
 collision_layer = 0
-collision_mask = 0
 motion_mode = 1
 script = ExtResource("1_lypok")
 

@@ -19,7 +19,7 @@ animations = [{
 }]
 
 [sub_resource type="CircleShape2D" id="CircleShape2D_8cwd6"]
-radius = 7.0
+radius = 8.0
 
 [node name="Green" type="Area2D" unique_id=759043803 groups=["enemy"]]
 collision_layer = 4

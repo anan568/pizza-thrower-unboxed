@@ -2,6 +2,14 @@
 
 [ext_resource type="Texture2D" uid="uid://cmq5fgt4tqm31" path="res://art/surf/tilemap/surf_1.png" id="1_jp1jf"]
 [ext_resource type="PackedScene" uid="uid://bm3hkqpd81mir" path="res://scenes/pj/surf_pj/land_pj.tscn" id="2_5g51v"]
+[ext_resource type="PackedScene" uid="uid://dkdv8dec70e0d" path="res://scenes/enemies/enemy_pink.tscn" id="3_kq1ya"]
+[ext_resource type="PackedScene" uid="uid://duhitje6qlgtq" path="res://scenes/hazards/scissors.tscn" id="4_v5gsk"]
+[ext_resource type="PackedScene" uid="uid://bep8mcu788lwc" path="res://scenes/enemies/green.tscn" id="4_waeod"]
+[ext_resource type="PackedScene" uid="uid://cstl5bgm42327" path="res://scenes/objects/surf/green_box.tscn" id="5_budnj"]
+[ext_resource type="PackedScene" uid="uid://bg4dj7gfty522" path="res://scenes/enemies/enemy_ball.tscn" id="6_26ur8"]
+[ext_resource type="PackedScene" uid="uid://h5bxtv75pnfv" path="res://scenes/pj/surf_pj/surf_board.tscn" id="6_hkngp"]
+[ext_resource type="PackedScene" uid="uid://b282juv32x3na" path="res://scenes/objects/surf/red_box.tscn" id="7_noyjo"]
+[ext_resource type="PackedScene" uid="uid://boo7uo3hbju5t" path="res://scenes/objects/surf/yellow_box.tscn" id="9_noyjo"]
 
 [sub_resource type="TileSetAtlasSource" id="TileSetAtlasSource_kq1ya"]
 texture = ExtResource("1_jp1jf")
@@ -22,6 +30,10 @@ texture = ExtResource("1_jp1jf")
 8:7/0/physics_layer_0/polygon_0/points = PackedVector2Array(-8, -8, 8, -8, 8, 8, -8, 8)
 9:7/0 = 0
 9:7/0/physics_layer_0/polygon_0/points = PackedVector2Array(-8, -8, 8, -8, 8, 8, -8, 8)
+15:13/0 = 0
+15:13/0/physics_layer_0/polygon_0/points = PackedVector2Array(-8, -8, 8, -8, 8, 8, -8, 8)
+14:13/0 = 0
+14:13/0/physics_layer_0/polygon_0/points = PackedVector2Array(-8, -8, 8, -8, 8, 8, -8, 8)
 
 [sub_resource type="TileSet" id="TileSet_g4v7s"]
 physics_layer_0/collision_layer = 1
@@ -31,8 +43,676 @@ sources/0 = SubResource("TileSetAtlasSource_kq1ya")
 [node name="surf_1" type="Node2D" unique_id=440977870]
 
 [node name="TileMapLayer" type="TileMapLayer" parent="." unique_id=1457051548]
-tile_map_data = PackedByteArray("AAD9/wIAAAAHAAYAAAD9/wMAAAAHAAcAAAD+/wIAAAAIAAYAAAD+/wMAAAAIAAcAAAD//wIAAAAIAAYAAAD//wMAAAAIAAcAAAAAAAIAAAAIAAYAAAAAAAMAAAAIAAcAAAABAAIAAAAIAAYAAAABAAMAAAAIAAcAAAACAAIAAAAIAAYAAAACAAMAAAAIAAcAAAADAAIAAAAIAAYAAAADAAMAAAAIAAcAAAAEAAIAAAAJAAYAAAAEAAMAAAAJAAcAAAA=")
+tile_map_data = PackedByteArray("AAD9/wIAAAAOAA0AAAD9/wMAAAAPAA0AAAD+/wIAAAAOAA0AAAD+/wMAAAAPAA0AAAD//wIAAAAOAA0AAAD//wMAAAAPAA0AAAAAAAIAAAAPAA0AAAAAAAMAAAAPAA0AAAABAAIAAAAPAA0AAAABAAMAAAAPAA0AAAACAAIAAAAPAA0AAAACAAMAAAAOAA0AAAADAAIAAAAOAA0AAAADAAMAAAAOAA0AAAAEAAIAAAAPAA0AAAAEAAMAAAAOAA0AAACtAPD/AAAPAA0AAACtAO//AAAPAA0AAACuAPD/AAAPAA0AAACvAPH/AAAPAA0AAACwAPH/AAAPAA0AAACwAPL/AAAPAA0AAACxAPL/AAAPAA0AAACyAPP/AAAPAA0AAACzAPP/AAAPAA0AAACzAPT/AAAPAA0AAAC0APT/AAAPAA0AAAC0APX/AAAPAA0AAAC1APX/AAAPAA0AAAC1APb/AAAPAA0AAAC2APb/AAAPAA0AAAC2APf/AAAPAA0AAAC2APj/AAAPAA0AAAC3APj/AAAPAA0AAAC3APn/AAAPAA0AAAC3APr/AAAPAA0AAACtAPH/AAAPAA0AAACtAPL/AAAPAA0AAACtAPP/AAAPAA0AAACuAPP/AAAPAA0AAACuAPT/AAAPAA0AAACuAPX/AAAPAA0AAACuAPL/AAAPAA0AAACuAPH/AAAPAA0AAACtAPT/AAAPAA0AAACtAPX/AAAPAA0AAACtAPb/AAAPAA0AAACuAPb/AAAPAA0AAACuAPf/AAAPAA0AAACuAPj/AAAPAA0AAACvAPj/AAAPAA0AAACwAPn/AAAPAA0AAACxAPn/AAAPAA0AAACyAPn/AAAPAA0AAACzAPn/AAAPAA0AAACzAPr/AAAPAA0AAAC0APr/AAAPAA0AAAC1APr/AAAPAA0AAAC1APv/AAAPAA0AAAC2APv/AAAPAA0AAAC3APv/AAAPAA0AAAC2APr/AAAPAA0AAAC2APn/AAAPAA0AAAC1APj/AAAPAA0AAAC1APn/AAAPAA0AAAC0APn/AAAPAA0AAAC0APj/AAAPAA0AAACzAPj/AAAPAA0AAACyAPj/AAAPAA0AAACyAPf/AAAPAA0AAACxAPf/AAAPAA0AAACwAPf/AAAPAA0AAACwAPb/AAAPAA0AAACvAPb/AAAPAA0AAACvAPX/AAAPAA0AAACvAPT/AAAPAA0AAACvAPP/AAAPAA0AAACvAPL/AAAPAA0AAACwAPP/AAAPAA0AAACwAPT/AAAPAA0AAACwAPX/AAAPAA0AAACxAPP/AAAPAA0AAACxAPT/AAAPAA0AAACxAPX/AAAPAA0AAACxAPb/AAAPAA0AAACvAPf/AAAPAA0AAACyAPT/AAAPAA0AAACzAPX/AAAPAA0AAACzAPb/AAAPAA0AAACzAPf/AAAPAA0AAAC0APf/AAAPAA0AAAC0APb/AAAPAA0AAACyAPX/AAAPAA0AAACyAPb/AAAPAA0AAAC1APf/AAAPAA0AAACxAPj/AAAPAA0AAAC0APv/AAAPAA0AAACzAPv/AAAPAA0AAACyAPv/AAAPAA0AAACxAPv/AAAPAA0AAACwAPv/AAAPAA0AAACvAPv/AAAPAA0AAACvAPr/AAAPAA0AAACuAPr/AAAPAA0AAACtAPn/AAAPAA0AAACtAPj/AAAPAA0AAACtAPf/AAAPAA0AAACtAPr/AAAPAA0AAACtAPv/AAAPAA0AAACuAPn/AAAPAA0AAACvAPn/AAAPAA0AAACwAPj/AAAPAA0AAACuAPv/AAAPAA0AAACxAPr/AAAPAA0AAACyAPr/AAAPAA0AAACwAPr/AAAPAA0AAACtAPz/AAAPAA0AAACtAP3/AAAPAA0AAACtAP7/AAAPAA0AAACtAP//AAAPAA0AAACtAAAAAAAPAA0AAACtAAEAAAAPAA0AAACtAAIAAAAPAA0AAACtAAMAAAAPAA0AAACtAAQAAAAPAA0AAACtAAUAAAAPAA0AAACtAAYAAAAPAA0AAACtAAcAAAAPAA0AAACuAPz/AAAPAA0AAACuAP3/AAAPAA0AAACuAP7/AAAPAA0AAACuAP//AAAPAA0AAACuAAAAAAAPAA0AAACuAAEAAAAPAA0AAACuAAIAAAAPAA0AAACuAAMAAAAPAA0AAACuAAQAAAAPAA0AAACuAAUAAAAPAA0AAACuAAYAAAAPAA0AAACuAAcAAAAPAA0AAACvAPz/AAAPAA0AAACvAP3/AAAPAA0AAACvAP7/AAAPAA0AAACvAP//AAAPAA0AAACvAAAAAAAPAA0AAACvAAEAAAAPAA0AAACvAAIAAAAPAA0AAACvAAMAAAAPAA0AAACvAAQAAAAPAA0AAACvAAUAAAAPAA0AAACvAAYAAAAPAA0AAACvAAcAAAAPAA0AAACwAPz/AAAPAA0AAACwAP3/AAAPAA0AAACwAP7/AAAPAA0AAACwAP//AAAPAA0AAACwAAAAAAAPAA0AAACwAAEAAAAPAA0AAACwAAIAAAAPAA0AAACwAAMAAAAPAA0AAACwAAQAAAAPAA0AAACwAAUAAAAPAA0AAACwAAYAAAAPAA0AAACwAAcAAAAPAA0AAACxAPz/AAAPAA0AAACxAP3/AAAPAA0AAACxAP7/AAAPAA0AAACxAP//AAAPAA0AAACxAAAAAAAPAA0AAACxAAEAAAAPAA0AAACxAAIAAAAPAA0AAACxAAMAAAAPAA0AAACxAAQAAAAPAA0AAACxAAUAAAAPAA0AAACxAAYAAAAPAA0AAACxAAcAAAAPAA0AAACyAPz/AAAPAA0AAACyAP3/AAAPAA0AAACyAP7/AAAPAA0AAACyAP//AAAPAA0AAACyAAAAAAAPAA0AAACyAAEAAAAPAA0AAACyAAIAAAAPAA0AAACyAAMAAAAPAA0AAACyAAQAAAAPAA0AAACyAAUAAAAPAA0AAACyAAYAAAAPAA0AAACyAAcAAAAPAA0AAACzAPz/AAAPAA0AAACzAP3/AAAPAA0AAACzAP7/AAAPAA0AAACzAP//AAAPAA0AAACzAAAAAAAPAA0AAACzAAEAAAAPAA0AAACzAAIAAAAPAA0AAACzAAMAAAAPAA0AAACzAAQAAAAPAA0AAACzAAUAAAAPAA0AAACzAAYAAAAPAA0AAACzAAcAAAAPAA0AAAC0APz/AAAPAA0AAAC0AP3/AAAPAA0AAAC0AP7/AAAPAA0AAAC0AP//AAAPAA0AAAC0AAAAAAAPAA0AAAC0AAEAAAAPAA0AAAC0AAIAAAAPAA0AAAC0AAMAAAAPAA0AAAC0AAQAAAAPAA0AAAC0AAUAAAAPAA0AAAC0AAYAAAAPAA0AAAC0AAcAAAAPAA0AAAC1APz/AAAPAA0AAAC1AP3/AAAPAA0AAAC1AP7/AAAPAA0AAAC1AP//AAAPAA0AAAC1AAAAAAAPAA0AAAC1AAEAAAAPAA0AAAC1AAIAAAAPAA0AAAC1AAMAAAAPAA0AAAC1AAQAAAAPAA0AAAC1AAUAAAAPAA0AAAC1AAYAAAAPAA0AAAC1AAcAAAAPAA0AAAC2APz/AAAPAA0AAAC2AP3/AAAPAA0AAAC2AP7/AAAPAA0AAAC2AP//AAAPAA0AAAC2AAAAAAAPAA0AAAC2AAEAAAAPAA0AAAC2AAIAAAAPAA0AAAC2AAMAAAAPAA0AAAC2AAQAAAAPAA0AAAC2AAUAAAAPAA0AAAC2AAYAAAAPAA0AAAC2AAcAAAAPAA0AAAC3APz/AAAPAA0AAAC3AP3/AAAPAA0AAAC3AP7/AAAPAA0AAAC3AP//AAAPAA0AAAC3AAAAAAAPAA0AAAC3AAEAAAAPAA0AAAC3AAIAAAAPAA0AAAC3AAMAAAAPAA0AAAC3AAQAAAAPAA0AAAC3AAUAAAAPAA0AAAC3AAYAAAAPAA0AAAC3AAcAAAAPAA0AAACtAOT/AAAPAA0AAACuAOT/AAAPAA0AAACvAOX/AAAPAA0AAACwAOX/AAAPAA0AAACwAOb/AAAPAA0AAACxAOb/AAAPAA0AAACxAOf/AAAPAA0AAACyAOf/AAAPAA0AAACyAOj/AAAPAA0AAACzAOj/AAAPAA0AAACzAOn/AAAPAA0AAAC0AOn/AAAPAA0AAAC0AOr/AAAPAA0AAAC1AOr/AAAPAA0AAAC1AOv/AAAPAA0AAAC2AOv/AAAPAA0AAAC2AOz/AAAPAA0AAAC2AOr/AAAPAA0AAAC2AOn/AAAPAA0AAAC2AOj/AAAPAA0AAAC2AOf/AAAPAA0AAAC2AOb/AAAPAA0AAAC2AOX/AAAPAA0AAAC2AOT/AAAPAA0AAAC2AOP/AAAPAA0AAAC2AOL/AAAPAA0AAAC2AOH/AAAPAA0AAAC2AOD/AAAPAA0AAAC2AN//AAAPAA0AAAC2AN7/AAAPAA0AAAC1AN7/AAAPAA0AAAC1AN3/AAAPAA0AAAC1ANz/AAAPAA0AAAC0ANv/AAAPAA0AAACzANv/AAAPAA0AAACyANv/AAAPAA0AAACxANv/AAAPAA0AAACwANv/AAAPAA0AAACwANz/AAAPAA0AAACvANz/AAAPAA0AAACvAN3/AAAPAA0AAACvAN7/AAAPAA0AAACuAN7/AAAPAA0AAACuAN//AAAPAA0AAACtAN//AAAPAA0AAACtAOD/AAAPAA0AAACtAOH/AAAPAA0AAACtAOL/AAAPAA0AAACtAOP/AAAPAA0AAAC0AOL/AAAPAA0AAAC0AOH/AAAPAA0AAAC0AOD/AAAPAA0AAAC0AN//AAAPAA0AAAC0AN7/AAAPAA0AAAC0AN3/AAAPAA0AAAC0ANz/AAAPAA0AAACzANz/AAAPAA0AAACyANz/AAAPAA0AAACxANz/AAAPAA0AAACxAN3/AAAPAA0AAACwAN3/AAAPAA0AAACwAN7/AAAPAA0AAACwAN//AAAPAA0AAACvAN//AAAPAA0AAACvAOD/AAAPAA0AAACuAOD/AAAPAA0AAACuAOH/AAAPAA0AAACuAOL/AAAPAA0AAACuAOP/AAAPAA0AAACvAOP/AAAPAA0AAACvAOL/AAAPAA0AAACvAOH/AAAPAA0AAACwAOH/AAAPAA0AAACwAOD/AAAPAA0AAACxAOD/AAAPAA0AAACxAN//AAAPAA0AAACxAN7/AAAPAA0AAACyAN7/AAAPAA0AAACyAN3/AAAPAA0AAACzAN3/AAAPAA0AAACzAN7/AAAPAA0AAACzAN//AAAPAA0AAACyAN//AAAPAA0AAACyAOD/AAAPAA0AAACyAOH/AAAPAA0AAACxAOH/AAAPAA0AAACxAOL/AAAPAA0AAACwAOL/AAAPAA0AAACwAOP/AAAPAA0AAACwAOT/AAAPAA0AAACvAOT/AAAPAA0AAACxAOT/AAAPAA0AAACxAOP/AAAPAA0AAACyAOP/AAAPAA0AAACyAOL/AAAPAA0AAACzAOL/AAAPAA0AAACzAOH/AAAPAA0AAACzAOD/AAAPAA0AAACzAOP/AAAPAA0AAACzAOT/AAAPAA0AAACyAOT/AAAPAA0AAACyAOX/AAAPAA0AAACxAOX/AAAPAA0AAACyAOb/AAAPAA0AAACzAOb/AAAPAA0AAACzAOX/AAAPAA0AAAC0AOX/AAAPAA0AAAC0AOT/AAAPAA0AAAC0AOP/AAAPAA0AAAC1AOP/AAAPAA0AAAC1AOL/AAAPAA0AAAC1AOH/AAAPAA0AAAC1AOD/AAAPAA0AAAC1AN//AAAPAA0AAAC1AOT/AAAPAA0AAAC1AOX/AAAPAA0AAAC1AOb/AAAPAA0AAAC0AOb/AAAPAA0AAAC0AOf/AAAPAA0AAACzAOf/AAAPAA0AAAC0AOj/AAAPAA0AAAC1AOj/AAAPAA0AAAC1AOf/AAAPAA0AAAC1AOn/AAAPAA0AAAC3AOH/AAAPAA0AAAC3AOL/AAAPAA0AAAC3AOP/AAAPAA0AAAC3AOT/AAAPAA0AAAC3AOX/AAAPAA0AAAC3AOb/AAAPAA0AAAC3AOf/AAAPAA0AAAC3AOj/AAAPAA0AAAC3AOn/AAAPAA0AAAC3AOr/AAAPAA0AAAC3AOv/AAAPAA0AAAC3AOz/AAAPAA0AAAC3AO3/AAAPAA0AAAC3AOD/AAAPAA0AAAC3APf/AAAPAA0AAABtAdv/AAAOAA0AAABuAdv/AAAOAA0AAABvAdv/AAAOAA0AAABwAdv/AAAOAA0AAABxAdv/AAAOAA0AAAByAdv/AAAOAA0AAABzAdv/AAAOAA0AAAB0Adv/AAAOAA0AAAB1Adv/AAAOAA0AAAB2AdX/AAAOAA0AAAB2Adb/AAAOAA0AAAB2Adf/AAAOAA0AAAB2Adj/AAAOAA0AAAB2Adn/AAAOAA0AAAB2Adr/AAAOAA0AAAB2Adv/AAAOAA0AAAB2AdT/AAAOAA0AAAB1AdT/AAAOAA0AAAB0AdT/AAAOAA0AAABzAdT/AAAOAA0AAAByAdT/AAAOAA0AAABxAdT/AAAOAA0AAABwAdT/AAAOAA0AAABvAdT/AAAOAA0AAABuAdT/AAAOAA0AAABtAdT/AAAOAA0AAABtAd3/AAAOAA0AAABtAd7/AAAOAA0AAABtAd//AAAOAA0AAABtAeD/AAAOAA0AAABuAeH/AAAOAA0AAABvAeD/AAAOAA0AAABvAd//AAAOAA0AAABvAd7/AAAOAA0AAABvAd3/AAAOAA0AAABwAeH/AAAOAA0AAABxAeD/AAAOAA0AAABxAd//AAAOAA0AAABxAd7/AAAOAA0AAABxAd3/AAAOAA0AAABzAd3/AAAPAA0AAABzAd7/AAAPAA0AAABzAd//AAAPAA0AAABzAeH/AAAPAA0AAAB1AeH/AAAPAA0AAAB1Ad//AAAPAA0AAAB1Ad7/AAAPAA0AAAB1Ad3/AAAPAA0AAAB3Ad3/AAAPAA0AAAB3Ad7/AAAPAA0AAAB3Ad//AAAPAA0AAAB3AeH/AAAPAA0AAAA=")
 tile_set = SubResource("TileSet_g4v7s")
 
 [node name="land_pj" parent="." unique_id=2102394691 instance=ExtResource("2_5g51v")]
 position = Vector2(0, 8)
+
+[node name="OBSTACLES" type="Node2D" parent="." unique_id=316616210]
+
+[node name="scissors" parent="OBSTACLES" unique_id=759043803 instance=ExtResource("4_v5gsk")]
+position = Vector2(-48, -64)
+rotation = -1.5707964
+metadata/_scene_painted = true
+
+[node name="scissors2" parent="OBSTACLES" unique_id=104768256 instance=ExtResource("4_v5gsk")]
+position = Vector2(-32, -64)
+rotation = -1.5707964
+metadata/_scene_painted = true
+
+[node name="scissors3" parent="OBSTACLES" unique_id=2067829574 instance=ExtResource("4_v5gsk")]
+position = Vector2(-16, -64)
+rotation = -1.5707964
+metadata/_scene_painted = true
+
+[node name="scissors4" parent="OBSTACLES" unique_id=1045448543 instance=ExtResource("4_v5gsk")]
+position = Vector2(0, -64)
+rotation = -1.5707964
+metadata/_scene_painted = true
+
+[node name="scissors5" parent="OBSTACLES" unique_id=782201313 instance=ExtResource("4_v5gsk")]
+position = Vector2(16, -64)
+rotation = -1.5707964
+metadata/_scene_painted = true
+
+[node name="scissors6" parent="OBSTACLES" unique_id=1378340501 instance=ExtResource("4_v5gsk")]
+position = Vector2(32, -64)
+rotation = -1.5707964
+metadata/_scene_painted = true
+
+[node name="scissors7" parent="OBSTACLES" unique_id=1565081242 instance=ExtResource("4_v5gsk")]
+position = Vector2(48, -64)
+rotation = -1.5707964
+metadata/_scene_painted = true
+
+[node name="scissors8" parent="OBSTACLES" unique_id=1939978064 instance=ExtResource("4_v5gsk")]
+position = Vector2(64, -64)
+rotation = -1.5707964
+metadata/_scene_painted = true
+
+[node name="scissors9" parent="OBSTACLES" unique_id=295695695 instance=ExtResource("4_v5gsk")]
+position = Vector2(80, -64)
+rotation = -1.5707964
+metadata/_scene_painted = true
+
+[node name="Green" parent="OBSTACLES" unique_id=1960665516 instance=ExtResource("4_waeod")]
+position = Vector2(112, 40)
+metadata/_scene_painted = true
+
+[node name="Green2" parent="OBSTACLES" unique_id=2034618480 instance=ExtResource("4_waeod")]
+position = Vector2(128, 40)
+metadata/_scene_painted = true
+
+[node name="Green3" parent="OBSTACLES" unique_id=1079280926 instance=ExtResource("4_waeod")]
+position = Vector2(144, 40)
+metadata/_scene_painted = true
+
+[node name="Green4" parent="OBSTACLES" unique_id=2075967257 instance=ExtResource("4_waeod")]
+position = Vector2(160, 40)
+metadata/_scene_painted = true
+
+[node name="Green5" parent="OBSTACLES" unique_id=1804653328 instance=ExtResource("4_waeod")]
+position = Vector2(176, 40)
+metadata/_scene_painted = true
+
+[node name="Green6" parent="OBSTACLES" unique_id=2140690326 instance=ExtResource("4_waeod")]
+position = Vector2(192, 40)
+metadata/_scene_painted = true
+
+[node name="Green7" parent="OBSTACLES" unique_id=1652801804 instance=ExtResource("4_waeod")]
+position = Vector2(208, 40)
+metadata/_scene_painted = true
+
+[node name="Green8" parent="OBSTACLES" unique_id=1484104255 instance=ExtResource("4_waeod")]
+position = Vector2(224, 40)
+metadata/_scene_painted = true
+
+[node name="Green9" parent="OBSTACLES" unique_id=2125524813 instance=ExtResource("4_waeod")]
+position = Vector2(240, 40)
+metadata/_scene_painted = true
+
+[node name="Green10" parent="OBSTACLES" unique_id=1792981220 instance=ExtResource("4_waeod")]
+position = Vector2(256, 40)
+metadata/_scene_painted = true
+
+[node name="Green11" parent="OBSTACLES" unique_id=2022607228 instance=ExtResource("4_waeod")]
+position = Vector2(272, 40)
+metadata/_scene_painted = true
+
+[node name="Green12" parent="OBSTACLES" unique_id=640897107 instance=ExtResource("4_waeod")]
+position = Vector2(288, 40)
+metadata/_scene_painted = true
+
+[node name="Green13" parent="OBSTACLES" unique_id=2126171963 instance=ExtResource("4_waeod")]
+position = Vector2(304, 40)
+metadata/_scene_painted = true
+
+[node name="Green14" parent="OBSTACLES" unique_id=1920854103 instance=ExtResource("4_waeod")]
+position = Vector2(320, 40)
+metadata/_scene_painted = true
+
+[node name="Green16" parent="OBSTACLES" unique_id=1129862774 instance=ExtResource("4_waeod")]
+position = Vector2(496, -24)
+metadata/_scene_painted = true
+
+[node name="Green17" parent="OBSTACLES" unique_id=1022998444 instance=ExtResource("4_waeod")]
+position = Vector2(512, -24)
+metadata/_scene_painted = true
+
+[node name="Green18" parent="OBSTACLES" unique_id=427382335 instance=ExtResource("4_waeod")]
+position = Vector2(528, -24)
+metadata/_scene_painted = true
+
+[node name="Green19" parent="OBSTACLES" unique_id=43199262 instance=ExtResource("4_waeod")]
+position = Vector2(544, -24)
+metadata/_scene_painted = true
+
+[node name="Green20" parent="OBSTACLES" unique_id=26141799 instance=ExtResource("4_waeod")]
+position = Vector2(560, -24)
+metadata/_scene_painted = true
+
+[node name="Green21" parent="OBSTACLES" unique_id=1025079626 instance=ExtResource("4_waeod")]
+position = Vector2(624, -24)
+metadata/_scene_painted = true
+
+[node name="Green22" parent="OBSTACLES" unique_id=283572534 instance=ExtResource("4_waeod")]
+position = Vector2(608, -24)
+metadata/_scene_painted = true
+
+[node name="Green23" parent="OBSTACLES" unique_id=1120961764 instance=ExtResource("4_waeod")]
+position = Vector2(592, -24)
+metadata/_scene_painted = true
+
+[node name="Green24" parent="OBSTACLES" unique_id=756332560 instance=ExtResource("4_waeod")]
+position = Vector2(576, -24)
+metadata/_scene_painted = true
+
+[node name="green_box" parent="OBSTACLES" unique_id=1417222214 instance=ExtResource("5_budnj")]
+position = Vector2(336, 24)
+metadata/_scene_painted = true
+
+[node name="green_box2" parent="OBSTACLES" unique_id=1039281969 instance=ExtResource("5_budnj")]
+position = Vector2(640, -40)
+metadata/_scene_painted = true
+
+[node name="Green26" parent="OBSTACLES" unique_id=1450463655 instance=ExtResource("4_waeod")]
+position = Vector2(816, -80)
+metadata/_scene_painted = true
+
+[node name="Green27" parent="OBSTACLES" unique_id=981287322 instance=ExtResource("4_waeod")]
+position = Vector2(832, -80)
+metadata/_scene_painted = true
+
+[node name="Green28" parent="OBSTACLES" unique_id=231199716 instance=ExtResource("4_waeod")]
+position = Vector2(848, -80)
+metadata/_scene_painted = true
+
+[node name="Green29" parent="OBSTACLES" unique_id=1447112659 instance=ExtResource("4_waeod")]
+position = Vector2(864, -80)
+metadata/_scene_painted = true
+
+[node name="Green30" parent="OBSTACLES" unique_id=1107147453 instance=ExtResource("4_waeod")]
+position = Vector2(880, -80)
+metadata/_scene_painted = true
+
+[node name="Green31" parent="OBSTACLES" unique_id=395260004 instance=ExtResource("4_waeod")]
+position = Vector2(896, -80)
+metadata/_scene_painted = true
+
+[node name="Green32" parent="OBSTACLES" unique_id=80229418 instance=ExtResource("4_waeod")]
+position = Vector2(912, -80)
+metadata/_scene_painted = true
+
+[node name="Green33" parent="OBSTACLES" unique_id=751972218 instance=ExtResource("4_waeod")]
+position = Vector2(928, -80)
+metadata/_scene_painted = true
+
+[node name="green_box3" parent="OBSTACLES" unique_id=736355512 instance=ExtResource("5_budnj")]
+position = Vector2(1120, -32)
+metadata/_scene_painted = true
+
+[node name="green_box6" parent="OBSTACLES" unique_id=1992001440 instance=ExtResource("5_budnj")]
+position = Vector2(1312, -104)
+metadata/_scene_painted = true
+
+[node name="green_box4" parent="OBSTACLES" unique_id=1556985624 instance=ExtResource("5_budnj")]
+position = Vector2(1504, -168)
+metadata/_scene_painted = true
+
+[node name="BallEnemy9" parent="OBSTACLES" unique_id=641835925 instance=ExtResource("6_26ur8")]
+position = Vector2(1904, -224)
+metadata/_scene_painted = true
+
+[node name="BallEnemy12" parent="OBSTACLES" unique_id=470362050 instance=ExtResource("6_26ur8")]
+position = Vector2(1920, -224)
+metadata/_scene_painted = true
+
+[node name="BallEnemy13" parent="OBSTACLES" unique_id=132970207 instance=ExtResource("6_26ur8")]
+position = Vector2(1936, -224)
+metadata/_scene_painted = true
+
+[node name="BallEnemy14" parent="OBSTACLES" unique_id=13164837 instance=ExtResource("6_26ur8")]
+position = Vector2(1952, -224)
+metadata/_scene_painted = true
+
+[node name="BallEnemy15" parent="OBSTACLES" unique_id=2107916425 instance=ExtResource("6_26ur8")]
+position = Vector2(1968, -224)
+metadata/_scene_painted = true
+
+[node name="BallEnemy16" parent="OBSTACLES" unique_id=1953096 instance=ExtResource("6_26ur8")]
+position = Vector2(1984, -224)
+metadata/_scene_painted = true
+
+[node name="BallEnemy17" parent="OBSTACLES" unique_id=830405512 instance=ExtResource("6_26ur8")]
+position = Vector2(2000, -224)
+metadata/_scene_painted = true
+
+[node name="BallEnemy18" parent="OBSTACLES" unique_id=307126637 instance=ExtResource("6_26ur8")]
+position = Vector2(2016, -224)
+metadata/_scene_painted = true
+
+[node name="BallEnemy19" parent="OBSTACLES" unique_id=129985453 instance=ExtResource("6_26ur8")]
+position = Vector2(2032, -224)
+metadata/_scene_painted = true
+
+[node name="BallEnemy20" parent="OBSTACLES" unique_id=1064507727 instance=ExtResource("6_26ur8")]
+position = Vector2(2048, -224)
+metadata/_scene_painted = true
+
+[node name="BallEnemy21" parent="OBSTACLES" unique_id=1261733818 instance=ExtResource("6_26ur8")]
+position = Vector2(2064, -224)
+metadata/_scene_painted = true
+
+[node name="BallEnemy22" parent="OBSTACLES" unique_id=1327142711 instance=ExtResource("6_26ur8")]
+position = Vector2(2080, -224)
+metadata/_scene_painted = true
+
+[node name="BallEnemy23" parent="OBSTACLES" unique_id=306402613 instance=ExtResource("6_26ur8")]
+position = Vector2(2096, -224)
+metadata/_scene_painted = true
+
+[node name="BallEnemy24" parent="OBSTACLES" unique_id=1471583268 instance=ExtResource("6_26ur8")]
+position = Vector2(2112, -224)
+metadata/_scene_painted = true
+
+[node name="BallEnemy25" parent="OBSTACLES" unique_id=305594856 instance=ExtResource("6_26ur8")]
+position = Vector2(2128, -224)
+metadata/_scene_painted = true
+
+[node name="Green15" parent="OBSTACLES" unique_id=2125103863 instance=ExtResource("4_waeod")]
+position = Vector2(1744, -224)
+metadata/_scene_painted = true
+
+[node name="Green37" parent="OBSTACLES" unique_id=786738167 instance=ExtResource("4_waeod")]
+position = Vector2(1824, -224)
+metadata/_scene_painted = true
+
+[node name="Green38" parent="OBSTACLES" unique_id=1299532363 instance=ExtResource("4_waeod")]
+position = Vector2(1808, -224)
+metadata/_scene_painted = true
+
+[node name="Green39" parent="OBSTACLES" unique_id=71672531 instance=ExtResource("4_waeod")]
+position = Vector2(1792, -224)
+metadata/_scene_painted = true
+
+[node name="Green40" parent="OBSTACLES" unique_id=788837015 instance=ExtResource("4_waeod")]
+position = Vector2(1776, -224)
+metadata/_scene_painted = true
+
+[node name="Green41" parent="OBSTACLES" unique_id=1889505663 instance=ExtResource("4_waeod")]
+position = Vector2(1760, -224)
+metadata/_scene_painted = true
+
+[node name="red_box" parent="OBSTACLES" unique_id=1295649886 instance=ExtResource("7_noyjo")]
+position = Vector2(2208, -232)
+metadata/_scene_painted = true
+
+[node name="green_box5" parent="OBSTACLES" unique_id=1945380692 instance=ExtResource("5_budnj")]
+position = Vector2(3172, -149)
+metadata/_scene_painted = true
+
+[node name="green_box7" parent="OBSTACLES" unique_id=80812241 instance=ExtResource("5_budnj")]
+position = Vector2(3456, -216)
+metadata/_scene_painted = true
+
+[node name="green_box8" parent="OBSTACLES" unique_id=348342751 instance=ExtResource("5_budnj")]
+position = Vector2(3760, -284)
+metadata/_scene_painted = true
+
+[node name="enemy_pink" parent="OBSTACLES" unique_id=550152188 instance=ExtResource("3_kq1ya")]
+position = Vector2(4016, -360)
+metadata/_scene_painted = true
+
+[node name="enemy_pink2" parent="OBSTACLES" unique_id=1221612242 instance=ExtResource("3_kq1ya")]
+position = Vector2(4032, -360)
+metadata/_scene_painted = true
+
+[node name="enemy_pink3" parent="OBSTACLES" unique_id=640851989 instance=ExtResource("3_kq1ya")]
+position = Vector2(4048, -360)
+metadata/_scene_painted = true
+
+[node name="enemy_pink4" parent="OBSTACLES" unique_id=1282962526 instance=ExtResource("3_kq1ya")]
+position = Vector2(4064, -360)
+metadata/_scene_painted = true
+
+[node name="enemy_pink5" parent="OBSTACLES" unique_id=239020305 instance=ExtResource("3_kq1ya")]
+position = Vector2(4080, -360)
+metadata/_scene_painted = true
+
+[node name="enemy_pink6" parent="OBSTACLES" unique_id=1755110830 instance=ExtResource("3_kq1ya")]
+position = Vector2(4096, -360)
+metadata/_scene_painted = true
+
+[node name="enemy_pink7" parent="OBSTACLES" unique_id=7390308 instance=ExtResource("3_kq1ya")]
+position = Vector2(4112, -360)
+metadata/_scene_painted = true
+
+[node name="enemy_pink8" parent="OBSTACLES" unique_id=1218071585 instance=ExtResource("3_kq1ya")]
+position = Vector2(4128, -360)
+metadata/_scene_painted = true
+
+[node name="enemy_pink9" parent="OBSTACLES" unique_id=556136972 instance=ExtResource("3_kq1ya")]
+position = Vector2(4144, -360)
+metadata/_scene_painted = true
+
+[node name="enemy_pink10" parent="OBSTACLES" unique_id=1098165856 instance=ExtResource("3_kq1ya")]
+position = Vector2(4160, -360)
+metadata/_scene_painted = true
+
+[node name="enemy_pink16" parent="OBSTACLES" unique_id=763230269 instance=ExtResource("3_kq1ya")]
+position = Vector2(4224, -360)
+metadata/_scene_painted = true
+
+[node name="enemy_pink17" parent="OBSTACLES" unique_id=1083167123 instance=ExtResource("3_kq1ya")]
+position = Vector2(4192, -360)
+metadata/_scene_painted = true
+
+[node name="enemy_pink18" parent="OBSTACLES" unique_id=1259262298 instance=ExtResource("3_kq1ya")]
+position = Vector2(4176, -360)
+metadata/_scene_painted = true
+
+[node name="enemy_pink11" parent="OBSTACLES" unique_id=1892462734 instance=ExtResource("3_kq1ya")]
+position = Vector2(4208, -360)
+metadata/_scene_painted = true
+
+[node name="BallEnemy" parent="OBSTACLES" unique_id=1027606831 instance=ExtResource("6_26ur8")]
+position = Vector2(1888, -224)
+metadata/_scene_painted = true
+
+[node name="enemy_pink12" parent="OBSTACLES" unique_id=1480058925 instance=ExtResource("3_kq1ya")]
+position = Vector2(4240, -360)
+metadata/_scene_painted = true
+
+[node name="enemy_pink13" parent="OBSTACLES" unique_id=1101966824 instance=ExtResource("3_kq1ya")]
+position = Vector2(4256, -360)
+metadata/_scene_painted = true
+
+[node name="enemy_pink14" parent="OBSTACLES" unique_id=959404609 instance=ExtResource("3_kq1ya")]
+position = Vector2(4272, -360)
+metadata/_scene_painted = true
+
+[node name="enemy_pink15" parent="OBSTACLES" unique_id=1391656873 instance=ExtResource("3_kq1ya")]
+position = Vector2(4288, -360)
+metadata/_scene_painted = true
+
+[node name="enemy_pink19" parent="OBSTACLES" unique_id=565065646 instance=ExtResource("3_kq1ya")]
+position = Vector2(4304, -360)
+metadata/_scene_painted = true
+
+[node name="enemy_pink20" parent="OBSTACLES" unique_id=256295762 instance=ExtResource("3_kq1ya")]
+position = Vector2(4320, -360)
+metadata/_scene_painted = true
+
+[node name="enemy_pink21" parent="OBSTACLES" unique_id=51796240 instance=ExtResource("3_kq1ya")]
+position = Vector2(4400, -360)
+metadata/_scene_painted = true
+
+[node name="enemy_pink22" parent="OBSTACLES" unique_id=1178342349 instance=ExtResource("3_kq1ya")]
+position = Vector2(4384, -360)
+metadata/_scene_painted = true
+
+[node name="enemy_pink23" parent="OBSTACLES" unique_id=235331101 instance=ExtResource("3_kq1ya")]
+position = Vector2(4368, -360)
+metadata/_scene_painted = true
+
+[node name="enemy_pink24" parent="OBSTACLES" unique_id=1394472375 instance=ExtResource("3_kq1ya")]
+position = Vector2(4352, -360)
+metadata/_scene_painted = true
+
+[node name="enemy_pink25" parent="OBSTACLES" unique_id=2031771742 instance=ExtResource("3_kq1ya")]
+position = Vector2(4336, -360)
+metadata/_scene_painted = true
+
+[node name="Green25" parent="OBSTACLES" unique_id=1335029438 instance=ExtResource("4_waeod")]
+position = Vector2(4416, -360)
+metadata/_scene_painted = true
+
+[node name="Green42" parent="OBSTACLES" unique_id=997267919 instance=ExtResource("4_waeod")]
+position = Vector2(4432, -360)
+metadata/_scene_painted = true
+
+[node name="Green43" parent="OBSTACLES" unique_id=1227695015 instance=ExtResource("4_waeod")]
+position = Vector2(4448, -360)
+metadata/_scene_painted = true
+
+[node name="Green44" parent="OBSTACLES" unique_id=994830664 instance=ExtResource("4_waeod")]
+position = Vector2(4464, -360)
+metadata/_scene_painted = true
+
+[node name="Green45" parent="OBSTACLES" unique_id=481250945 instance=ExtResource("4_waeod")]
+position = Vector2(4480, -360)
+metadata/_scene_painted = true
+
+[node name="Green46" parent="OBSTACLES" unique_id=1442031192 instance=ExtResource("4_waeod")]
+position = Vector2(4496, -360)
+metadata/_scene_painted = true
+
+[node name="Green47" parent="OBSTACLES" unique_id=1089974406 instance=ExtResource("4_waeod")]
+position = Vector2(4512, -360)
+metadata/_scene_painted = true
+
+[node name="green_box9" parent="OBSTACLES" unique_id=1188763719 instance=ExtResource("5_budnj")]
+position = Vector2(4544, -360)
+metadata/_scene_painted = true
+
+[node name="scissors10" parent="OBSTACLES" unique_id=1286587920 instance=ExtResource("4_v5gsk")]
+position = Vector2(4704, -304)
+metadata/_scene_painted = true
+
+[node name="scissors11" parent="OBSTACLES" unique_id=1385503504 instance=ExtResource("4_v5gsk")]
+position = Vector2(4704, -320)
+metadata/_scene_painted = true
+
+[node name="scissors12" parent="OBSTACLES" unique_id=1731203902 instance=ExtResource("4_v5gsk")]
+position = Vector2(4704, -336)
+metadata/_scene_painted = true
+
+[node name="scissors16" parent="OBSTACLES" unique_id=2125334758 instance=ExtResource("4_v5gsk")]
+position = Vector2(4704, -288)
+metadata/_scene_painted = true
+
+[node name="scissors17" parent="OBSTACLES" unique_id=987966783 instance=ExtResource("4_v5gsk")]
+position = Vector2(4704, -272)
+metadata/_scene_painted = true
+
+[node name="scissors14" parent="OBSTACLES" unique_id=2007886006 instance=ExtResource("4_v5gsk")]
+position = Vector2(4704, -456)
+metadata/_scene_painted = true
+
+[node name="scissors15" parent="OBSTACLES" unique_id=1066772679 instance=ExtResource("4_v5gsk")]
+position = Vector2(4704, -472)
+metadata/_scene_painted = true
+
+[node name="scissors21" parent="OBSTACLES" unique_id=1209014334 instance=ExtResource("4_v5gsk")]
+position = Vector2(4704, -368)
+metadata/_scene_painted = true
+
+[node name="scissors22" parent="OBSTACLES" unique_id=184277137 instance=ExtResource("4_v5gsk")]
+position = Vector2(4704, -352)
+metadata/_scene_painted = true
+
+[node name="scissors23" parent="OBSTACLES" unique_id=308383089 instance=ExtResource("4_v5gsk")]
+position = Vector2(4704, -384)
+metadata/_scene_painted = true
+
+[node name="scissors24" parent="OBSTACLES" unique_id=1686436818 instance=ExtResource("4_v5gsk")]
+position = Vector2(4704, -400)
+metadata/_scene_painted = true
+
+[node name="scissors13" parent="OBSTACLES" unique_id=1997318190 instance=ExtResource("4_v5gsk")]
+position = Vector2(4704, -488)
+metadata/_scene_painted = true
+
+[node name="scissors25" parent="OBSTACLES" unique_id=2046881694 instance=ExtResource("4_v5gsk")]
+position = Vector2(4704, -504)
+metadata/_scene_painted = true
+
+[node name="scissors26" parent="OBSTACLES" unique_id=658456408 instance=ExtResource("4_v5gsk")]
+position = Vector2(4704, -520)
+metadata/_scene_painted = true
+
+[node name="scissors27" parent="OBSTACLES" unique_id=1615632253 instance=ExtResource("4_v5gsk")]
+position = Vector2(4704, -536)
+metadata/_scene_painted = true
+
+[node name="scissors28" parent="OBSTACLES" unique_id=523001445 instance=ExtResource("4_v5gsk")]
+position = Vector2(4704, -552)
+metadata/_scene_painted = true
+
+[node name="scissors29" parent="OBSTACLES" unique_id=1237794786 instance=ExtResource("4_v5gsk")]
+position = Vector2(4720, -400)
+rotation = 1.5707964
+metadata/_scene_painted = true
+
+[node name="scissors30" parent="OBSTACLES" unique_id=1029334345 instance=ExtResource("4_v5gsk")]
+position = Vector2(4736, -400)
+rotation = 1.5707964
+metadata/_scene_painted = true
+
+[node name="scissors31" parent="OBSTACLES" unique_id=1725589332 instance=ExtResource("4_v5gsk")]
+position = Vector2(4752, -400)
+rotation = 1.5707964
+metadata/_scene_painted = true
+
+[node name="scissors36" parent="OBSTACLES" unique_id=639868208 instance=ExtResource("4_v5gsk")]
+position = Vector2(4720, -456)
+rotation = -1.5707964
+metadata/_scene_painted = true
+
+[node name="scissors37" parent="OBSTACLES" unique_id=585024614 instance=ExtResource("4_v5gsk")]
+position = Vector2(4736, -456)
+rotation = -1.5707964
+metadata/_scene_painted = true
+
+[node name="scissors38" parent="OBSTACLES" unique_id=1118599864 instance=ExtResource("4_v5gsk")]
+position = Vector2(4752, -456)
+rotation = -1.5707964
+metadata/_scene_painted = true
+
+[node name="scissors32" parent="OBSTACLES" unique_id=234153322 instance=ExtResource("4_v5gsk")]
+position = Vector2(4768, -400)
+rotation = 3.1415927
+metadata/_scene_painted = true
+
+[node name="scissors33" parent="OBSTACLES" unique_id=1226973447 instance=ExtResource("4_v5gsk")]
+position = Vector2(4768, -384)
+rotation = 3.1415927
+metadata/_scene_painted = true
+
+[node name="scissors34" parent="OBSTACLES" unique_id=1686322228 instance=ExtResource("4_v5gsk")]
+position = Vector2(4768, -368)
+rotation = 3.1415927
+metadata/_scene_painted = true
+
+[node name="scissors35" parent="OBSTACLES" unique_id=1614433850 instance=ExtResource("4_v5gsk")]
+position = Vector2(4768, -352)
+rotation = 3.1415927
+metadata/_scene_painted = true
+
+[node name="scissors39" parent="OBSTACLES" unique_id=28301253 instance=ExtResource("4_v5gsk")]
+position = Vector2(4768, -336)
+rotation = 3.1415927
+metadata/_scene_painted = true
+
+[node name="scissors40" parent="OBSTACLES" unique_id=197122062 instance=ExtResource("4_v5gsk")]
+position = Vector2(4768, -320)
+rotation = 3.1415927
+metadata/_scene_painted = true
+
+[node name="scissors41" parent="OBSTACLES" unique_id=1732933889 instance=ExtResource("4_v5gsk")]
+position = Vector2(4768, -304)
+rotation = 3.1415927
+metadata/_scene_painted = true
+
+[node name="scissors42" parent="OBSTACLES" unique_id=1094138873 instance=ExtResource("4_v5gsk")]
+position = Vector2(4768, -288)
+rotation = 3.1415927
+metadata/_scene_painted = true
+
+[node name="scissors43" parent="OBSTACLES" unique_id=1721936329 instance=ExtResource("4_v5gsk")]
+position = Vector2(4768, -456)
+rotation = 3.1415927
+metadata/_scene_painted = true
+
+[node name="scissors44" parent="OBSTACLES" unique_id=1502740270 instance=ExtResource("4_v5gsk")]
+position = Vector2(4768, -472)
+rotation = 3.1415927
+metadata/_scene_painted = true
+
+[node name="scissors45" parent="OBSTACLES" unique_id=678795085 instance=ExtResource("4_v5gsk")]
+position = Vector2(4768, -488)
+rotation = 3.1415927
+metadata/_scene_painted = true
+
+[node name="scissors46" parent="OBSTACLES" unique_id=822512773 instance=ExtResource("4_v5gsk")]
+position = Vector2(4768, -504)
+rotation = 3.1415927
+metadata/_scene_painted = true
+
+[node name="scissors47" parent="OBSTACLES" unique_id=309578383 instance=ExtResource("4_v5gsk")]
+position = Vector2(4768, -520)
+rotation = 3.1415927
+metadata/_scene_painted = true
+
+[node name="scissors48" parent="OBSTACLES" unique_id=1184983861 instance=ExtResource("4_v5gsk")]
+position = Vector2(4768, -536)
+rotation = 3.1415927
+metadata/_scene_painted = true
+
+[node name="scissors49" parent="OBSTACLES" unique_id=1892876851 instance=ExtResource("4_v5gsk")]
+position = Vector2(4768, -552)
+rotation = 3.1415927
+metadata/_scene_painted = true
+
+[node name="scissors18" parent="OBSTACLES" unique_id=249149022 instance=ExtResource("4_v5gsk")]
+position = Vector2(4768, -272)
+rotation = 3.1415927
+metadata/_scene_painted = true
+
+[node name="yellow_box" parent="OBSTACLES" unique_id=1076928080 instance=ExtResource("9_noyjo")]
+position = Vector2(4944, -320)
+metadata/_scene_painted = true
+
+[node name="scissors19" parent="OBSTACLES" unique_id=1299188826 instance=ExtResource("4_v5gsk")]
+position = Vector2(5184, -448)
+metadata/_scene_painted = true
+
+[node name="scissors20" parent="OBSTACLES" unique_id=275471351 instance=ExtResource("4_v5gsk")]
+position = Vector2(5184, -432)
+metadata/_scene_painted = true
+
+[node name="scissors50" parent="OBSTACLES" unique_id=868409508 instance=ExtResource("4_v5gsk")]
+position = Vector2(5184, -416)
+metadata/_scene_painted = true
+
+[node name="scissors51" parent="OBSTACLES" unique_id=950371058 instance=ExtResource("4_v5gsk")]
+position = Vector2(5184, -400)
+metadata/_scene_painted = true
+
+[node name="scissors52" parent="OBSTACLES" unique_id=1557040423 instance=ExtResource("4_v5gsk")]
+position = Vector2(5184, -496)
+metadata/_scene_painted = true
+
+[node name="scissors53" parent="OBSTACLES" unique_id=107767016 instance=ExtResource("4_v5gsk")]
+position = Vector2(5184, -512)
+metadata/_scene_painted = true
+
+[node name="scissors54" parent="OBSTACLES" unique_id=1910234492 instance=ExtResource("4_v5gsk")]
+position = Vector2(5184, -528)
+metadata/_scene_painted = true
+
+[node name="scissors55" parent="OBSTACLES" unique_id=1450651342 instance=ExtResource("4_v5gsk")]
+position = Vector2(5184, -544)
+metadata/_scene_painted = true
+
+[node name="green_box10" parent="OBSTACLES" unique_id=1821957852 instance=ExtResource("5_budnj")]
+position = Vector2(5312, -448)
+metadata/_scene_painted = true
+
+[node name="red_box2" parent="OBSTACLES" unique_id=119531092 instance=ExtResource("7_noyjo")]
+position = Vector2(5648, -440)
+metadata/_scene_painted = true
+
+[node name="BallEnemy2" parent="OBSTACLES" unique_id=505476769 instance=ExtResource("6_26ur8")]
+position = Vector2(2144, -224)
+metadata/_scene_painted = true
+
+[node name="BallEnemy4" parent="OBSTACLES" unique_id=1547600788 instance=ExtResource("6_26ur8")]
+position = Vector2(1872, -224)
+metadata/_scene_painted = true
+
+[node name="BallEnemy5" parent="OBSTACLES" unique_id=945575158 instance=ExtResource("6_26ur8")]
+position = Vector2(1856, -224)
+metadata/_scene_painted = true
+
+[node name="BallEnemy6" parent="OBSTACLES" unique_id=153085126 instance=ExtResource("6_26ur8")]
+position = Vector2(1840, -224)
+metadata/_scene_painted = true
+
+[node name="Green34" parent="OBSTACLES" unique_id=88272669 instance=ExtResource("4_waeod")]
+position = Vector2(2160, -224)
+metadata/_scene_painted = true
+
+[node name="surf_board" parent="." unique_id=477629956 instance=ExtResource("6_hkngp")]
+position = Vector2(96, 24)

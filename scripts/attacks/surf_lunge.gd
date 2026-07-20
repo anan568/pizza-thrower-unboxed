@@ -18,7 +18,7 @@ func _physics_process(delta: float) -> void:
 		
 func Create_Surfboard():
 	var instance = surfboard.instantiate()
-	instance.position = global_position
+	instance.position = pj.global_position
 	instance.velocity = pj.velocity
 	instance.scale.x = pj.scale.x
 	instance.facing_right = pj.facing_right

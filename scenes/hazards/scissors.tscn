@@ -1,0 +1,39 @@
+[gd_scene format=3 uid="uid://duhitje6qlgtq"]
+
+[ext_resource type="Script" uid="uid://dqolog8waa3rw" path="res://scripts/enemy/enemy_ball.gd" id="1_hvnw5"]
+[ext_resource type="Texture2D" uid="uid://md3dgpkbh8a3" path="res://art/surf/hazards/scissors.png" id="2_exquf"]
+
+[sub_resource type="AtlasTexture" id="AtlasTexture_p8qgm"]
+atlas = ExtResource("2_exquf")
+region = Rect2(0, 0, 16, 16)
+
+[sub_resource type="SpriteFrames" id="SpriteFrames_e5cqd"]
+animations = [{
+"frames": [{
+"duration": 1.0,
+"texture": SubResource("AtlasTexture_p8qgm")
+}],
+"loop": 1,
+"name": &"default",
+"speed": 5.0
+}]
+
+[sub_resource type="CircleShape2D" id="CircleShape2D_xhjir"]
+radius = 5.0
+
+[node name="scissors" type="Area2D" unique_id=759043803]
+collision_layer = 0
+collision_mask = 2
+monitorable = false
+script = ExtResource("1_hvnw5")
+speed_bonus = 0
+metadata/_custom_type_script = "uid://dqolog8waa3rw"
+
+[node name="AnimatedSprite2D" type="AnimatedSprite2D" parent="." unique_id=849562258]
+sprite_frames = SubResource("SpriteFrames_e5cqd")
+autoplay = "default"
+
+[node name="CollisionShape2D" type="CollisionShape2D" parent="." unique_id=396648551]
+shape = SubResource("CircleShape2D_xhjir")
+
+[connection signal="body_entered" from="." to="." method="_on_body_entered"]

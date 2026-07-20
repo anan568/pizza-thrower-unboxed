@@ -96,7 +96,10 @@ func Lunge():
 	current_state = state.lunging
 	animator.play("lunge")
 	
-	velocity.x += lunge_force * scale.x
+	if facing_right:
+		velocity.x += lunge_force
+	else:
+		velocity.x -= lunge_force
 	
 	lunge_hitbox.set_deferred("enabled", true)
 	lunge_time_timer.start()

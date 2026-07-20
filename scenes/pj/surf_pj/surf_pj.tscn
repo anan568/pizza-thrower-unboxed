@@ -170,10 +170,10 @@ radius = 4.0
 height = 24.0
 
 [sub_resource type="RectangleShape2D" id="RectangleShape2D_g4v7s"]
-size = Vector2(8, 20)
+size = Vector2(8, 13.815)
 
 [sub_resource type="RectangleShape2D" id="RectangleShape2D_yf5fn"]
-size = Vector2(18, 13)
+size = Vector2(22, 17)
 
 [node name="surf_pj" type="CharacterBody2D" unique_id=2071708297 groups=["player"]]
 collision_layer = 2
@@ -189,7 +189,7 @@ autoplay = "idle"
 shape = SubResource("CapsuleShape2D_d0u6y")
 
 [node name="lunge_hitbox" type="ShapeCast2D" parent="." unique_id=279167350]
-position = Vector2(8, 0)
+position = Vector2(8, 1)
 enabled = false
 shape = SubResource("RectangleShape2D_g4v7s")
 target_position = Vector2(0, 0)
@@ -206,7 +206,7 @@ monitorable = false
 script = ExtResource("8_pgf3x")
 
 [node name="CollisionShape2D" type="CollisionShape2D" parent="punch_hitbox" unique_id=592538643]
-position = Vector2(18, -1.5)
+position = Vector2(18, -0.5)
 shape = SubResource("RectangleShape2D_yf5fn")
 debug_color = Color(1, 0.010117998, 0.061540082, 0.41960785)
 

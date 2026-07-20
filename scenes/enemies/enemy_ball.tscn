@@ -15,7 +15,7 @@ animations = [{
 }]
 
 [sub_resource type="CircleShape2D" id="CircleShape2D_yf5fn"]
-radius = 7.0
+radius = 8.0
 
 [node name="BallEnemy" type="Area2D" unique_id=641835925 groups=["enemy"]]
 collision_layer = 4
