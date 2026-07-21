@@ -1,7 +1,8 @@
 extends CharacterBody2D
 
 var jump_force = 300
-var dash_anim_time = 0.2 #how long the dashing animation will last before automatically cancelled
+#var dash_anim_time = 0.2 #how long the dashing animation will last before automatically cancelled
+@onready var dash_anim = $dash_anim
 
 var lunge_time = 0.2
 var lunge_force = 50
@@ -16,6 +17,8 @@ var current_state
 enum state {idle, lunging, punching}
 @onready var input_processor = $"/root/InputProcessor"
 @onready var animator = $AnimatedSprite2D
+
+@onready var after_image = $afterimage
 
 @onready var lunge_hitbox = $lunge_hitbox
 @onready var lunge_time_timer = $lunge_time
@@ -77,14 +80,15 @@ func Act(move: String, direction: Vector2):
 	
 func Dash():
 	animator.play("dash")
+	after_image.emitting = true
 	dashing = true
 	velocity.x *= -1
 	Flip()
-	await get_tree().create_timer(dash_anim_time).timeout
-	Dash_Cancel()
+	dash_anim.start()
 	
 func Dash_Cancel():
 	dashing = false
+	after_image.emitting = false
 	
 	
 func Lunge():
@@ -145,3 +149,7 @@ func _on_punch_endlag_timer_timeout() -> void:
 	punch_hitbox.set_deferred("monitoring", false)
 	input_processor.actionable = true
 	current_charge_time = 0
+
+
+func _on_dash_anim_timeout() -> void:
+	Dash_Cancel()
