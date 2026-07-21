@@ -1,0 +1,24 @@
+[remap]
+
+importer="wav"
+type="AudioStreamWAV"
+uid="uid://dxyklw5yyssny"
+path="res://.godot/imported/surely_longer_1_warmpad_150bpm.wav-7a2904b9c53ac0a3747f2c5b8e55ea39.sample"
+
+[deps]
+
+source_file="res://sounds/the kitchen/surely_longer_1_warmpad_150bpm.wav"
+dest_files=["res://.godot/imported/surely_longer_1_warmpad_150bpm.wav-7a2904b9c53ac0a3747f2c5b8e55ea39.sample"]
+
+[params]
+
+force/8_bit=false
+force/mono=false
+force/max_rate=false
+force/max_rate_hz=44100
+edit/trim=false
+edit/normalize=false
+edit/loop_mode=0
+edit/loop_begin=0
+edit/loop_end=-1
+compress/mode=2
