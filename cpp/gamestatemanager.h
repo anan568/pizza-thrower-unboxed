@@ -48,12 +48,17 @@ public:
   bool is_empty();
 
 private:
+  void internal_pop_state();
+
   // LocalVector and Vector both didn't have the interface I wanted...
-  std::vector<GameState*> state_stack;
-  std::vector<GameState*> states_to_clear;
+  using GS_Stack = std::vector<GameState*>;
+  GS_Stack state_stack;
+  GS_Stack states_to_clear;
 
   // for optimisation.
   uint16_t expected_stack_depth = 4;
+  uint16_t current_stack_depth = 0;
+  uint16_t depth_to_pop = 0;
   // bool pause_lower_states = true;
   // bool process_background_states = false;
 

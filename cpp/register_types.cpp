@@ -1,6 +1,8 @@
 #include "register_types.h"
 
 #include "gdexample.h"
+#include "gamestate.h"
+#include "gamestatemanager.h"
 
 #include <gdextension_interface.h>
 #include <godot_cpp/core/defs.hpp>
@@ -13,7 +15,9 @@ void initialize_pizza_module(ModuleInitializationLevel p_level) {
 		return;
 	}
   // add all classes you make here!!!
-	GDREGISTER_RUNTIME_CLASS(GDExample);
+	// GDREGISTER_RUNTIME_CLASS(GDExample);
+	GDREGISTER_ABSTRACT_CLASS(GameState);
+	GDREGISTER_RUNTIME_CLASS(GameStateManager);
 }
 
 void uninitialize_pizza_module(ModuleInitializationLevel p_level) {
