@@ -16,7 +16,7 @@ void initialize_pizza_module(ModuleInitializationLevel p_level) {
 	}
   // add all classes you make here!!!
 	// GDREGISTER_RUNTIME_CLASS(GDExample);
-	GDREGISTER_ABSTRACT_CLASS(GameState);
+	GDREGISTER_RUNTIME_CLASS(GameState);
 	GDREGISTER_RUNTIME_CLASS(GameStateManager);
 }
 

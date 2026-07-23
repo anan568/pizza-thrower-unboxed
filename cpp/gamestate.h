@@ -15,8 +15,6 @@ public:
 
   // no _process()... this is handled by gamestatemanager...
 
-  // you already know grok helped find me GDVIRTUAL and GDVIRTUALCALL
-  // Real C++ Virtual Functions (Public Interface)
   virtual void _on_enter();
   virtual void _on_exit();
   virtual void _on_update(double delta_time);

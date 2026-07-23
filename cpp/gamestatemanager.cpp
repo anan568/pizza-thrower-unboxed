@@ -15,27 +15,26 @@ void godot::GameStateManager::_ready()
 
 void godot::GameStateManager::_process(double delta_time)
 {
-  depth_to_pop = current_stack_depth = 0;
-
   std::for_each(states_to_clear.begin(), states_to_clear.end(), [](auto & gs){ gs->queue_free(); });
   states_to_clear.clear();
   if (is_empty()) return;
 
   // get to one past the last, then step back once (zero past the last, aka the last)
   int top_gs_id = static_cast<int>(state_stack.size()) - 1;
-  state_stack[top_gs_id]->_on_update(delta_time); // doesn't exist anymore!!!
+  state_stack[top_gs_id]->_on_update(delta_time); 
 
   // slowly bring topgsid down to 0, if applicable
   while (top_gs_id > 0 && state_stack[top_gs_id]->get_update_underneath()) {
-      top_gs_id--;
-      state_stack[top_gs_id]->_on_update(delta_time);
+    ++current_stack_depth;
+    top_gs_id--;
+    state_stack[top_gs_id]->_on_update(delta_time);
   }
 
-  // process the pop queue
   for (; depth_to_pop != 0 ; --depth_to_pop){
     internal_pop_state();
   }
   
+  depth_to_pop = current_stack_depth = 0;
 }
 
 void godot::GameStateManager::push_state(Ref<PackedScene> const& p_scene)
@@ -43,10 +42,8 @@ void godot::GameStateManager::push_state(Ref<PackedScene> const& p_scene)
   if (p_scene.is_null())
 
   { 
-#ifdef _DEBUG
     //throw std::invalid_argument("you passed in a null PackedScene!!!"); 
     ERR_FAIL_COND_MSG(p_scene.is_null(), "You passed in a null PackedScene!");
-#endif
     return;
   }
 
@@ -56,10 +53,8 @@ void godot::GameStateManager::push_state(Ref<PackedScene> const& p_scene)
 
   {
     instance->queue_free();
-#ifdef _DEBUG
     //throw std::invalid_argument("you passed in a Scene root node that doesn't extend GameState!!!");
     ERR_FAIL_COND_MSG(p_scene.is_null(), "you passed in a Scene root node that doesn't extend GameState!!!");
-#endif
     return;
   }  
   if (!is_empty()){
@@ -67,6 +62,7 @@ void godot::GameStateManager::push_state(Ref<PackedScene> const& p_scene)
   }
   add_child(new_state);
   state_stack.push_back(new_state);
+
   new_state->_on_enter();
 }
 

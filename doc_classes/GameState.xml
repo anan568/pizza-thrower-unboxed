@@ -1,0 +1,29 @@
+<?xml version="1.0" encoding="UTF-8" ?>
+<class name="GameState" inherits="Node" api_type="extension" xmlns:xsi="http://www.w3.org/2001/XMLSchema-instance" xsi:noNamespaceSchemaLocation="https://raw.githubusercontent.com/godotengine/godot/master/doc/class.xsd">
+	<brief_description>
+	Class that provides the functionality of a classic Game State, with an _on_update(), _on_enter(), and _on_exit() that must be written by the user. _process() and other node-related functions such as input can also be defined.
+	</brief_description>
+	<description>
+	This class can be used to
+	</description>
+	<tutorials>
+	```gdscript
+# test_state.gd
+extends GameState
+
+func _on_enter() -> void:
+	print("--- TEST STATE ENTERED ---")
+
+func _on_update(delta: float) -> void:
+	print("TestState updating... delta: ", delta)
+	GSM.pop_state(); # global GSM singleton can be called whenever!
+
+func _on_exit() -> void:
+	print("--- TEST STATE EXITED ---")
+	```
+	</tutorials>
+	<members>
+		<member name="update_underneath" type="bool" setter="set_update_underneath" getter="get_update_underneath" default="false">
+		</member>
+	</members>
+</class>

@@ -1,0 +1,56 @@
+<?xml version="1.0" encoding="UTF-8" ?>
+<class name="GameStateManager" inherits="Node" api_type="extension" xmlns:xsi="http://www.w3.org/2001/XMLSchema-instance" xsi:noNamespaceSchemaLocation="https://raw.githubusercontent.com/godotengine/godot/master/doc/class.xsd">
+	<brief_description>
+	</brief_description>
+	<description>
+	</description>
+	<tutorials>
+	</tutorials>
+	<methods>
+		<method name="change_state">
+			<return type="void" />
+			<param index="0" name="p_state" type="GameState" />
+			<description>
+			replaces the current top state (NOT the state from which this function is called!!!)
+			</description>
+		</method>
+		<method name="change_state_scene">
+			<return type="void" />
+			<param index="0" name="p_scene" type="PackedScene" />
+			<description>
+			</description>
+		</method>
+		<method name="clear_stack">
+			<return type="void" />
+			<description>
+			</description>
+		</method>
+		<method name="is_empty">
+			<return type="bool" />
+			<description>
+			</description>
+		</method>
+		<method name="pop_state">
+			<return type="void" />
+			<description>
+			</description>
+		</method>
+		<method name="push_state">
+			<return type="void" />
+			<param index="0" name="p_state" type="GameState" />
+			<description>
+			</description>
+		</method>
+		<method name="push_state_scene">
+			<return type="void" />
+			<param index="0" name="p_scene" type="PackedScene" />
+			<description>
+			</description>
+		</method>
+	</methods>
+	<members>
+		<member name="expected_stack_depth" type="int" setter="set_expected_stack_depth" getter="get_expected_stack_depth" default="4">
+		for optimisation. place maximum stack depth here, and the class will not need to reallocate memory! put too much, and you will... be wasting memory... 
+		</member>
+	</members>
+</class>
