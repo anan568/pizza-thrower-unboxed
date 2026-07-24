@@ -172,10 +172,10 @@ radius = 4.0
 height = 20.0
 
 [sub_resource type="RectangleShape2D" id="RectangleShape2D_g4v7s"]
-size = Vector2(8, 9.97)
+size = Vector2(8, 7.855)
 
 [sub_resource type="RectangleShape2D" id="RectangleShape2D_yf5fn"]
-size = Vector2(20, 16)
+size = Vector2(18, 12)
 
 [sub_resource type="Curve" id="Curve_2nesf"]
 _data = [Vector2(0, 1), 0.0, 0.0, 0, 0, Vector2(1, 0.017857194), 0.0, 0.0, 0, 0]
@@ -228,7 +228,7 @@ monitorable = false
 script = ExtResource("8_pgf3x")
 
 [node name="CollisionShape2D" type="CollisionShape2D" parent="punch_hitbox" unique_id=592538643]
-position = Vector2(17, -1)
+position = Vector2(18, -1)
 shape = SubResource("RectangleShape2D_yf5fn")
 debug_color = Color(1, 0.010117998, 0.061540082, 0.41960785)
 

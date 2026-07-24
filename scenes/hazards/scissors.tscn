@@ -3,19 +3,26 @@
 [ext_resource type="Script" uid="uid://dqolog8waa3rw" path="res://scripts/enemy/enemy_ball.gd" id="1_hvnw5"]
 [ext_resource type="Texture2D" uid="uid://md3dgpkbh8a3" path="res://art/surf/hazards/scissors.png" id="2_exquf"]
 
-[sub_resource type="AtlasTexture" id="AtlasTexture_p8qgm"]
+[sub_resource type="AtlasTexture" id="AtlasTexture_hvnw5"]
 atlas = ExtResource("2_exquf")
 region = Rect2(0, 0, 16, 16)
+
+[sub_resource type="AtlasTexture" id="AtlasTexture_exquf"]
+atlas = ExtResource("2_exquf")
+region = Rect2(16, 0, 16, 16)
 
 [sub_resource type="SpriteFrames" id="SpriteFrames_e5cqd"]
 animations = [{
 "frames": [{
 "duration": 1.0,
-"texture": SubResource("AtlasTexture_p8qgm")
+"texture": SubResource("AtlasTexture_hvnw5")
+}, {
+"duration": 1.0,
+"texture": SubResource("AtlasTexture_exquf")
 }],
 "loop": 1,
 "name": &"default",
-"speed": 5.0
+"speed": 2.5
 }]
 
 [sub_resource type="CircleShape2D" id="CircleShape2D_xhjir"]
@@ -32,6 +39,7 @@ metadata/_custom_type_script = "uid://dqolog8waa3rw"
 [node name="AnimatedSprite2D" type="AnimatedSprite2D" parent="." unique_id=849562258]
 sprite_frames = SubResource("SpriteFrames_e5cqd")
 autoplay = "default"
+frame_progress = 0.43292013
 
 [node name="CollisionShape2D" type="CollisionShape2D" parent="." unique_id=396648551]
 shape = SubResource("CircleShape2D_xhjir")

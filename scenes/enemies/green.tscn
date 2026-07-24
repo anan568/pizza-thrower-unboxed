@@ -2,6 +2,7 @@
 
 [ext_resource type="Script" uid="uid://dqolog8waa3rw" path="res://scripts/enemy/enemy_ball.gd" id="1_nhfc0"]
 [ext_resource type="Texture2D" uid="uid://j6gkonwqgvb5" path="res://art/surf/characters/placeholder enemy/green.png" id="2_g5r10"]
+[ext_resource type="Shape2D" uid="uid://df7erha82f2vo" path="res://properties/enemy_ball_hurtbox.tres" id="3_g5r10"]
 
 [sub_resource type="AtlasTexture" id="AtlasTexture_d63aa"]
 atlas = ExtResource("2_g5r10")
@@ -18,9 +19,6 @@ animations = [{
 "speed": 5.0
 }]
 
-[sub_resource type="CircleShape2D" id="CircleShape2D_8cwd6"]
-radius = 8.0
-
 [node name="Green" type="Area2D" unique_id=759043803 groups=["enemy"]]
 collision_layer = 4
 collision_mask = 2
@@ -33,6 +31,6 @@ sprite_frames = SubResource("SpriteFrames_g4v7s")
 autoplay = "default"
 
 [node name="CollisionShape2D" type="CollisionShape2D" parent="." unique_id=396648551]
-shape = SubResource("CircleShape2D_8cwd6")
+shape = ExtResource("3_g5r10")
 
 [connection signal="body_entered" from="." to="." method="_on_body_entered"]

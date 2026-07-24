@@ -2,9 +2,7 @@
 
 [ext_resource type="Texture2D" uid="uid://du2kimnyihrt3" path="res://art/surf/objects/box/jump_box.png" id="1_37lrt"]
 [ext_resource type="Script" uid="uid://bm4pk6h1bu218" path="res://scripts/enemy/jump_box.gd" id="1_sjbxh"]
-
-[sub_resource type="RectangleShape2D" id="RectangleShape2D_g4v7s"]
-size = Vector2(16, 16)
+[ext_resource type="Shape2D" uid="uid://df7erha82f2vo" path="res://properties/enemy_ball_hurtbox.tres" id="2_6rt6o"]
 
 [node name="jump_box" type="Area2D" unique_id=690004544 groups=["box"]]
 collision_layer = 4
@@ -13,7 +11,7 @@ monitoring = false
 script = ExtResource("1_sjbxh")
 
 [node name="CollisionShape2D" type="CollisionShape2D" parent="." unique_id=950539815]
-shape = SubResource("RectangleShape2D_g4v7s")
+shape = ExtResource("2_6rt6o")
 
 [node name="Sprite2D" type="Sprite2D" parent="." unique_id=1510662123]
 texture = ExtResource("1_37lrt")
