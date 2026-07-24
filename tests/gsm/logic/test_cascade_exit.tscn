@@ -1,0 +1,6 @@
+[gd_scene format=3 uid="uid://db20x17dmgqnq"]
+
+[ext_resource type="Script" uid="uid://b3gtg3obqk302" path="res://tests/gsm/logic/test_cascade_exit.gd" id="1_4bso5"]
+
+[node name="TestCascadeExit" type="GameState" unique_id=134449376]
+script = ExtResource("1_4bso5")

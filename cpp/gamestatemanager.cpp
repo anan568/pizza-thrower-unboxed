@@ -60,22 +60,24 @@ void godot::GameStateManager::push_state(Variant const &state_variant)
 void godot::GameStateManager::push_state(String const &filename)
 {
   Ref<PackedScene> scene = ResourceLoader::get_singleton()->load(filename);
-  ERR_FAIL_COND_MSG(!scene.is_valid(), "You passed in a filename to an invalid scene!");
+  CRASH_COND_MSG(!scene.is_valid(), "You passed in a filename to an invalid scene!");
   push_state(std::move(scene));
 }
 
 void godot::GameStateManager::push_state(Ref<PackedScene> const& p_scene)
 {
   //throw std::invalid_argument("you passed in a null PackedScene!!!"); 
-  ERR_FAIL_COND_MSG(p_scene.is_null(), "You passed in a null PackedScene!");
+  CRASH_COND_MSG(p_scene.is_null(), "You passed in a null PackedScene!");
 
   Node* instance = p_scene->instantiate();
   GameState* new_state = Object::cast_to<GameState>(instance);
   if (!new_state) 
   {
+    
     instance->queue_free();
     //throw std::invalid_argument("you passed in a Scene root node that doesn't extend GameState!!!");
-    ERR_FAIL_COND_MSG(p_scene.is_null(), "you passed in a Scene root node that doesn't extend GameState!!!");
+    CRASH_COND_MSG(p_scene.is_null(), "you passed in a Scene root node that doesn't extend GameState!!!");
+    CRASH_COND_MSG(!new_state, "Scene root node does not extend GameState!");
     return;
   }  
 
@@ -103,8 +105,8 @@ void godot::GameStateManager::push_state(GameState *p_state)
 void godot::GameStateManager::pop_state()
 {
   if (is_empty()) return;
-  internal_pop_state();
   --current_stack_depth;
+  internal_pop_state();
 }
 
 void godot::GameStateManager::pop_this_state()
@@ -182,12 +184,17 @@ bool godot::GameStateManager::is_empty()
 
 void godot::GameStateManager::internal_pop_state()
 {
-  // do i need these checks now? it should be guaranteed that i cant pop these.... right?
-  // if (is_empty()) return; // lets try removing this check...
-  state_stack.back()->_on_exit();
+  if(is_empty()) return;
+  GameState* state_to_remove {state_stack.back()};
 
-  states_to_clear.push_back(state_stack.back());
+  states_to_clear.push_back(state_to_remove);
   state_stack.pop_back();
+
+  state_to_remove->_on_exit();
+
+  remove_child(state_to_remove);
+
+
 
   if (is_empty()) return;
   state_stack.back()->set_process_mode(PROCESS_MODE_INHERIT);
@@ -204,7 +211,7 @@ void godot::GameStateManager::_bind_methods() {
       static_cast<void (GameStateManager::*)(Variant const&)>(&GameStateManager::push_state)
   );
 
-  // change state alternatives
+  // change state alternatives: pop a state, push a state.
   ClassDB::bind_method(
       D_METHOD("change_state_fast", "packedscene"),
       static_cast<void (GameStateManager::*)(const Ref<PackedScene>&)>(&GameStateManager::change_state)

@@ -1,9 +1,12 @@
 extends Node2D
 
+var target_scene: PackedScene = preload("res://tests/gsm/test_clear_stack.tscn")
 
 # Called when the node enters the scene tree for the first time.
 func _ready() -> void:
-	GSM.push_state("res://tests/gsm/test_enter_reentry.tscn")
+	
+	print("hi")
+	GSM.push_state(target_scene)
 
 
 # Called every frame. 'delta' is the elapsed time since the previous frame.
