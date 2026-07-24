@@ -1,10 +1,27 @@
 [gd_scene format=3 uid="uid://boo7uo3hbju5t"]
 
 [ext_resource type="Script" uid="uid://bm4pk6h1bu218" path="res://scripts/enemy/jump_box.gd" id="1_vjway"]
+[ext_resource type="Texture2D" uid="uid://00kwg2g3j0c8" path="res://art/surf/objects/box/yellow_box_crush.png" id="2_0rmwf"]
 [ext_resource type="Texture2D" uid="uid://bt3rrooa615u7" path="res://art/surf/objects/box/yellow_box.png" id="2_2al0b"]
 
 [sub_resource type="RectangleShape2D" id="RectangleShape2D_g4v7s"]
 size = Vector2(16, 16)
+
+[sub_resource type="AtlasTexture" id="AtlasTexture_vh02i"]
+atlas = ExtResource("2_0rmwf")
+region = Rect2(32, 0, 32, 128)
+
+[sub_resource type="AtlasTexture" id="AtlasTexture_c0mha"]
+atlas = ExtResource("2_0rmwf")
+region = Rect2(64, 0, 32, 128)
+
+[sub_resource type="AtlasTexture" id="AtlasTexture_8csob"]
+atlas = ExtResource("2_0rmwf")
+region = Rect2(96, 0, 32, 128)
+
+[sub_resource type="AtlasTexture" id="AtlasTexture_2xb2a"]
+atlas = ExtResource("2_0rmwf")
+region = Rect2(128, 0, 32, 128)
 
 [sub_resource type="AtlasTexture" id="AtlasTexture_vjway"]
 atlas = ExtResource("2_2al0b")
@@ -12,10 +29,22 @@ region = Rect2(0, 0, 16, 16)
 
 [sub_resource type="SpriteFrames" id="SpriteFrames_g4v7s"]
 animations = [{
-"frames": [],
+"frames": [{
+"duration": 1.0,
+"texture": SubResource("AtlasTexture_vh02i")
+}, {
+"duration": 1.0,
+"texture": SubResource("AtlasTexture_c0mha")
+}, {
+"duration": 1.0,
+"texture": SubResource("AtlasTexture_8csob")
+}, {
+"duration": 1.0,
+"texture": SubResource("AtlasTexture_2xb2a")
+}],
 "loop": 0,
 "name": &"crush",
-"speed": 5.0
+"speed": 10.0
 }, {
 "frames": [{
 "duration": 1.0,
@@ -39,3 +68,5 @@ shape = SubResource("RectangleShape2D_g4v7s")
 sprite_frames = SubResource("SpriteFrames_g4v7s")
 animation = &"crush"
 autoplay = "default"
+frame = 3
+frame_progress = 1.0
