@@ -1,56 +1,67 @@
 <?xml version="1.0" encoding="UTF-8" ?>
 <class name="GameStateManager" inherits="Node" api_type="extension" xmlns:xsi="http://www.w3.org/2001/XMLSchema-instance" xsi:noNamespaceSchemaLocation="https://raw.githubusercontent.com/godotengine/godot/master/doc/class.xsd">
 	<brief_description>
+	Manager that maintains a stack of `GameState` nodes and coordinates
+	state transitions (push, pop, change) and per-frame updates.
 	</brief_description>
 	<description>
+	`GameStateManager` simplifies scene-based state management by
+	keeping a stack of active `GameState` instances. States may be
+	pushed by filename, preloaded `PackedScene`, or an existing
+	`GameState` object. The manager handles instantiation, parenting,
+	and lifecycle callbacks (`_on_enter`, `_on_exit`, `_on_update`).
+	
+	Methods with a `_fast` suffix accept a `PackedScene` directly and
+	avoid performing a ResourceLoader lookup; use them when you have
+	a preloaded scene for better performance.
 	</description>
 	<tutorials>
 	</tutorials>
 	<methods>
 		<method name="change_state">
 			<return type="void" />
-			<param index="0" name="p_state" type="GameState" />
-			<description>
-			replaces the current top state (NOT the state from which this function is called!!!)
-			</description>
+			<param index="0" name="scene_filename" type="Variant" />
+			<description>Pop the current top state (if any) and push the provided state. The argument may be a filename (String), a `PackedScene`, or an instantiated `GameState` object.</description>
 		</method>
-		<method name="change_state_scene">
+		<method name="change_state_fast">
 			<return type="void" />
-			<param index="0" name="p_scene" type="PackedScene" />
-			<description>
-			</description>
+			<param index="0" name="packedscene" type="PackedScene" />
+			<description>Change the current state by popping the top state and pushing the provided `PackedScene` instance. Use when you already have a preloaded `PackedScene`.</description>
 		</method>
 		<method name="clear_stack">
 			<return type="void" />
-			<description>
-			</description>
+			<description>Remove and free all states from the stack immediately.</description>
+		</method>
+		<method name="get_stack_size" qualifiers="const">
+			<return type="int" />
+			<description>Return the current number of states on the stack.</description>
 		</method>
 		<method name="is_empty">
 			<return type="bool" />
-			<description>
-			</description>
+			<description>Return `true` when there are no states on the stack.</description>
 		</method>
 		<method name="pop_state">
 			<return type="void" />
-			<description>
-			</description>
+			<description>Pop and free the top-most state. If the stack is empty this is a no-op.</description>
+		</method>
+		<method name="pop_this_state">
+			<return type="void" />
+			<description>Pop states repeatedly until the current depth frame is cleared. Typically used to unwind multiple pushed states back to a previous point.</description>
 		</method>
 		<method name="push_state">
 			<return type="void" />
-			<param index="0" name="p_state" type="GameState" />
-			<description>
-			</description>
+			<param index="0" name="scene_filename" type="Variant" />
+			<description>Push a new state onto the stack. The argument may be a filename (String), a `PackedScene`, or an existing `GameState` instance. When given a filename, the resource is loaded via `ResourceLoader`.</description>
 		</method>
-		<method name="push_state_scene">
+		<method name="push_state_fast">
 			<return type="void" />
-			<param index="0" name="p_scene" type="PackedScene" />
-			<description>
-			</description>
+			<param index="0" name="packedscene" type="PackedScene" />
+			<description>Instantiate and push the provided `PackedScene` as a new `GameState`. Use this variant when you already have a preloaded `PackedScene` to avoid a second resource lookup.</description>
 		</method>
 	</methods>
-	<members>
-		<member name="expected_stack_depth" type="int" setter="set_expected_stack_depth" getter="get_expected_stack_depth" default="4">
-		for optimisation. place maximum stack depth here, and the class will not need to reallocate memory! put too much, and you will... be wasting memory... 
-		</member>
-	</members>
+		<members>
+			<member name="expected_stack_depth" type="int" setter="set_expected_stack_depth" getter="get_expected_stack_depth" default="4">
+				<description>Reserved amount of stack space to pre-allocate for performance. Adjust if you expect deeper or shallower state stacks.</description>
+			</member>
+		</members>
 </class>
