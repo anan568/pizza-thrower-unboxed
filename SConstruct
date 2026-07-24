@@ -13,8 +13,14 @@ env = SConscript("godot-cpp/SConstruct")
 # - LINKFLAGS are for linking flags
 
 # tweak this if you want to use different folders, or more folders, to store your source code in.
+
 env.Append(CPPPATH=["cpp/"])
 sources = Glob("cpp/*.cpp")
+
+if env["target"] in ["editor", "template_debug"]:
+    doc_data = env.GodotCPPDocData("cpp/gen/doc_data.gen.cpp", source=Glob("doc_classes/*.xml"))
+    sources.append(doc_data)
+
 
 if env["platform"] == "macos":
     library = env.SharedLibrary(
@@ -40,5 +46,6 @@ else:
         "bin/libpizza{}{}".format(env["suffix"], env["SHLIBSUFFIX"]),
         source=sources,
     )
+
 
 Default(library)
