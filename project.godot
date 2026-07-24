@@ -11,7 +11,7 @@ config_version=5
 [application]
 
 config/name="Pizza Thrower: Unboxed"
-run/main_scene="uid://c1epvt3a0rcch"
+run/main_scene="uid://d2x2rnqta6txo"
 config/features=PackedStringArray("4.7", "Forward Plus")
 config/icon="uid://bx3qby2jp4q6x"
 
@@ -19,6 +19,7 @@ config/icon="uid://bx3qby2jp4q6x"
 
 InputProcessor="*uid://ctwcdico3d2d6"
 GameManager="*uid://cm0rxbt8tfseo"
+GSM="*uid://uyo3ou8i66l1"
 
 [display]
 
@@ -31,7 +32,8 @@ folder_colors={
 "res://art/": "orange",
 "res://scenes/": "yellow",
 "res://scripts/": "red",
-"res://sounds/": "purple"
+"res://sounds/": "purple",
+"res://tests/": "gray"
 }
 
 [global_group]

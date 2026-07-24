@@ -11,7 +11,7 @@ set "CPP_DIR=%PROJECT_ROOT%\cpp"
 if exist "%BIN_DIR%" (
     echo Cleaning generated files in bin...
     for /r "%BIN_DIR%" %%F in (
-        *.exp *.lib *.pdb *.dll *.so *.a *.o *.obj *.obj.import *.uid *.idb *.ilk *.ipdb *.tlog *.log *.tmp
+        *.exp *.lib *.pdb *.dll *.so *.a *.o *.obj *.obj.import *.idb *.ilk *.ipdb *.tlog *.log *.tmp
     ) do del /f /q "%%~fF" 2>nul
 )
 

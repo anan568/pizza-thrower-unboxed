@@ -1,0 +1,43 @@
+<?xml version="1.0" encoding="UTF-8" ?>
+<class name="GameState" inherits="Node" api_type="extension" xmlns:xsi="http://www.w3.org/2001/XMLSchema-instance" xsi:noNamespaceSchemaLocation="https://raw.githubusercontent.com/godotengine/godot/master/doc/class.xsd">
+	<brief_description>
+	Base class for a stackable game state. Intended to be inherited by
+	game-specific state scenes (menus, gameplay, pause, etc.). Provides
+	lifecycle hooks that the GameStateManager calls when states are
+	entered, exited, or updated each frame.
+	</brief_description>
+	<description>
+	This class represents a single state in the game's state stack.
+	A `GameState` is a `Node` that exposes three lifecycle callbacks
+	that derived scenes may implement in GDScript or C++:
+	
+	- `_on_enter()` is invoked when the state becomes active (pushed).
+	- `_on_exit()` is invoked when the state is removed (popped).
+	- `_on_update(delta)` is invoked each frame while the state is active.
+	
+	The `update_underneath` property controls whether states below the
+	top of the stack should also receive update callbacks while this
+	state is active.
+	</description>
+	<tutorials>
+	</tutorials>
+	<methods>
+		<method name="_on_enter">
+			<return type="void" />
+			<description>Called when this state becomes the active top state. Override to perform initialization or show animations.</description>
+		</method>
+		<method name="_on_exit">
+			<return type="void" />
+			<description>Called when this state is removed from the stack. Override to perform cleanup and stop running logic.</description>
+		</method>
+		<method name="_on_update">
+			<return type="void" />
+			<param index="0" name="delta_time" type="double" />
+			<description>Called each frame with the frame delta while this state is active. Override to implement per-frame logic.</description>
+		</method>
+	</methods>
+	<members>
+		<member name="update_underneath" type="bool" setter="set_update_underneath" getter="get_update_underneath" default="false">
+		</member>
+	</members>
+</class>
