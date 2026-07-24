@@ -102,6 +102,13 @@ void godot::GameStateManager::push_state(GameState *p_state)
 
 void godot::GameStateManager::pop_state()
 {
+  if (is_empty()) return;
+  internal_pop_state();
+  --current_stack_depth;
+}
+
+void godot::GameStateManager::pop_this_state()
+{
   // set number to one more than current depth, and iterate through it
   ++current_stack_depth;
   while(current_stack_depth){
@@ -187,6 +194,7 @@ void godot::GameStateManager::internal_pop_state()
 }
 
 void godot::GameStateManager::_bind_methods() {
+  // push state alternatives
   ClassDB::bind_method(
       D_METHOD("push_state_fast", "packedscene"),
       static_cast<void (GameStateManager::*)(const Ref<PackedScene>&)>(&GameStateManager::push_state)
@@ -196,6 +204,7 @@ void godot::GameStateManager::_bind_methods() {
       static_cast<void (GameStateManager::*)(Variant const&)>(&GameStateManager::push_state)
   );
 
+  // change state alternatives
   ClassDB::bind_method(
       D_METHOD("change_state_fast", "packedscene"),
       static_cast<void (GameStateManager::*)(const Ref<PackedScene>&)>(&GameStateManager::change_state)
@@ -205,10 +214,15 @@ void godot::GameStateManager::_bind_methods() {
       static_cast<void (GameStateManager::*)(Variant const&)>(&GameStateManager::change_state)
   );
 
+  // pops states until current state is popped
+  ClassDB::bind_method(D_METHOD("pop_this_state"), &GameStateManager::pop_this_state);
+  // pops one state
   ClassDB::bind_method(D_METHOD("pop_state"), &GameStateManager::pop_state);
+  // pops all states
   ClassDB::bind_method(D_METHOD("clear_stack"), &GameStateManager::clear_stack);
+  
+  // helpers, no need to check these...
   ClassDB::bind_method(D_METHOD("is_empty"), &GameStateManager::is_empty);
-
   ClassDB::bind_method(D_METHOD("get_expected_stack_depth"), &GameStateManager::get_expected_stack_depth);
   ClassDB::bind_method(D_METHOD("set_expected_stack_depth", "p_depth"), &GameStateManager::set_expected_stack_depth);
 

@@ -36,6 +36,7 @@ public:
   void change_state(GameState* p_state);
 
   void pop_state();
+  void pop_this_state();
   void clear_stack();
 
   // GameState* get_current_state() const;
