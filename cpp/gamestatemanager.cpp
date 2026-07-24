@@ -1,9 +1,10 @@
 #include "gamestatemanager.h"
 #include <algorithm>
 #include <godot_cpp/core/class_db.hpp>
+//@todo investigate if a preloader approach is possible...
+#include <godot_cpp/classes/resource_loader.hpp>
 
-godot::GameStateManager::GameStateManager()
-{}
+godot::GameStateManager::GameStateManager() = default;
 
 godot::GameStateManager::~GameStateManager() = default;
 
@@ -29,34 +30,55 @@ void godot::GameStateManager::_process(double delta_time)
     top_gs_id--;
     state_stack[top_gs_id]->_on_update(delta_time);
   }
+}
 
-  for (; depth_to_pop != 0 ; --depth_to_pop){
-    internal_pop_state();
+void godot::GameStateManager::push_state(Variant const &state_variant)
+{
+  /// @todo investigate ways to make this more performant... 
+  /// maybe i should set this to only allow PackedScenes so they may be preloaded on GD side...
+  if (state_variant.get_type() == Variant::STRING){
+    String path = std::move(state_variant);
+    push_state(path);
+    return;
   }
-  
-  depth_to_pop = current_stack_depth = 0;
+  // see if this works...
+  Ref<PackedScene> scene = state_variant;
+  if (scene.is_valid()){
+    push_state(scene);
+    return;
+  }
+
+  // hopefully you never use this, An...
+  Object *obj = state_variant;
+  GameState *gs = Object::cast_to<GameState>(obj);
+  if (gs) {
+    push_state(gs);
+    return;
+  } 
+}
+
+void godot::GameStateManager::push_state(String const &filename)
+{
+  Ref<PackedScene> scene = ResourceLoader::get_singleton()->load(filename);
+  ERR_FAIL_COND_MSG(!scene.is_valid(), "You passed in a filename to an invalid scene!");
+  push_state(std::move(scene));
 }
 
 void godot::GameStateManager::push_state(Ref<PackedScene> const& p_scene)
 {
-  if (p_scene.is_null())
-
-  { 
-    //throw std::invalid_argument("you passed in a null PackedScene!!!"); 
-    ERR_FAIL_COND_MSG(p_scene.is_null(), "You passed in a null PackedScene!");
-    return;
-  }
+  //throw std::invalid_argument("you passed in a null PackedScene!!!"); 
+  ERR_FAIL_COND_MSG(p_scene.is_null(), "You passed in a null PackedScene!");
 
   Node* instance = p_scene->instantiate();
   GameState* new_state = Object::cast_to<GameState>(instance);
   if (!new_state) 
-
   {
     instance->queue_free();
     //throw std::invalid_argument("you passed in a Scene root node that doesn't extend GameState!!!");
     ERR_FAIL_COND_MSG(p_scene.is_null(), "you passed in a Scene root node that doesn't extend GameState!!!");
     return;
   }  
+
   if (!is_empty()){
     state_stack.back()->set_process_mode(PROCESS_MODE_DISABLED);
   }
@@ -64,6 +86,7 @@ void godot::GameStateManager::push_state(Ref<PackedScene> const& p_scene)
   state_stack.push_back(new_state);
 
   new_state->_on_enter();
+  ++current_stack_depth;
 }
 
 void godot::GameStateManager::push_state(GameState *p_state)
@@ -74,27 +97,63 @@ void godot::GameStateManager::push_state(GameState *p_state)
   add_child(p_state);
   state_stack.push_back(p_state);
   p_state->_on_enter();
+  ++current_stack_depth; // might be wrong about this one
 }
 
 void godot::GameStateManager::pop_state()
 {
-  depth_to_pop = current_stack_depth + 1;
+  // set number to one more than current depth, and iterate through it
+  ++current_stack_depth;
+  while(current_stack_depth){
+    --current_stack_depth;
+    internal_pop_state();
+  }
 }
 
-void godot::GameStateManager::change_state(const Ref<PackedScene> &p_scene)
+void godot::GameStateManager::change_state(Variant const &state_variant)
+{
+  if (state_variant.get_type() == Variant::STRING){
+    String path = std::move(state_variant);
+    change_state(path);
+    return;
+  }
+  // see if this works...
+  Ref<PackedScene> scene = state_variant;
+  if (scene.is_valid()){
+    change_state(scene);
+    return;
+  }
+
+  // hopefully you never use this, An...
+  Object *obj = state_variant;
+  GameState *gs = Object::cast_to<GameState>(obj);
+  if (gs) {
+    change_state(gs);
+    return;
+  } 
+}
+
+void godot::GameStateManager::change_state(String const &filename)
+{
+  Ref<PackedScene> scene = ResourceLoader::get_singleton()->load(filename);
+  ERR_FAIL_COND_MSG(!scene.is_valid(), "You passed in a filename to an invalid scene!");
+  change_state(std::move(scene)); // harmless std::move even though it technically doesn't do anything... if i ever decide the change the function signature in the future...
+}
+
+void godot::GameStateManager::change_state(Ref<PackedScene> const &p_scene)
+{
+  if (!is_empty()) {
+    internal_pop_state(); 
+  }
+  push_state(std::move(p_scene));
+}
+
+void godot::GameStateManager::change_state(GameState* p_scene)
 {
   if (!is_empty()) {
     internal_pop_state(); 
   }
   push_state(p_scene);
-}
-
-void godot::GameStateManager::change_state(GameState *p_state)
-{
-  if (!is_empty()){
-    internal_pop_state();
-  }
-  push_state(p_state);
 }
 
 void godot::GameStateManager::clear_stack()
@@ -129,21 +188,21 @@ void godot::GameStateManager::internal_pop_state()
 
 void godot::GameStateManager::_bind_methods() {
   ClassDB::bind_method(
-      D_METHOD("push_state_scene", "p_scene"),
+      D_METHOD("push_state_fast", "packedscene"),
       static_cast<void (GameStateManager::*)(const Ref<PackedScene>&)>(&GameStateManager::push_state)
   );
   ClassDB::bind_method(
-      D_METHOD("push_state", "p_state"),
-      static_cast<void (GameStateManager::*)(GameState*)>(&GameStateManager::push_state)
+      D_METHOD("push_state", "scene_filename"),
+      static_cast<void (GameStateManager::*)(Variant const&)>(&GameStateManager::push_state)
   );
 
   ClassDB::bind_method(
-      D_METHOD("change_state_scene", "p_scene"),
+      D_METHOD("change_state_fast", "packedscene"),
       static_cast<void (GameStateManager::*)(const Ref<PackedScene>&)>(&GameStateManager::change_state)
   );
   ClassDB::bind_method(
-      D_METHOD("change_state", "p_state"),
-      static_cast<void (GameStateManager::*)(GameState*)>(&GameStateManager::change_state)
+      D_METHOD("change_state", "scene_filename"),
+      static_cast<void (GameStateManager::*)(Variant const&)>(&GameStateManager::change_state)
   );
 
   ClassDB::bind_method(D_METHOD("pop_state"), &GameStateManager::pop_state);

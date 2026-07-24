@@ -4,6 +4,7 @@
 #include <godot_cpp/classes/node.hpp>
 #include <godot_cpp/classes/packed_scene.hpp>
 #include <godot_cpp/classes/ref.hpp>
+#include <godot_cpp/variant/variant.hpp>
 #include <vector>
 
 #include "gamestate.h"
@@ -24,15 +25,21 @@ public:
   // then clears all the states in states to clear
   void _process(double delta_time) override;
 
+  void push_state(Variant const& state_variant);
+  void push_state(String const& filename);
   void push_state(const Ref<PackedScene>& p_scene);
   void push_state(GameState* p_state);
-  void pop_state();
+
+  void change_state(Variant const& state_variant);
+  void change_state(String const& filename);
   void change_state(const Ref<PackedScene>& p_scene);
   void change_state(GameState* p_state);
+
+  void pop_state();
   void clear_stack();
 
-  GameState* get_current_state() const;
-  int get_stack_depth() const;
+  // GameState* get_current_state() const;
+  // int get_stack_depth() const;
   // TypedArray<GameState> get_active_states() const;
 
   void set_expected_stack_depth(int p_depth);
@@ -58,7 +65,6 @@ private:
   // for optimisation.
   uint16_t expected_stack_depth = 4;
   uint16_t current_stack_depth = 0;
-  uint16_t depth_to_pop = 0;
   // bool pause_lower_states = true;
   // bool process_background_states = false;
 

@@ -1,27 +1,31 @@
 #include "gamestate.h"
 #include <godot_cpp/core/class_db.hpp>
+#include <string>
 
 // skip constructing every single time...
-static const godot::StringName sn_on_enter("_on_enter");
-static const godot::StringName sn_on_exit("_on_exit");
-static const godot::StringName sn_on_update("_on_update");
+
+
+
 
 void godot::GameState::_on_enter() {
   // "optimisation: you HAVE defined on enter, right?"
   //if (has_method("_on_enter")) {
-    call(sn_on_enter);
+  static const godot::StringName sn_on_enter("_on_enter");
+  call(sn_on_enter);
   //}
 }
 
 void godot::GameState::_on_exit() {
   //if (has_method("_on_exit")) {
-    call(sn_on_exit);
+  static const godot::StringName sn_on_exit("_on_exit");
+  call(sn_on_exit);
   //}
 }
 
 void godot::GameState::_on_update(double delta_time) {
   //if (has_method("_on_update")) {
-    call(sn_on_update, delta_time);
+  static const godot::StringName sn_on_update("_on_update");
+  call(sn_on_update, delta_time);
   //}
 }
 
