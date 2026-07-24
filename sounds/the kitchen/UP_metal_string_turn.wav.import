@@ -1,0 +1,24 @@
+[remap]
+
+importer="wav"
+type="AudioStreamWAV"
+uid="uid://ddw8jgakqrkh3"
+path="res://.godot/imported/UP_metal_string_turn.wav-26316d508bd3ec306cbd7fb2f1c9e6f1.sample"
+
+[deps]
+
+source_file="res://sounds/the kitchen/UP_metal_string_turn.wav"
+dest_files=["res://.godot/imported/UP_metal_string_turn.wav-26316d508bd3ec306cbd7fb2f1c9e6f1.sample"]
+
+[params]
+
+force/8_bit=false
+force/mono=false
+force/max_rate=false
+force/max_rate_hz=44100
+edit/trim=false
+edit/normalize=false
+edit/loop_mode=0
+edit/loop_begin=0
+edit/loop_end=-1
+compress/mode=2

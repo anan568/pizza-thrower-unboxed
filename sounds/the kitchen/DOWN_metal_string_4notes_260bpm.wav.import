@@ -1,0 +1,24 @@
+[remap]
+
+importer="wav"
+type="AudioStreamWAV"
+uid="uid://c7bhjx0ban2fk"
+path="res://.godot/imported/DOWN_metal_string_4notes_260bpm.wav-9e17d47faa8a1304181ba46d2a32dbe4.sample"
+
+[deps]
+
+source_file="res://sounds/the kitchen/DOWN_metal_string_4notes_260bpm.wav"
+dest_files=["res://.godot/imported/DOWN_metal_string_4notes_260bpm.wav-9e17d47faa8a1304181ba46d2a32dbe4.sample"]
+
+[params]
+
+force/8_bit=false
+force/mono=false
+force/max_rate=false
+force/max_rate_hz=44100
+edit/trim=false
+edit/normalize=false
+edit/loop_mode=0
+edit/loop_begin=0
+edit/loop_end=-1
+compress/mode=2

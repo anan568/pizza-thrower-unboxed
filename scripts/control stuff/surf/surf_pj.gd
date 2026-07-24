@@ -3,6 +3,7 @@ extends CharacterBody2D
 var jump_force = 300
 #var dash_anim_time = 0.2 #how long the dashing animation will last before automatically cancelled
 @onready var dash_anim = $dash_anim
+@onready var dash_player = $dash_player
 
 var lunge_time = 0.2
 var lunge_force = 50
@@ -79,6 +80,7 @@ func Act(move: String, direction: Vector2):
 	
 	
 func Dash():
+	dash_player.play()
 	animator.play("dash")
 	after_image.emitting = true
 	dashing = true

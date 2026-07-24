@@ -1,0 +1,24 @@
+[remap]
+
+importer="wav"
+type="AudioStreamWAV"
+uid="uid://gmt31rs6wynr"
+path="res://.godot/imported/microsoft_dash.wav-8c3cebc9d25163577c8a9b8c84819350.sample"
+
+[deps]
+
+source_file="res://sounds/the kitchen/microsoft_dash.wav"
+dest_files=["res://.godot/imported/microsoft_dash.wav-8c3cebc9d25163577c8a9b8c84819350.sample"]
+
+[params]
+
+force/8_bit=false
+force/mono=false
+force/max_rate=false
+force/max_rate_hz=44100
+edit/trim=false
+edit/normalize=false
+edit/loop_mode=0
+edit/loop_begin=0
+edit/loop_end=-1
+compress/mode=2

@@ -13,6 +13,7 @@
 [ext_resource type="Texture2D" uid="uid://dg62rrt2bobmn" path="res://art/surf/ui/charge_meter_over.png" id="9_pgf3x"]
 [ext_resource type="Texture2D" uid="uid://dupnqau8fcc7g" path="res://art/surf/ui/charge_meter_progress.png" id="10_0e8rl"]
 [ext_resource type="Texture2D" uid="uid://b0qhlh7cwxr56" path="res://art/surf/characters/pj/blank_surf_pj_air_dash.png" id="13_6wiwx"]
+[ext_resource type="AudioStream" uid="uid://gmt31rs6wynr" path="res://sounds/the kitchen/microsoft_dash.wav" id="14_2nesf"]
 
 [sub_resource type="AtlasTexture" id="AtlasTexture_h7xdw"]
 atlas = ExtResource("1_cucva")
@@ -278,6 +279,9 @@ process_material = SubResource("ParticleProcessMaterial_0e8rl")
 
 [node name="dash_anim" type="Timer" parent="." unique_id=1222015092]
 wait_time = 0.2
+
+[node name="dash_player" type="AudioStreamPlayer" parent="." unique_id=1129852417]
+stream = ExtResource("14_2nesf")
 
 [connection signal="area_entered" from="punch_hitbox" to="punch_hitbox" method="_on_area_entered"]
 [connection signal="timeout" from="lunge_time" to="." method="_on_lunge_time_timeout"]
