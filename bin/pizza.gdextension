@@ -34,4 +34,5 @@ ios.release = {
 }
 
 [icons]
-GDExample = "res://art/pizza_gdextension.svg"
+GameStateManager = "res://art/pizza_gdextension.svg"
+GameState = "res://art/pizza_gdextension.svg"

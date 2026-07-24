@@ -1,0 +1,20 @@
+[gd_scene format=3 uid="uid://ckh8humflpare"]
+
+[ext_resource type="Script" uid="uid://cupy2xrgt43dw" path="res://tests/gsm/rendering/level_state.gd" id="1_jimkc"]
+
+[node name="LevelState" type="GameState" unique_id=1009995213]
+script = ExtResource("1_jimkc")
+
+[node name="ColorRect" type="ColorRect" parent="." unique_id=1892072084]
+offset_right = 1600.0
+offset_bottom = 900.0
+color = Color(0, 1, 0, 1)
+
+[node name="Label" type="Label" parent="." unique_id=1064466442]
+offset_right = 40.0
+offset_bottom = 23.0
+text = "I KNOW WHAT I'M DOING (LIE!!!)"
+
+[node name="spinnerguy" type="ColorRect" parent="." unique_id=624528992]
+offset_right = 800.0
+offset_bottom = 450.0

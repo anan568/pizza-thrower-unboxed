@@ -81,9 +81,9 @@ void godot::GameStateManager::push_state(Ref<PackedScene> const& p_scene)
     return;
   }  
 
-  if (!is_empty()){
-    state_stack.back()->set_process_mode(PROCESS_MODE_DISABLED);
-  }
+  // if (!is_empty()){
+  //   state_stack.back()->set_process_mode(PROCESS_MODE_DISABLED);
+  // }
   add_child(new_state);
   state_stack.push_back(new_state);
 
@@ -93,9 +93,9 @@ void godot::GameStateManager::push_state(Ref<PackedScene> const& p_scene)
 
 void godot::GameStateManager::push_state(GameState *p_state)
 {
-  if (!is_empty()){
-    state_stack.back()->set_process_mode(PROCESS_MODE_DISABLED);
-  }
+  // if (!is_empty()){
+  //   state_stack.back()->set_process_mode(PROCESS_MODE_DISABLED);
+  // }
   add_child(p_state);
   state_stack.push_back(p_state);
   p_state->_on_enter();
@@ -172,6 +172,11 @@ void godot::GameStateManager::clear_stack()
   }
 }
 
+int godot::GameStateManager::get_stack_size() const
+{
+  return state_stack.size();
+}
+
 void godot::GameStateManager::set_expected_stack_depth(int p_depth)
 {
   expected_stack_depth = p_depth;
@@ -197,7 +202,7 @@ void godot::GameStateManager::internal_pop_state()
 
 
   if (is_empty()) return;
-  state_stack.back()->set_process_mode(PROCESS_MODE_INHERIT);
+  //state_stack.back()->set_process_mode(PROCESS_MODE_INHERIT);
 }
 
 void godot::GameStateManager::_bind_methods() {
@@ -232,6 +237,7 @@ void godot::GameStateManager::_bind_methods() {
   ClassDB::bind_method(D_METHOD("is_empty"), &GameStateManager::is_empty);
   ClassDB::bind_method(D_METHOD("get_expected_stack_depth"), &GameStateManager::get_expected_stack_depth);
   ClassDB::bind_method(D_METHOD("set_expected_stack_depth", "p_depth"), &GameStateManager::set_expected_stack_depth);
+  ClassDB::bind_method(D_METHOD("get_stack_size"), &GameStateManager::get_stack_size);
 
   ADD_PROPERTY(
       PropertyInfo(Variant::INT, "expected_stack_depth"),

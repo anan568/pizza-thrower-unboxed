@@ -1,6 +1,6 @@
 extends Node2D
 
-var target_scene: PackedScene = preload("res://tests/gsm/test_clear_stack.tscn")
+var target_scene: PackedScene = preload("res://tests/gsm/rendering/level_state.tscn")
 
 # Called when the node enters the scene tree for the first time.
 func _ready() -> void:

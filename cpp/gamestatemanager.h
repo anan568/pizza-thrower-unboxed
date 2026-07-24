@@ -40,7 +40,7 @@ public:
   void clear_stack();
 
   // GameState* get_current_state() const;
-  // int get_stack_depth() const;
+  int get_stack_size() const;
   // TypedArray<GameState> get_active_states() const;
 
   void set_expected_stack_depth(int p_depth);
