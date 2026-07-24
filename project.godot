@@ -32,6 +32,7 @@ folder_colors={
 "res://art/": "orange",
 "res://scenes/": "yellow",
 "res://scripts/": "red",
+"res://sounds/": "purple",
 "res://tests/": "gray"
 }
 
