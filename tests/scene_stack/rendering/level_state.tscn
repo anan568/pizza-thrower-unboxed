@@ -1,9 +1,9 @@
 [gd_scene format=3 uid="uid://ckh8humflpare"]
 
-[ext_resource type="Script" uid="uid://cupy2xrgt43dw" path="res://tests/gsm/rendering/level_state.gd" id="1_jimkc"]
+[ext_resource type="Script" uid="uid://cupy2xrgt43dw" path="res://tests/scene_stack/rendering/level_state.gd" id="1_36jet"]
 
-[node name="LevelState" type="GameState" unique_id=1009995213]
-script = ExtResource("1_jimkc")
+[node name="LevelState" type="GameScene" unique_id=667704255]
+script = ExtResource("1_36jet")
 
 [node name="ColorRect" type="ColorRect" parent="." unique_id=1892072084]
 offset_right = 1600.0
