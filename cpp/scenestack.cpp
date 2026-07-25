@@ -273,12 +273,24 @@ void godot::SceneStack::_bind_methods() {
   ClassDB::bind_method(D_METHOD("get_expected_stack_depth"), &SceneStack::get_expected_stack_depth);
   ClassDB::bind_method(D_METHOD("set_expected_stack_depth", "p_depth"), &SceneStack::set_expected_stack_depth);
   ClassDB::bind_method(D_METHOD("get_stack_size"), &SceneStack::get_stack_size);
-  ClassDB::bind_method(D_METHOD("current_scene"), &SceneStack::current_state);
-  ClassDB::bind_method(D_METHOD("top_scene"), &SceneStack::current_state);
+  ClassDB::bind_method(D_METHOD("get_current_scene"), &SceneStack::current_state);
+  ClassDB::bind_method(D_METHOD("get_top_scene"), &SceneStack::current_state);
 
   ADD_PROPERTY(
     PropertyInfo(Variant::INT, "expected_stack_depth"),
     "set_expected_stack_depth",
     "get_expected_stack_depth"
+  );
+
+  ADD_PROPERTY(
+    PropertyInfo(Variant::OBJECT, "current_scene", PROPERTY_HINT_NODE_TYPE,  "GameScene", PROPERTY_USAGE_READ_ONLY, "GameScene"),
+    "",
+    "get_current_scene"
+  );
+
+  ADD_PROPERTY(
+    PropertyInfo(Variant::OBJECT, "top_scene", PROPERTY_HINT_NODE_TYPE, "GameScene", PROPERTY_USAGE_READ_ONLY, "GameScene"),
+    "",
+    "get_top_scene"
   );
 }
