@@ -6,7 +6,7 @@ var target_scene: PackedScene = preload("res://scenes/surf levels/surf_1.tscn")
 func _ready() -> void:
 	
 	print("hi")
-	GSM.push_state(target_scene)
+	scene_stack.push_scene(target_scene)
 
 
 # Called every frame. 'delta' is the elapsed time since the previous frame.

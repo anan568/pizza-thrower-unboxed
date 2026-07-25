@@ -7,20 +7,20 @@
 #include <godot_cpp/variant/variant.hpp>
 #include <vector>
 
-#include "gamestate.h"
+#include "gamescene.h"
 
 namespace godot {
 
-class GameStateManager : public Node {
-  GDCLASS(GameStateManager, Node)
+class SceneStack : public Node {
+  GDCLASS(SceneStack, Node)
 public:
-  GameStateManager();
-  ~GameStateManager();
+  SceneStack();
+  ~SceneStack();
 
   // the constructor here actually
   void _ready() override;
 
-  // loops through game states, updates the top one with delta_time (updates lower ones if the gamestate allows it), 
+  // loops through game states, updates the top one with delta_time (updates lower ones if the gamescene allows it), 
   // touches all underneath ones
   // then clears all the states in states to clear
   void _process(double delta_time) override;
@@ -28,20 +28,23 @@ public:
   void push_state(Variant const& state_variant);
   void push_state(String const& filename);
   void push_state(const Ref<PackedScene>& p_scene);
-  void push_state(GameState* p_state);
+  void push_state(GameScene* p_state);
 
   void change_state(Variant const& state_variant);
   void change_state(String const& filename);
   void change_state(const Ref<PackedScene>& p_scene);
-  void change_state(GameState* p_state);
+  void change_state(GameScene* instancedstate);
+
+  void reload_state();
 
   void pop_state();
   void pop_this_state();
   void clear_stack();
 
-  // GameState* get_current_state() const;
+  GameScene* current_state() const;
   int get_stack_size() const;
-  // TypedArray<GameState> get_active_states() const;
+  GameScene* state_at_depth(size_t depth) const;
+  // TypedArray<GameScene> get_active_states() const;
 
   void set_expected_stack_depth(int p_depth);
   int get_expected_stack_depth() const { return expected_stack_depth; }
@@ -59,7 +62,7 @@ private:
   void internal_pop_state();
 
   // LocalVector and Vector both didn't have the interface I wanted...
-  using GS_Stack = std::vector<GameState*>;
+  using GS_Stack = std::vector<GameScene*>;
   GS_Stack state_stack;
   GS_Stack states_to_clear;
 

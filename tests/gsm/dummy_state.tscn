@@ -1,6 +1,0 @@
-[gd_scene format=3 uid="uid://g20ugr82on44"]
-
-[ext_resource type="Script" uid="uid://bxlr6aeh5v7av" path="res://tests/gsm/dummy_state.gd" id="1_xq8ch"]
-
-[node name="DummyState" type="GameState" unique_id=743875246]
-script = ExtResource("1_xq8ch")

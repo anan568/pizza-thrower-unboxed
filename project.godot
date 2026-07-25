@@ -19,7 +19,7 @@ config/icon="uid://bx3qby2jp4q6x"
 
 InputProcessor="*uid://ctwcdico3d2d6"
 GameManager="*uid://cm0rxbt8tfseo"
-GSM="*uid://uyo3ou8i66l1"
+scene_stack="*uid://uyo3ou8i66l1"
 
 [display]
 

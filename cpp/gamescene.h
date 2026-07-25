@@ -1,5 +1,5 @@
-#ifndef _GAME_STATE_H_
-#define _GAME_STATE_H_
+#ifndef _GAME_SCENE_H_
+#define _GAME_SCENE_H_
 
 #include <godot_cpp/classes/node.hpp>
 #include <godot_cpp/core/binder_common.hpp>
@@ -7,13 +7,13 @@
 
 namespace godot {
 
-class GameState : public Node {
-  GDCLASS(GameState, Node)
+class GameScene : public Node {
+  GDCLASS(GameScene, Node)
 public:
-  GameState() = default;
-  ~GameState() = default;
+  GameScene() = default;
+  ~GameScene() = default;
 
-  // no _process()... this is handled by gamestatemanager...
+  // no _process()... this is handled by scenestack...
 
   virtual void _on_enter();
   virtual void _on_exit();
@@ -36,4 +36,4 @@ protected:
 
 } // namespace godot
 
-#endif // _GAME_STATE_H_
+#endif // _GAME_SCENE_H_

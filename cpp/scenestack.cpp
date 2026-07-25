@@ -1,20 +1,20 @@
-#include "gamestatemanager.h"
+#include "scenestack.h"
 #include <algorithm>
 #include <godot_cpp/core/class_db.hpp>
 //@todo investigate if a preloader approach is possible...
 #include <godot_cpp/classes/resource_loader.hpp>
 
-godot::GameStateManager::GameStateManager() = default;
+godot::SceneStack::SceneStack() = default;
 
-godot::GameStateManager::~GameStateManager() = default;
+godot::SceneStack::~SceneStack() = default;
 
-void godot::GameStateManager::_ready()
+void godot::SceneStack::_ready()
 {
   state_stack.reserve(expected_stack_depth);
   states_to_clear.reserve(expected_stack_depth);
 }
 
-void godot::GameStateManager::_process(double delta_time)
+void godot::SceneStack::_process(double delta_time)
 {
   std::for_each(states_to_clear.begin(), states_to_clear.end(), [](auto & gs){ gs->queue_free(); });
   states_to_clear.clear();
@@ -32,7 +32,7 @@ void godot::GameStateManager::_process(double delta_time)
   }
 }
 
-void godot::GameStateManager::push_state(Variant const &state_variant)
+void godot::SceneStack::push_state(Variant const &state_variant)
 {
   /// @todo investigate ways to make this more performant... 
   /// maybe i should set this to only allow PackedScenes so they may be preloaded on GD side...
@@ -50,34 +50,34 @@ void godot::GameStateManager::push_state(Variant const &state_variant)
 
   // hopefully you never use this, An...
   Object *obj = state_variant;
-  GameState *gs = Object::cast_to<GameState>(obj);
+  GameScene *gs = Object::cast_to<GameScene>(obj);
   if (gs) {
     push_state(gs);
     return;
   } 
 }
 
-void godot::GameStateManager::push_state(String const &filename)
+void godot::SceneStack::push_state(String const &filename)
 {
   Ref<PackedScene> scene = ResourceLoader::get_singleton()->load(filename);
   CRASH_COND_MSG(!scene.is_valid(), "You passed in a filename to an invalid scene!");
   push_state(std::move(scene));
 }
 
-void godot::GameStateManager::push_state(Ref<PackedScene> const& p_scene)
+void godot::SceneStack::push_state(Ref<PackedScene> const& p_scene)
 {
   //throw std::invalid_argument("you passed in a null PackedScene!!!"); 
   CRASH_COND_MSG(p_scene.is_null(), "You passed in a null PackedScene!");
 
   Node* instance = p_scene->instantiate();
-  GameState* new_state = Object::cast_to<GameState>(instance);
+  GameScene* new_state = Object::cast_to<GameScene>(instance);
   if (!new_state) 
   {
     
     instance->queue_free();
-    //throw std::invalid_argument("you passed in a Scene root node that doesn't extend GameState!!!");
-    CRASH_COND_MSG(p_scene.is_null(), "you passed in a Scene root node that doesn't extend GameState!!!");
-    CRASH_COND_MSG(!new_state, "Scene root node does not extend GameState!");
+    //throw std::invalid_argument("you passed in a Scene root node that doesn't extend GameScene!!!");
+    CRASH_COND_MSG(p_scene.is_null(), "you passed in a Scene root node that doesn't extend GameScene!!!");
+    CRASH_COND_MSG(!new_state, "Scene root node does not extend GameScene!");
     return;
   }  
 
@@ -91,7 +91,7 @@ void godot::GameStateManager::push_state(Ref<PackedScene> const& p_scene)
   ++current_stack_depth;
 }
 
-void godot::GameStateManager::push_state(GameState *p_state)
+void godot::SceneStack::push_state(GameScene *p_state)
 {
   if (!is_empty()){
     state_stack.back()->set_process_mode(PROCESS_MODE_DISABLED);
@@ -102,14 +102,14 @@ void godot::GameStateManager::push_state(GameState *p_state)
   ++current_stack_depth; // might be wrong about this one
 }
 
-void godot::GameStateManager::pop_state()
+void godot::SceneStack::pop_state()
 {
   if (is_empty()) return;
   --current_stack_depth;
   internal_pop_state();
 }
 
-void godot::GameStateManager::pop_this_state()
+void godot::SceneStack::pop_this_state()
 {
   // set number to one more than current depth, and iterate through it
   ++current_stack_depth;
@@ -119,7 +119,7 @@ void godot::GameStateManager::pop_this_state()
   }
 }
 
-void godot::GameStateManager::change_state(Variant const &state_variant)
+void godot::SceneStack::change_state(Variant const &state_variant)
 {
   if (state_variant.get_type() == Variant::STRING){
     String path = std::move(state_variant);
@@ -135,21 +135,21 @@ void godot::GameStateManager::change_state(Variant const &state_variant)
 
   // hopefully you never use this, An...
   Object *obj = state_variant;
-  GameState *gs = Object::cast_to<GameState>(obj);
+  GameScene *gs = Object::cast_to<GameScene>(obj);
   if (gs) {
     change_state(gs);
     return;
   } 
 }
 
-void godot::GameStateManager::change_state(String const &filename)
+void godot::SceneStack::change_state(String const &filename)
 {
   Ref<PackedScene> scene = ResourceLoader::get_singleton()->load(filename);
   ERR_FAIL_COND_MSG(!scene.is_valid(), "You passed in a filename to an invalid scene!");
   change_state(std::move(scene)); // harmless std::move even though it technically doesn't do anything... if i ever decide the change the function signature in the future...
 }
 
-void godot::GameStateManager::change_state(Ref<PackedScene> const &p_scene)
+void godot::SceneStack::change_state(Ref<PackedScene> const &p_scene)
 {
   if (!is_empty()) {
     internal_pop_state(); 
@@ -157,40 +157,61 @@ void godot::GameStateManager::change_state(Ref<PackedScene> const &p_scene)
   push_state(std::move(p_scene));
 }
 
-void godot::GameStateManager::change_state(GameState* p_scene)
+void godot::SceneStack::change_state(GameScene* instancedscene)
 {
   if (!is_empty()) {
     internal_pop_state(); 
   }
-  push_state(p_scene);
+  push_state(instancedscene);
 }
 
-void godot::GameStateManager::clear_stack()
+void godot::SceneStack::reload_state()
+{
+  ERR_FAIL_COND_MSG(is_empty(), "Cannot reload state: Stack is empty!");
+
+  GameScene* current = current_state();
+  String scene_path = current->get_scene_file_path();
+  change_state(scene_path);
+  
+}
+
+void godot::SceneStack::clear_stack()
 {
   while (!is_empty()){
     internal_pop_state();
   }
 }
 
-int godot::GameStateManager::get_stack_size() const
+godot::GameScene *godot::SceneStack::current_state() const
+{
+  return state_stack.back();
+}
+
+int godot::SceneStack::get_stack_size() const
 {
   return state_stack.size();
 }
 
-void godot::GameStateManager::set_expected_stack_depth(int p_depth)
+godot::GameScene *godot::SceneStack::state_at_depth(size_t depth) const
+{
+  CRASH_COND_MSG(depth > state_stack.size(), "Accessed out of bounds in scene_stack!!!");
+  return state_stack[state_stack.size() - depth];
+}
+
+void godot::SceneStack::set_expected_stack_depth(int p_depth)
 {
   expected_stack_depth = p_depth;
 }
 
-bool godot::GameStateManager::is_empty()
+bool godot::SceneStack::is_empty()
 {
   return state_stack.empty();
 }
 
-void godot::GameStateManager::internal_pop_state()
+void godot::SceneStack::internal_pop_state()
 {
   if(is_empty()) return;
-  GameState* state_to_remove {state_stack.back()};
+  GameScene* state_to_remove {state_stack.back()};
 
   states_to_clear.push_back(state_to_remove);
   state_stack.pop_back();
@@ -205,43 +226,59 @@ void godot::GameStateManager::internal_pop_state()
   state_stack.back()->set_process_mode(PROCESS_MODE_INHERIT);
 }
 
-void godot::GameStateManager::_bind_methods() {
+void godot::SceneStack::_bind_methods() {
   // push state alternatives
   ClassDB::bind_method(
-      D_METHOD("push_state_fast", "packedscene"),
-      static_cast<void (GameStateManager::*)(const Ref<PackedScene>&)>(&GameStateManager::push_state)
+    D_METHOD("push_scene_direct", "instancedscene"),
+    static_cast<void (SceneStack::*)(GameScene*)>(&SceneStack::push_state)
   );
+
   ClassDB::bind_method(
-      D_METHOD("push_state", "scene_filename"),
-      static_cast<void (GameStateManager::*)(Variant const&)>(&GameStateManager::push_state)
+    D_METHOD("push_scene_fast", "packedscene"),
+    static_cast<void (SceneStack::*)(const Ref<PackedScene>&)>(&SceneStack::push_state)
+  );
+
+  ClassDB::bind_method(
+    D_METHOD("push_scene", "scene_filename"),
+    static_cast<void (SceneStack::*)(Variant const&)>(&SceneStack::push_state)
   );
 
   // change state alternatives: pop a state, push a state.
   ClassDB::bind_method(
-      D_METHOD("change_state_fast", "packedscene"),
-      static_cast<void (GameStateManager::*)(const Ref<PackedScene>&)>(&GameStateManager::change_state)
+    D_METHOD("change_scene_direct", "instancedscene"),
+    static_cast<void (SceneStack::*)(GameScene*)>(&SceneStack::change_state)
   );
+
   ClassDB::bind_method(
-      D_METHOD("change_state", "scene_filename"),
-      static_cast<void (GameStateManager::*)(Variant const&)>(&GameStateManager::change_state)
+    D_METHOD("change_scene_fast", "packedscene"),
+    static_cast<void (SceneStack::*)(const Ref<PackedScene>&)>(&SceneStack::change_state)
   );
+
+  ClassDB::bind_method(
+    D_METHOD("change_scene", "scene_filename"),
+    static_cast<void (SceneStack::*)(Variant const&)>(&SceneStack::change_state)
+  );
+
+  ClassDB::bind_method(D_METHOD("reload_scene"), &SceneStack::reload_state);
 
   // pops states until current state is popped
-  ClassDB::bind_method(D_METHOD("pop_this_state"), &GameStateManager::pop_this_state);
+  ClassDB::bind_method(D_METHOD("pop_this_scene"), &SceneStack::pop_this_state);
   // pops one state
-  ClassDB::bind_method(D_METHOD("pop_state"), &GameStateManager::pop_state);
+  ClassDB::bind_method(D_METHOD("pop_scene"), &SceneStack::pop_state);
   // pops all states
-  ClassDB::bind_method(D_METHOD("clear_stack"), &GameStateManager::clear_stack);
+  ClassDB::bind_method(D_METHOD("clear_stack"), &SceneStack::clear_stack);
   
   // helpers, no need to check these...
-  ClassDB::bind_method(D_METHOD("is_empty"), &GameStateManager::is_empty);
-  ClassDB::bind_method(D_METHOD("get_expected_stack_depth"), &GameStateManager::get_expected_stack_depth);
-  ClassDB::bind_method(D_METHOD("set_expected_stack_depth", "p_depth"), &GameStateManager::set_expected_stack_depth);
-  ClassDB::bind_method(D_METHOD("get_stack_size"), &GameStateManager::get_stack_size);
+  ClassDB::bind_method(D_METHOD("is_empty"), &SceneStack::is_empty);
+  ClassDB::bind_method(D_METHOD("get_expected_stack_depth"), &SceneStack::get_expected_stack_depth);
+  ClassDB::bind_method(D_METHOD("set_expected_stack_depth", "p_depth"), &SceneStack::set_expected_stack_depth);
+  ClassDB::bind_method(D_METHOD("get_stack_size"), &SceneStack::get_stack_size);
+  ClassDB::bind_method(D_METHOD("current_scene"), &SceneStack::current_state);
+  ClassDB::bind_method(D_METHOD("top_scene"), &SceneStack::current_state);
 
   ADD_PROPERTY(
-      PropertyInfo(Variant::INT, "expected_stack_depth"),
-      "set_expected_stack_depth",
-      "get_expected_stack_depth"
+    PropertyInfo(Variant::INT, "expected_stack_depth"),
+    "set_expected_stack_depth",
+    "get_expected_stack_depth"
   );
 }
