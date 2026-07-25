@@ -1,5 +1,6 @@
 [gd_scene format=3 uid="uid://wwar4i2g8neo"]
 
+[ext_resource type="Script" uid="uid://frfcmc31oc4i" path="res://scripts/control stuff/surf/surf_pj.gd" id="1_2nesf"]
 [ext_resource type="Texture2D" uid="uid://c1qysu02trfx2" path="res://art/surf/characters/pj/pj_surf_punch_charge.png" id="1_cucva"]
 [ext_resource type="Texture2D" uid="uid://cohcf0xsm5ybi" path="res://art/surf/characters/pj/surf_pj_air_dash.png" id="2_tbkbm"]
 [ext_resource type="Texture2D" uid="uid://ba2r3jdcy5k1v" path="res://art/surf/characters/pj/pj_surf.png" id="3_bvk6b"]
@@ -199,6 +200,7 @@ alpha_curve = SubResource("CurveTexture_6wiwx")
 [node name="surf_pj" type="CharacterBody2D" unique_id=2071708297 groups=["player"]]
 collision_layer = 2
 collision_mask = 13
+script = ExtResource("1_2nesf")
 
 [node name="AnimatedSprite2D" type="AnimatedSprite2D" parent="." unique_id=910720205]
 sprite_frames = SubResource("SpriteFrames_57qmd")
