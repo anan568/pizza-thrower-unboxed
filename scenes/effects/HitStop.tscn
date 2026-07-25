@@ -2,5 +2,5 @@
 
 [ext_resource type="Script" uid="uid://ckw1iiirohf7m" path="res://scenes/effects/hit_stop.gd" id="1_sv0sg"]
 
-[node name="HitStop" type="GameState" unique_id=774538800]
+[node name="HitStop" type="GameScene" unique_id=2043094780]
 script = ExtResource("1_sv0sg")

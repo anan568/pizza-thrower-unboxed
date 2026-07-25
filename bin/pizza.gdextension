@@ -34,5 +34,5 @@ ios.release = {
 }
 
 [icons]
-GameStateManager = "res://art/pizza_gdextension.svg"
-GameState = "res://art/pizza_gdextension.svg"
+SceneStack = "res://art/pizza_gdextension.svg"
+GameScene = "res://art/pizza_gdextension.svg"

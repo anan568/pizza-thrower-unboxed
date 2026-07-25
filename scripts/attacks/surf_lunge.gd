@@ -22,4 +22,4 @@ func Create_Surfboard():
 	instance.velocity = pj.velocity
 	instance.scale.x = pj.scale.x
 	instance.facing_right = pj.facing_right
-	get_tree().current_scene.call_deferred("add_child", instance)
+	scene_stack.current_scene.call_deferred("add_child", instance)

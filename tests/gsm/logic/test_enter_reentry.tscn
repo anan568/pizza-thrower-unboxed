@@ -1,6 +1,0 @@
-[gd_scene format=3 uid="uid://dvjs6eu7d3t0e"]
-
-[ext_resource type="Script" uid="uid://deq5uoxw6gu8k" path="res://tests/gsm/logic/test_enter_reentry.gd" id="1_xq8ch"]
-
-[node name="TestEnterReentry" type="GameState" unique_id=708212619]
-script = ExtResource("1_xq8ch")

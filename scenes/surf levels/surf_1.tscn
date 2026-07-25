@@ -41,7 +41,7 @@ physics_layer_0/collision_layer = 1
 physics_layer_0/collision_mask = 255
 sources/0 = SubResource("TileSetAtlasSource_kq1ya")
 
-[node name="surf_1" type="GameState" unique_id=1603261576]
+[node name="surf_1" type="GameScene" unique_id=1984327677]
 script = ExtResource("1_lnllm")
 
 [node name="TileMapLayer" type="TileMapLayer" parent="." unique_id=1457051548]

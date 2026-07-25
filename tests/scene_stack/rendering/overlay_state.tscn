@@ -1,8 +1,8 @@
 [gd_scene format=3 uid="uid://cfw7ttkqs5o0c"]
 
-[ext_resource type="Script" uid="uid://dtkpe3un3yuhv" path="res://tests/gsm/rendering/overlay_state.gd" id="1_hy8fw"]
+[ext_resource type="Script" uid="uid://dtkpe3un3yuhv" path="res://tests/scene_stack/rendering/overlay_state.gd" id="1_hy8fw"]
 
-[node name="OverlayState" type="GameState" unique_id=1653965348]
+[node name="OverlayState" type="GameScene" unique_id=1029513529]
 script = ExtResource("1_hy8fw")
 
 [node name="ColorRect" type="ColorRect" parent="." unique_id=1544667989]

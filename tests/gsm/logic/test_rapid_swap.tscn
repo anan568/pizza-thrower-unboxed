@@ -1,6 +1,0 @@
-[gd_scene format=3 uid="uid://c60p65r8vjyi5"]
-
-[ext_resource type="Script" uid="uid://fy20jdcmtsrf" path="res://tests/gsm/logic/test_rapid_swap.gd" id="1_0vpjl"]
-
-[node name="TestRapidSwap" type="GameState" unique_id=199658999]
-script = ExtResource("1_0vpjl")

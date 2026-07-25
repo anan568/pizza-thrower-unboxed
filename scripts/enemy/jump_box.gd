@@ -12,6 +12,8 @@ func _ready() -> void:
 	animator.connect("animation_finished", Die)
 
 func Punched(pj: Node2D, force: int):
+	set_deferred("monitoring", false)
+	set_deferred("monitorable", false)
 	if pj.mounted == false:
 		pj.velocity.y = -boost_force * force_multiplier[force]
 	else:

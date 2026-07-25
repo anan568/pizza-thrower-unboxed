@@ -1,4 +1,4 @@
-extends GameState
+extends GameScene
 
 func _on_enter() -> void:
 	print("--- %CLASS% ENTERED ---")

@@ -1,5 +1,5 @@
-# meta-name: Default GameState
-# meta-description: Standard lifecycle template for GameState nodes
+# meta-name: Default GameScene
+# meta-description: Standard lifecycle template for GameScene nodes
 extends _BASE_
 
 func _on_enter() -> void:
