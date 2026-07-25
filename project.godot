@@ -11,7 +11,7 @@ config_version=5
 [application]
 
 config/name="Pizza Thrower: Unboxed"
-run/main_scene="uid://c1epvt3a0rcch"
+run/main_scene="uid://c5aya5o8sufbr"
 config/features=PackedStringArray("4.7", "Forward Plus")
 config/icon="uid://bx3qby2jp4q6x"
 

@@ -81,9 +81,9 @@ void godot::GameStateManager::push_state(Ref<PackedScene> const& p_scene)
     return;
   }  
 
-  // if (!is_empty()){
-  //   state_stack.back()->set_process_mode(PROCESS_MODE_DISABLED);
-  // }
+  if (!is_empty()){
+    state_stack.back()->set_process_mode(PROCESS_MODE_DISABLED);
+  }
   add_child(new_state);
   state_stack.push_back(new_state);
 
@@ -93,9 +93,9 @@ void godot::GameStateManager::push_state(Ref<PackedScene> const& p_scene)
 
 void godot::GameStateManager::push_state(GameState *p_state)
 {
-  // if (!is_empty()){
-  //   state_stack.back()->set_process_mode(PROCESS_MODE_DISABLED);
-  // }
+  if (!is_empty()){
+    state_stack.back()->set_process_mode(PROCESS_MODE_DISABLED);
+  }
   add_child(p_state);
   state_stack.push_back(p_state);
   p_state->_on_enter();
@@ -202,7 +202,7 @@ void godot::GameStateManager::internal_pop_state()
 
 
   if (is_empty()) return;
-  //state_stack.back()->set_process_mode(PROCESS_MODE_INHERIT);
+  state_stack.back()->set_process_mode(PROCESS_MODE_INHERIT);
 }
 
 void godot::GameStateManager::_bind_methods() {

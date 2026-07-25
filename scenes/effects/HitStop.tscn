@@ -1,0 +1,6 @@
+[gd_scene format=3 uid="uid://7nxoby5y5ly5"]
+
+[ext_resource type="Script" uid="uid://ckw1iiirohf7m" path="res://scenes/effects/hit_stop.gd" id="1_sv0sg"]
+
+[node name="HitStop" type="GameState" unique_id=774538800]
+script = ExtResource("1_sv0sg")
