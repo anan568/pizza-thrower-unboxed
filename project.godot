@@ -31,6 +31,7 @@ window/stretch/aspect="expand"
 folder_colors={
 "res://art/": "orange",
 "res://scenes/": "yellow",
+"res://script_templates/": "gray",
 "res://scripts/": "red",
 "res://sounds/": "purple",
 "res://tests/": "gray"
