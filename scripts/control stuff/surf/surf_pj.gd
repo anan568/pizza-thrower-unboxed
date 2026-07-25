@@ -136,10 +136,8 @@ func Charge_Punch():
 	animator.play("charge") #different anims for aerial punch and surf punch
 	
 func Punch_Release():
-	match int(charge_bar.value):
-		1: punch_hitbox.force = 1 #green boost force multiplier
-		2: punch_hitbox.force = 1.3 #gold boost force multiplier
-		3: punch_hitbox.force = 1.6 #red boost force multiplier
+	punch_hitbox.force = int(charge_bar.value)
+	
 	charge_bar.visible = false
 	punch_released = true
 	animator.play("punch")

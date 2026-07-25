@@ -1,6 +1,6 @@
 extends Area2D
 
-var force: float
+var force: int
 @onready var pj = $".."
 
 func _on_area_entered(area: Area2D) -> void:

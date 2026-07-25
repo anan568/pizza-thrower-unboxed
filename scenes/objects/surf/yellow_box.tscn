@@ -3,6 +3,7 @@
 [ext_resource type="Script" uid="uid://bm4pk6h1bu218" path="res://scripts/enemy/jump_box.gd" id="1_vjway"]
 [ext_resource type="Texture2D" uid="uid://00kwg2g3j0c8" path="res://art/surf/objects/box/yellow_box_crush.png" id="2_0rmwf"]
 [ext_resource type="Texture2D" uid="uid://bt3rrooa615u7" path="res://art/surf/objects/box/yellow_box.png" id="2_2al0b"]
+[ext_resource type="SpriteFrames" uid="uid://p4hb04mamwnd" path="res://properties/boom_animator.tres" id="4_0rmwf"]
 
 [sub_resource type="RectangleShape2D" id="RectangleShape2D_g4v7s"]
 size = Vector2(16, 16)
@@ -66,7 +67,9 @@ shape = SubResource("RectangleShape2D_g4v7s")
 
 [node name="AnimatedSprite2D" type="AnimatedSprite2D" parent="." unique_id=2074664064]
 sprite_frames = SubResource("SpriteFrames_g4v7s")
-animation = &"crush"
 autoplay = "default"
-frame = 3
-frame_progress = 1.0
+
+[node name="AnimatedSprite2D2" type="AnimatedSprite2D" parent="." unique_id=564588633]
+sprite_frames = ExtResource("4_0rmwf")
+animation = &"new_animation"
+autoplay = "new_animation"

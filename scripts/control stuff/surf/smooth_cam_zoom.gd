@@ -2,7 +2,7 @@ extends Camera2D
 
 var default_cam_zoom
 @onready var pj = $".."
-var zoom_scale = 0.9
+var zoom_scale = 0.8
 var zoom_speed = 0.02
 var new_zoom
 
