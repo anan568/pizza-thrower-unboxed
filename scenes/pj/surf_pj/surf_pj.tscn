@@ -172,10 +172,10 @@ radius = 4.0
 height = 20.0
 
 [sub_resource type="RectangleShape2D" id="RectangleShape2D_g4v7s"]
-size = Vector2(8, 7.855)
+size = Vector2(8, 11.1)
 
 [sub_resource type="RectangleShape2D" id="RectangleShape2D_yf5fn"]
-size = Vector2(18, 12)
+size = Vector2(18, 16)
 
 [sub_resource type="Curve" id="Curve_2nesf"]
 _data = [Vector2(0, 1), 0.0, 0.0, 0, 0, Vector2(1, 0.017857194), 0.0, 0.0, 0, 0]
@@ -237,6 +237,7 @@ zoom = Vector2(2, 2)
 script = ExtResource("9_0e8rl")
 
 [node name="lunge_time" type="Timer" parent="." unique_id=575622820]
+wait_time = 1.2999999999999998
 one_shot = true
 
 [node name="lunge_cd" type="Timer" parent="." unique_id=1917071780]
