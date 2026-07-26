@@ -82,9 +82,9 @@ void godot::SceneStack::push_state(Ref<PackedScene> const& p_scene)
   }  
 
   if (!is_empty()){
-    state_stack.back()->set_process_mode(PROCESS_MODE_DISABLED);
+    state_stack.back()->call_deferred("set_process_mode", PROCESS_MODE_DISABLED);
   }
-  add_child(new_state);
+  call_deferred("add_child", new_state);
   state_stack.push_back(new_state);
 
   new_state->_on_enter();
@@ -94,9 +94,9 @@ void godot::SceneStack::push_state(Ref<PackedScene> const& p_scene)
 void godot::SceneStack::push_state(GameScene *p_state)
 {
   if (!is_empty()){
-    state_stack.back()->set_process_mode(PROCESS_MODE_DISABLED);
+    state_stack.back()->call_deferred("set_process_mode", PROCESS_MODE_DISABLED);
   }
-  add_child(p_state);
+  call_deferred("add_child", p_state);
   state_stack.push_back(p_state);
   p_state->_on_enter();
   ++current_stack_depth; // might be wrong about this one
@@ -218,11 +218,12 @@ void godot::SceneStack::internal_pop_state()
 
   state_to_remove->_on_exit();
 
-  remove_child(state_to_remove);
+  call_deferred("remove_child", state_to_remove);
 
 
 
   if (is_empty()) return;
+  // queue this?
   state_stack.back()->set_process_mode(PROCESS_MODE_INHERIT);
 }
 
