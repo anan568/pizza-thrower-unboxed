@@ -65,13 +65,8 @@ func _physics_process(delta: float) -> void:
 		else:
 			animator.play("idle")
 			
-	if current_state == state.idle:
-		var h_direction = sign(Input.get_axis("left", "right"))
-		if h_direction:
-			if h_direction == -1 and facing_right:
-				Dash()
-			elif h_direction == 1 and not facing_right:
-				Dash()
+	if current_state == state.idle and not mounted:
+		Dash_Check()
 				
 	move_and_slide()
 
@@ -82,11 +77,20 @@ func Jump(): #rn u can only jump if mounted but that might change
 		velocity.y -= jump_force
 	
 func Act(move: String, direction: Vector2):
+	Dash_Check()
 	if move == "jump": Jump()
-	if move == "lunge" and not mounted and lungeable: Lunge()
 	if move == "dash" and not mounted and current_state == state.idle: Dash()
+	if move == "lunge" and not mounted and lungeable: Lunge()
 	if move == "punch" and current_state == state.idle: Charge_Punch()
 	
+	
+func Dash_Check():
+	var h_direction = sign(Input.get_axis("left", "right"))
+	if h_direction:
+		if h_direction == -1 and facing_right:
+			Dash()
+		elif h_direction == 1 and not facing_right:
+			Dash()
 	
 func Dash():
 	dash_player.play()
