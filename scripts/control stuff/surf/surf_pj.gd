@@ -64,6 +64,15 @@ func _physics_process(delta: float) -> void:
 			animator.play("jump")
 		else:
 			animator.play("idle")
+			
+	if current_state == state.idle:
+		var h_direction = sign(Input.get_axis("left", "right"))
+		if h_direction:
+			if h_direction == -1 and facing_right:
+				Dash()
+			elif h_direction == 1 and not facing_right:
+				Dash()
+				
 	move_and_slide()
 
 func Jump(): #rn u can only jump if mounted but that might change
