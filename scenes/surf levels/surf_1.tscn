@@ -51,7 +51,7 @@ physics_layer_0/collision_layer = 1
 physics_layer_0/collision_mask = 255
 sources/0 = SubResource("TileSetAtlasSource_kq1ya")
 
-[node name="surf_1" type="GameScene" unique_id=1984327677]
+[node name="surf_1" type="Node2D" unique_id=1188575880]
 
 [node name="Parallax2D" type="Parallax2D" parent="." unique_id=218098047]
 z_index = -986

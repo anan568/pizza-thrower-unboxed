@@ -9,4 +9,4 @@ func _process(delta: float) -> void:
 
 func Reset():
 	input_processor.actionable = true
-	scene_stack.reload_scene()
+	get_tree().reload_current_scene()

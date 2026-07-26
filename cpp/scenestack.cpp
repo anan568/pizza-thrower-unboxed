@@ -1,3 +1,4 @@
+#if 0
 #include "scenestack.h"
 #include <algorithm>
 #include <godot_cpp/core/class_db.hpp>
@@ -295,3 +296,4 @@ void godot::SceneStack::_bind_methods() {
     "get_top_scene"
   );
 }
+#endif

@@ -1,3 +1,4 @@
+#if 0
 #include "gamescene.h"
 #include <godot_cpp/core/class_db.hpp>
 #include <string>
@@ -34,3 +35,5 @@ void godot::GameScene::_bind_methods() {
   ClassDB::bind_method(D_METHOD("set_update_underneath", "p_update_underneath"), &GameScene::set_update_underneath);
   ADD_PROPERTY(PropertyInfo(Variant::BOOL, "update_underneath"), "set_update_underneath", "get_update_underneath");
 }
+
+#endif

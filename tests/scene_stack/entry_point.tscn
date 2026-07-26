@@ -1,6 +1,0 @@
-[gd_scene format=3 uid="uid://c5aya5o8sufbr"]
-
-[ext_resource type="Script" uid="uid://coxkf42yq4pr2" path="res://tests/scene_stack/entry_point.gd" id="1_vwyis"]
-
-[node name="EntryPoint" type="Node2D" unique_id=651000810]
-script = ExtResource("1_vwyis")

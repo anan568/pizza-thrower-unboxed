@@ -62,7 +62,7 @@ private:
   void internal_pop_state();
 
   // LocalVector and Vector both didn't have the interface I wanted...
-  using GS_Stack = std::vector<GameScene*>;
+  using GS_Stack = std::vector<Node*>;
   GS_Stack state_stack;
   GS_Stack states_to_clear;
 

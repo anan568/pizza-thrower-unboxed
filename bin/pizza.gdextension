@@ -34,5 +34,4 @@ ios.release = {
 }
 
 [icons]
-SceneStack = "res://art/pizza_gdextension.svg"
-GameScene = "res://art/pizza_gdextension.svg"
+GDExample = "res://art/pizza_gdextension.svg"

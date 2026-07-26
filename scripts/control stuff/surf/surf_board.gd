@@ -69,7 +69,7 @@ func Detach():
 	pj.position = position
 	pj.mounted = false
 	call_deferred("remove_child", pj)
-	scene_stack.top_scene.call_deferred("add_child", pj)
+	get_tree().current_scene.call_deferred("add_child", pj)
 	await get_tree().create_timer(retach_cooldown).timeout
 	snap_region.call_deferred("set_monitoring", true)
 	

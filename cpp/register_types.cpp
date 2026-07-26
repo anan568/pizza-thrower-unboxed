@@ -1,8 +1,8 @@
 #include "register_types.h"
 
 #include "gdexample.h"
-#include "gamescene.h"
-#include "scenestack.h"
+// #include "gamescene.h"
+// #include "scenestack.h"
 
 #include <gdextension_interface.h>
 #include <godot_cpp/core/defs.hpp>
@@ -15,9 +15,9 @@ void initialize_pizza_module(ModuleInitializationLevel p_level) {
 		return;
 	}
   // add all classes you make here!!!
-	// GDREGISTER_RUNTIME_CLASS(GDExample);
-	GDREGISTER_RUNTIME_CLASS(GameScene);
-	GDREGISTER_RUNTIME_CLASS(SceneStack);
+	GDREGISTER_RUNTIME_CLASS(GDExample);
+	// GDREGISTER_RUNTIME_CLASS(GameScene);
+	// GDREGISTER_RUNTIME_CLASS(SceneStack);
 }
 
 void uninitialize_pizza_module(ModuleInitializationLevel p_level) {
