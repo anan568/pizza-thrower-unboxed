@@ -70,14 +70,14 @@ func Detach():
 	pj.mounted = false
 	call_deferred("remove_child", pj)
 	get_tree().current_scene.call_deferred("add_child", pj)
-	await get_tree().create_timer(retach_cooldown).timeout
+	await get_tree().create_timer(retach_cooldown, false).timeout
 	snap_region.call_deferred("set_monitoring", true)
 	
 
 
 func _on_sd_timer_timeout() -> void:
 	gravity_on = true
-	await get_tree().create_timer(1).timeout
+	await get_tree().create_timer(1.0, false).timeout
 	if mounted:
 		Detach()
 	await get_tree().process_frame
